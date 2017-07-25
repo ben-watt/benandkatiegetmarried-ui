@@ -1,6 +1,8 @@
 import React from 'react';
 import MainPage from './components/MainPage';
 import LoginPage from './components/LoginPage';
+import {StyleRoot} from 'radium';
+import styles from './components/MainPage-styles';
 
 class App extends React.Component {
     constructor(props){
@@ -12,7 +14,11 @@ class App extends React.Component {
 
     render() {
         if(this.state.loggedIn === true){
-            return <MainPage />
+            return (
+                <StyleRoot style={styles.body}>
+                    <MainPage />
+                </StyleRoot>
+            )
         } else {
             return <LoginPage />
         }
