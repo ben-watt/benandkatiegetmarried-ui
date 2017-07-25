@@ -34,6 +34,7 @@ console.log(mapRef);
       var map = new google.maps.Map(ReactDOM.findDOMNode(mapRef), {
           zoom: 15,
            scrollwheel: false,
+           gestureHandling: 'cooperative',
           styles: [
   {
     "elementType": "geometry",
