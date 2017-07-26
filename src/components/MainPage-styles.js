@@ -3,10 +3,10 @@ const styles = {
     container: {
         display: 'grid',
         gridTemplateColumns: '1fr '.repeat(12),
-        gridTemplateRows: '30vh 60vh 60vh 10vh',
+        gridTemplateRows: '30vh 60vh 60vh 30vh',
         backgroundColor: '#f7f7f7',
         '@media (max-width: 600px)': {
-            gridTemplateRows: '10px 200px 100px 50px',
+            gridTemplateRows: '30vh 60vh 60vh 30vh',
         },
     },
 
@@ -41,7 +41,7 @@ const styles = {
         backgroundColor: '#EEEEEE ',
         color: 'grey',
         fontWeight: 'bold',
-        fontSize: '1.2em',
+        fontSize: '1em',
         gridColumn: '1 / 13',
       
         '@media (max-width: 600px)': {

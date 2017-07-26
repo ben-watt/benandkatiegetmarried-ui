@@ -217,7 +217,8 @@ console.log(mapRef);
         });
         var marker = new google.maps.Marker({
           position: uluru,
-          map: map
+          map: map,
+          icon:  'http://res.cloudinary.com/d5hbzroitr/image/upload/e_shadow:40/v1501019327/wedding-couple_4_cm4hie.png'
         });
 
     
