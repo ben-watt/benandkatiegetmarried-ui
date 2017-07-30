@@ -1,13 +1,9 @@
 import React from 'react';
 import styles from '../mainPage/mainPage-styles';
-import Radium from 'radium';
 
 
 class footer extends React.Component {
 
-     
-     
-    
     render() {
 
         return (
@@ -20,4 +16,4 @@ class footer extends React.Component {
     }
 }
 
-export default Radium(footer);
+export default footer;

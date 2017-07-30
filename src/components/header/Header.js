@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './header-styles';
-import Radium from 'radium';
 
 
 class Header extends React.Component {
@@ -20,4 +19,4 @@ class Header extends React.Component {
     }
 }
 
-export default Radium(Header);
+export default Header;

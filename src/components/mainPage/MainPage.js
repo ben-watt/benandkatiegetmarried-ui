@@ -2,7 +2,6 @@ import React from 'react';
 import Footer from '../footer/Footer';
 import Header from '../header/Header'
 import styles from './mainPage-styles';
-import Radium from 'radium';
 import MapContainer from '../googleMaps/MapContainer';
 
 
@@ -25,5 +24,5 @@ const MainPage = () => {
     )
 }
 
-export default Radium(MainPage);
+export default MainPage;
 
