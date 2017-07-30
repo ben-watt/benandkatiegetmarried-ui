@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from '../mainPage/mainPage-styles';
 
 import Map from './Map';
 

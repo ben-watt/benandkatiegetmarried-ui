@@ -1,7 +1,8 @@
 import React from 'react';
 import Footer from '../footer/Footer';
-import Header from '../header/Header'
-import styles from './mainPage-styles';
+import Header from '../header/Header';
+import css from './mainPage-styles.css';
+
 import MapContainer from '../googleMaps/MapContainer';
 
 
@@ -9,13 +10,13 @@ import MapContainer from '../googleMaps/MapContainer';
 const MainPage = () => {
     return  (
             <div>
-                <div style={styles.onShade}></div>
-                <nav style={styles.nav}>Nav</nav>
-                <div style={styles.container}>
+                <div className={css.onShade}></div>
+                <nav className={css.nav}>Nav</nav>
+                <div className={css.container}>
                 
                     <Header />
-                    <section id='section2' style={styles.section70}>Main</section>
-                     <div style={styles.section100}>
+                    <section id='section2' className={css.section70}>Main</section>
+                     <div className={css.section100}>
                         <MapContainer />
                     </div> 
                     <Footer/>

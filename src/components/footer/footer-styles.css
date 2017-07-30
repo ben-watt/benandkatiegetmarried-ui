@@ -1,0 +1,15 @@
+footer {
+    background-color: #EEEEEE ;
+    color: grey;
+    font-weight: bold;
+    font-size: 1em;
+    grid-column: 1 / 13;
+}
+
+        
+@media (max-width: 600px) {
+    .footer{
+        grid-template-rows: 25% auto 5%;
+        font-size: 1em;
+    }
+}
