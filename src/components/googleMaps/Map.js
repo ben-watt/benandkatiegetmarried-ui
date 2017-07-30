@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from '../MainPage-styles';
+import styles from '../mainPage/mainPage-styles';
 
 export default class Map extends React.Component {
     
