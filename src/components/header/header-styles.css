@@ -49,6 +49,8 @@
     color: black ; 
     opacity: 0.7;
     position: absolute;
+    left: 0;
+    right: 0;
     bottom: 20px;
     display: flex;
     justify-content: center;
