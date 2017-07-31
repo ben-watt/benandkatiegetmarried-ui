@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from './header-styles';
+import css from './header-styles.css';
 import scrollFunc from './scrollFunc';
 
-import Radium from 'radium';
 
 class Header extends React.Component {
-	constructor(props){
+    constructor(props){
         super(props);
         this.enterSiteSmoothScroll = this.enterSiteSmoothScroll.bind(this);
         this.state = {
@@ -21,14 +20,13 @@ class Header extends React.Component {
     enterSiteSmoothScroll() {
 		scrollFunc(this.state.windowHeight);
 	}
-		
-	   render() {
+    render() {
         return (
-            <div style={styles.header}>
-                <p style={styles.title}> Katie & Ben </p>
-                <p style={styles.date}>24.02.2018</p>  
-                <div style={styles.enterDiv} onClick={this.enterSiteSmoothScroll}>
-                    <h5 style={styles.enter}>Enter Site</h5>
+            <div className={css.header}>
+                <p className={css.title}> Katie & Ben </p>
+                <p className={css.date}>24.02.2018</p>  
+                <div className={css.enterDiv} onClick={this.enterSiteSmoothScroll}>
+                    <h5 className={css.enter}>Enter Site</h5>
                     <i className="fa fa-angle-double-down" aria-hidden="true"></i>
                 </div>
             </div>
@@ -36,4 +34,4 @@ class Header extends React.Component {
     }
 }
 
-export default Radium(Header);
+export default Header;
