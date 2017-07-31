@@ -14,7 +14,7 @@ const MainPage = (props) => {
                 <nav style={styles.nav}>Nav</nav>
                 <div style={styles.container}>
                 
-                    <Header scrollTo={props.scrollTo}/>
+                    <Header />
                     <section style={styles.section70}>Main</section>
                      <div style={styles.section100}>
                         <MapContainer/>

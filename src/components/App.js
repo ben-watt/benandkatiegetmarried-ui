@@ -12,7 +12,7 @@ class App extends React.Component {
             loggedIn: true,
         }
     }    
-
+   
     handleClick() {
     this.setState(prevState => (
         { isToggleOn: !prevState.isToggleOn
@@ -23,7 +23,7 @@ class App extends React.Component {
         if(this.state.loggedIn === true){
             return (
                 <StyleRoot style={styles.body}>
-                    <MainPage scrollTo={this.scroll}/>
+                    <MainPage />
                 </StyleRoot>
             )
         } else {
