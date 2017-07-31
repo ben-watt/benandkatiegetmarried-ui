@@ -7,17 +7,17 @@ import MapContainer from '../googleMaps/MapContainer';
 
 
 
-const MainPage = () => {
+const MainPage = (props) => {
     return  (
             <div>
                 <div style={styles.onShade}></div>
                 <nav style={styles.nav}>Nav</nav>
                 <div style={styles.container}>
                 
-                    <Header />
-                    <section id='section2' style={styles.section70}>Main</section>
+                    <Header scrollTo={props.scrollTo}/>
+                    <section style={styles.section70}>Main</section>
                      <div style={styles.section100}>
-                        <MapContainer />
+                        <MapContainer/>
                     </div> 
                     <Footer/>
                 </div>

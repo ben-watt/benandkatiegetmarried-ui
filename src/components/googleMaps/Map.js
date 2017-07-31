@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from '../mainPage/mainPage-styles';
+//import styles from '../mainPage/mainPage-styles';
 
 export default class Map extends React.Component {
     
@@ -21,13 +21,11 @@ loadMap() {
     if (this.props && this.props.google) {
       // google is available
       const {google} = this.props;
-      const maps = google.maps;
 
        const mapRef = this.refs.map;
 
-console.log(mapRef);
 
-       let zoom = 15;
+
 
 
      var uluru = {lat: 53.506292, lng: -2.3931257};
@@ -215,10 +213,10 @@ console.log(mapRef);
 ,
           center: uluru
         });
-        var marker = new google.maps.Marker({
+         new google.maps.Marker({
           position: uluru,
           map: map,
-          icon:  'http://res.cloudinary.com/d5hbzroitr/image/upload/e_shadow:40/v1501019327/wedding-couple_4_cm4hie.png'
+          icon:  'https://res.cloudinary.com/d5hbzroitr/image/upload/e_shadow:40/v1501019327/wedding-couple_4_cm4hie.png'
         });
 
     

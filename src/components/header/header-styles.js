@@ -1,5 +1,4 @@
 import imageUrl from './images/img7.png';
-import styles from '../mainPage/mainPage-styles';
 
 const headerStyles = {
     header: {
@@ -21,7 +20,7 @@ const headerStyles = {
         fontSize: '3em',
         color: 'black ', 
         opacity: '0.7',
-        margin: '0px',
+        marginBottom: '0px',
         marginTop: '90px',
 
            '@media (min-width: 768px)': {
@@ -47,11 +46,10 @@ const headerStyles = {
         color: 'black ', 
         opacity: '0.7',
         position: 'absolute',
-        bottom: '20px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
+        bottom: '40px',
+        textAlign: 'center',
+        left: '0',
+        right: '0',
 
         '@media (min-width: 768px)': {
             fontSize: '1.5em',
@@ -63,7 +61,7 @@ const headerStyles = {
     },
 
     enter: {
-        marginBottom: '10px',
+        marginBottom: '0px',
     },
 }
 export default headerStyles;

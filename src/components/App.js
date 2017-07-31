@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react';  
 import MainPage from './mainPage/MainPage.js';
 import LoginPage from './loginPage/LoginPage';
+import styles from './mainPage/mainPage-styles';
 
 import {StyleRoot} from 'radium';
-import styles from './mainPage/mainPage-styles';
 
 class App extends React.Component {
     constructor(props){
@@ -13,7 +13,7 @@ class App extends React.Component {
         }
     }    
 
-      handleClick() {
+    handleClick() {
     this.setState(prevState => (
         { isToggleOn: !prevState.isToggleOn
         }));
@@ -23,7 +23,7 @@ class App extends React.Component {
         if(this.state.loggedIn === true){
             return (
                 <StyleRoot style={styles.body}>
-                    <MainPage />
+                    <MainPage scrollTo={this.scroll}/>
                 </StyleRoot>
             )
         } else {

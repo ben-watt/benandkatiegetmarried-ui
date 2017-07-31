@@ -23,7 +23,7 @@ const styles = {
         fontWeight: 'bold',
         fontSize: '1.5em',
         gridColumn: '3 / 10',
-        height: '70%',
+        height: '100%',
         alignSelf: 'center',
     },
 
