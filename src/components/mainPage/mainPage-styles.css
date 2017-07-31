@@ -1,6 +1,6 @@
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(12, 1fr); 
     grid-template-rows: 100vh 60vh 60vh 30vh;
     background-color: #f7f7f7;
 }
@@ -19,8 +19,9 @@
     color: #D4C4AF;
     font-weight: bold;
     font-size: 1.5em;
-    grid-column: 3 / 11;
-    height: 70%;
+    grid-column-start: 3;
+    grid-column-end:11;
+    height: 100%;
     align-self: center;
 }
 

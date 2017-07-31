@@ -6,23 +6,15 @@ import scrollFunc from './scrollFunc';
 class Header extends React.Component {
     constructor(props){
         super(props);
-        this.enterSiteSmoothScroll = this.enterSiteSmoothScroll.bind(this);
-        this.state = {
-            windowHeight: null,
-        }
+        this.enterSiteSmoothScroll = this.enterSiteSmoothScroll.bind(this);   
     }    
-    componentWillMount() {
-        this.setState(prevState => (
-            {windowHeight: window.innerHeight}
-        ));
-    }
 
     enterSiteSmoothScroll() {
-		scrollFunc(this.state.windowHeight);
+		scrollFunc(this.refs.height);
 	}
     render() {
         return (
-            <div className={css.header}>
+            <div ref={'height'} className={css.header}>
                 <p className={css.title}> Katie & Ben </p>
                 <p className={css.date}>24.02.2018</p>  
                 <div className={css.enterDiv} onClick={this.enterSiteSmoothScroll}>
