@@ -7,8 +7,8 @@ class footer extends React.Component {
 
         return (
             <div className={css.footer}>
-            <p>footer</p>
-            <p>Map icon designed by Icon made by Freepik from www.flaticon.com</p> 
+                <p>footer</p>
+                <p>Map icon designed by Icon made by Freepik from www.flaticon.com</p>
             </div>
         )
 

@@ -1,7 +1,7 @@
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100vh 60vh 60vh 30vh;
+    grid-template-columns:  repeat(12, 12fr);
+    grid-template-rows: 100vh 60vh 60vh 30vh auto; 
     background-color: #f7f7f7;
 }
 
@@ -19,7 +19,7 @@
     color: #D4C4AF;
     font-weight: bold;
     font-size: 1.5em;
-    grid-column: 3 / 11;
+    grid-column: 2 / 12;
     height: 70%;
     align-self: center;
 }
@@ -43,3 +43,4 @@
     z-index: 1;
     display: none;
 }
+

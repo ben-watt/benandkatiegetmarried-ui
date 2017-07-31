@@ -1,4 +1,4 @@
-footer {
+.footer {
     background-color: #EEEEEE ;
     color: grey;
     font-weight: bold;
@@ -6,7 +6,6 @@ footer {
     grid-column: 1 / 13;
 }
 
-        
 @media (max-width: 600px) {
     .footer{
         grid-template-rows: 25% auto 5%;

@@ -13,13 +13,12 @@ const MainPage = (props) => {
                 <div className={css.onShade}></div>
                 <nav className={css.nav}>Nav</nav>
                 <div className={css.container}>
-                
                     <Header />
                     <section id='section2' className={css.section70}>Main</section>
                      <div className={css.section100}>
                         <MapContainer/>
-                    </div> 
-                    <Footer/>
+                    </div>                     
+                    <Footer />
                 </div>
             </div>
     )
