@@ -1,0 +1,90 @@
+
+.setArea {
+    grid-column: 1/13;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    margin: 20px;
+    text-align: center;
+    align-items: center;
+    font-size: 4em;
+    font-family: Great Vibes, cursive;
+    color: grey;
+}
+
+.pic {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-Size: cover;
+    opacity: 0.6;
+    margin: 0 auto;
+}
+
+.benPic {
+    background-image:  url('./images/benFace.png');
+   
+}
+
+.katiePic {
+    background-image:  url('./images/katieFace.png');
+} 
+
+
+.headings {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: grey;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-family: Bellefair, serif;
+}
+
+.columnAlign {
+    grid-column-start: 3;
+}
+
+.statement {
+    grid-column: 1/4;
+    font-family: Great Vibes, cursive;
+    text-align: center;
+    font-size: 2rem;
+    color: #D4C4AF ;
+    margin-top: 20px;
+}
+
+.invite {
+    grid-column: 1/4;
+    font-size: 1.1rem;
+    font-family: Bellefair, serif;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+.text {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #D4C4AF; 
+    margin: 0 auto;
+    margin-top: 10px;
+    font-family: Bellefair, serif;
+}
+
+.button {
+    background-color: #ADCCC2;
+    border: none;
+    margin-top: 15px;
+    color: white;
+    font-family: Bellefair, serif;
+    box-shadow: 1px 1px 3px grey;
+    font-style: italic;
+    padding: 5%;
+}
+
+.button:focus {
+    outline: none;
+}

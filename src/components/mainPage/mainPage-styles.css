@@ -1,7 +1,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr); 
-    grid-template-rows: 100vh 60vh 60vh 30vh;
+    grid-template-rows: 100vh auto 60vh 60vh 30vh;
     background-color: #f7f7f7;
 }
 

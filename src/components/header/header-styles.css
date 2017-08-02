@@ -30,28 +30,26 @@
 }
 
 .date {
-    font-family: Zilla Slab, serif;
-    font-size: 1.5em;
+    font-family: Bellefair, serif;
+    font-size: 1em;
     color: black ; 
-    opacity: 0.7;
     margin: 0px;
 }
 
 @media (min-width: 768px) {
     .date {
-        font-size: 2em;
+        font-size: 1.5em;
     }
 }
 
 .enterDiv {
-    font-family: Zilla Slab serif;
+    font-family: Bellefair, serif;
     font-size: 1em;
     color: black ; 
-    opacity: 0.7;
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 20px;
+    bottom: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +66,7 @@
     }
 }
 
+
 .enter {
-    margin-bottom: 10px;
+    margin-bottom: 1%;
 }
