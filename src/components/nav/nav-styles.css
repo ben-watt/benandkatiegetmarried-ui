@@ -13,31 +13,47 @@
 }
 
 .navbar {
-    background-color: white;
-    position: flex;
-    z-index: 1;
-    height: 10vh;
-    width: 100%;
+    display: flex;
     justify-content: flex-end;
-    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    background-color: transparent;
 }
 
 .navbar p {
-    display: inline-block;
-    padding-right: 20px;
+    padding-right: 40px;
 }
 
 .btn {
+    top: 10px;
+    left: 15px;
     position: fixed;
-    z-index: 1;
-    margin: 20px;
     background-color: transparent;
     border: 0;
     font-size: 1.1em;
-    border-radius: 50%;
+    z-index: 1;
 }
 
 .btn:focus {
     outline: 0;
     background-color: hsla(70, 1, 1, 0.5);
+}   
+
+.onShade {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: 0.30;
+    z-index: -1;
+} 
+
+.btn {
+    transition-duration: 1s;
 }
+
+.btn:hover {
+    transform: rotate(-190deg);
+}
+

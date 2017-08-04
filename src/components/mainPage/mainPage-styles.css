@@ -28,13 +28,3 @@
     height: 70%;
     align-self: center;
 }
-
-.onShade {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background-color: black;
-    opacity: 0.30;
-    z-index: 1;
-    display: none;
-}

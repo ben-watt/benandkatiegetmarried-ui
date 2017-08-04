@@ -10,7 +10,6 @@ import Nav from '../nav/Nav';
 const MainPage = (props) => {
     return  (
             <div>
-                <div className={css.onShade}></div>
                 <Nav />
                 <div className={css.container}>
                     <Header />
