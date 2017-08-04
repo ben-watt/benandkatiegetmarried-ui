@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import css from './map-styles.css'
 
 export default class Map extends React.Component {
     
@@ -220,13 +221,8 @@ export default class Map extends React.Component {
 
   }
   render() {
-      const style = {
-            width: '100%',
-            height: '100%',
-        }
-    
     return (
-      <div style={style} ref='map'>
+      <div className={css.setArea}  ref='map'>
         Loading map...
       </div>
     )

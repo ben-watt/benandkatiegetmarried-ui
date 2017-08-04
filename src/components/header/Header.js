@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './header-styles.css';
+// import globalCss from '../../../public.global.css'
 import scrollFunc from './scrollFunc';
 
 

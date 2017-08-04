@@ -1,21 +1,16 @@
 import React from 'react';
-
+import css from './map-styles.css'
 import Map from './Map';
 
 import GoogleApiComponent from './GoogleApiComponent';
 
 export class Container extends React.Component {
-  render() {
-    const style = {
-            width: '100%',
-            height: '100%',
-        }
-      
+  render() {      
     if (!this.props.loaded) {
       return <div>Loading...</div>
     }
     return (
-     <div style={style}>
+     <div className={css.setArea} >
         <Map google={this.props.google}/>
       </div>
     )

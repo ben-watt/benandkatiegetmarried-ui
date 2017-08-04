@@ -1,0 +1,21 @@
+.button {
+    background-color: #ADCCC2;
+    opacity: 0.8;
+    border: none;
+    color: white;
+    font-family: var(--mainFont);
+    box-shadow: 1px 1px 3px grey;
+    margin: 20px;
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: 5px;
+}
+
+.button:hover {
+     opacity: 1;
+}
+.button:focus {
+    outline: none;
+    opacity: 1;
+    
+}

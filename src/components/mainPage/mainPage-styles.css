@@ -1,17 +1,14 @@
-.colors {
-    --gold: #d4c4af;
-    --off-white: #EDECE8;
-}
+@import '../../config.css'; 
 
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr); 
     grid-template-rows: 100vh auto 60vh 60vh 30vh;
-    background-color: var(--off-white);
+    background-color: var(--offWhite);
 }
 
 .section100 {
-    background-color: var(--off-white);
+    background-color: var(--offWhite);
     color: var(--gold);
     font-weight: bold;
     font-size: 1.5em;
@@ -20,8 +17,8 @@
 }
 
 .section70 {
-    background-color: var(--off-white);
-    color: var(--gold);
+    background-color: var(--lightGold);
+    color: var(--goldFont);
     font-weight: bold;
     font-size: 1.5em;
     grid-column: 2 / 12;

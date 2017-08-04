@@ -7,15 +7,3 @@ html, body {
 .lock {
     overflow: hidden;
 } 
-
- #map {
-        width: 100%;
-        height: 400px;
-        background-color: grey;
-        
-      }
-
-/* font-family: 'Bellefair', serif; - TEXT
-font-family: 'Great Vibes', cursive; - HANDWRITING
-font-family: 'Zilla Slab', serif; - TEXT
-*/ 
