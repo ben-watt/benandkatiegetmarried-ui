@@ -49,7 +49,7 @@ class Nav extends React.Component {
         .to(this.exitIcon, 0.3, { rotation: 450, transformOrigin: '50% 50%'} ,'=-0.25')
         .to(this.exitIcon, 0.1, { stroke: 'black'}, '=-0.1');
 
-        this.state.show ? this.tl.reverse() : this.tl.play();
+        this.state.show ? this.tl.reverse(0.3) : this.tl.play();
     }
 
     render() {
