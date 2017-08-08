@@ -1,5 +1,14 @@
 
 .setArea {
     grid-column: 1/6;
+    grid-row: 8;
     width: 100%;
+}
+
+@media (min-width: 768px) {
+
+    .setArea {
+        grid-column: 1/5;
+    }
+
 }

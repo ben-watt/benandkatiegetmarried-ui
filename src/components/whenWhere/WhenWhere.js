@@ -36,8 +36,8 @@ class WhenWhere extends React.Component {
     }
 
     render() {
+        console.log(css.button)
         const button = {
-             gridColumn: '2/5',
              marginBottom: '0px',
         }
 
@@ -53,16 +53,20 @@ class WhenWhere extends React.Component {
                     <h2 className={css.statement}>Are getting married</h2>
                     <p className={css.invite}>And we would love for you to celebrate with us...</p>
 
-                    <h1 className={[css.headings, css.details].join(' ')}><u>WHEN</u></h1>
-                    <p  className={css.text}>The 24th of February 2018, at 2.30 in the afternoon.</p>
-                    <Button text={'Add to Calendar'} onClick={() => this.showCalendarMenu()} style={button} />
+                    <h1 className={[css.headings, css.details, css.ipadWhen].join(' ')}><u>WHEN</u></h1>
+                    <p  className={[css.text, css.ipadWhenDeets].join(' ')}>The 24th of February 2018, at 2.30 in the afternoon.</p>
+
+                    <Button text={'Add to Calendar'} onClick={() => this.showCalendarMenu()} id={css.buttonLeft} style={button} />
+
                     <Calendar handleChange={this.handleChange} visibility={this.state.calendarVisible}/> 
                         
                     <div className={css.border}></div>
+                    <hr className={css.hr}/>
+                    
 
-                    <h1 className={[css.headings, css.details].join(' ')}><u>WHERE</u></h1>
-                    <p className={[css.text].join(' ')}>Worsley Park Marriott Hotel & Country Club, Manchester M28 2QT</p>
-                    <Button text={'Find on Map'} onClick={() => this.showDirections()} style={button} />
+                    <h1 className={[css.headings, css.details, css.ipadWhere].join(' ')}><u>WHERE</u></h1>
+                    <p className={[css.text, css.ipadWhereDeets].join(' ')}>Worsley Park Marriott Hotel & Country Club, Manchester M28 2QT</p>
+                    <Button text={'Find on Map'} onClick={() => this.showDirections()} id={css.buttonRight} style={button} />
                 </div>
             </div>
         )
@@ -70,3 +74,4 @@ class WhenWhere extends React.Component {
 }
 
 export default WhenWhere;
+

@@ -8,7 +8,7 @@ const Calendar = (props) => {
         height: '0px',
         width: '0px',
         borderRadius:'50%',
-        fontSize: '1em',
+        fontSize: '1.5em',
         transition: 'opacity 2s, height 0.01s, width 0.01s',
         visibility: 'hidden',
         opacity: '0',
