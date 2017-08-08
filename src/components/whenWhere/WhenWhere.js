@@ -1,21 +1,44 @@
 import React from 'react';
 import css from './whenWhere-styles.css';
 import Button from '../common/Button.js';
+import selectCalendar from '../calendar/selectCalendar.js';
+import Calendar from '../calendar/Calendar.js';
 
 class WhenWhere extends React.Component {
     constructor(props){
         super(props);
-        this.state = {value: 'coconut'};
+        this.state = {
+            value: 'google',
+            calendarVisible: false,
+        };
         this.handleChange = this.handleChange.bind(this);
     }    
 
     handleChange(event) {
-    this.setState({value: event.target.value});
+        console.log(event.currentTarget.value);
+        this.setState({
+            value: event.currentTarget.value,
+            calendarVisible: !this.state.calendarVisible,
+        }, selectCalendar(event.currentTarget.value));
+       
+        event.preventDefault();
+       
   }
+
+    showCalendarMenu() {
+        this.setState({
+            calendarVisible: !this.state.calendarVisible
+            });
+    }
+
+    showDirections() {
+        window.open("https://goo.gl/maps/yHsZ5JCkkrP2", '_blank');
+    }
 
     render() {
         const button = {
              gridColumn: '2/5',
+             marginBottom: '0px',
         }
 
         return (
@@ -27,26 +50,20 @@ class WhenWhere extends React.Component {
                     <h1 className={[css.katieHeading, css.headings].join(' ')}>Katie</h1>
                     <h1 className={[css.benHeading, css.headings].join(' ')}>Ben</h1>
 
-                     <h2 className={css.statement}>Are getting married</h2>
-                      <p className={css.invite}>And we would love for you to celebrate with us...</p>
+                    <h2 className={css.statement}>Are getting married</h2>
+                    <p className={css.invite}>And we would love for you to celebrate with us...</p>
 
                     <h1 className={[css.headings, css.details].join(' ')}><u>WHEN</u></h1>
-                    <p className={css.text}>The 24th of February 2018, at 2.30 in the afternoon.</p>
-                    <Button text={'Add to Calendar'} style={button}/>
-
+                    <p  className={css.text}>The 24th of February 2018, at 2.30 in the afternoon.</p>
+                    <Button text={'Add to Calendar'} onClick={() => this.showCalendarMenu()} style={button} />
+                    <Calendar handleChange={this.handleChange} visibility={this.state.calendarVisible}/> 
+                        
                     <div className={css.border}></div>
 
                     <h1 className={[css.headings, css.details].join(' ')}><u>WHERE</u></h1>
                     <p className={[css.text].join(' ')}>Worsley Park Marriott Hotel & Country Club, Manchester M28 2QT</p>
-                     <Button text={'Find on Map'} style={button} />
+                    <Button text={'Find on Map'} onClick={() => this.showDirections()} style={button} />
                 </div>
-
-        <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-        </select>
             </div>
         )
     }

@@ -4,9 +4,9 @@
     border: none;
     color: white;
     font-family: var(--mainFont);
-    box-shadow: 1px 1px 3px grey;
+    box-shadow: 1px 1px 3px #2F4F4F;
     margin: 20px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-style: italic;
     padding: 5px;
 }
@@ -17,5 +17,4 @@
 .button:focus {
     outline: none;
     opacity: 1;
-    
 }
