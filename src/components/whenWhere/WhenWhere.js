@@ -36,7 +36,7 @@ class WhenWhere extends React.Component {
     }
 
     render() {
-        console.log(css.button)
+       
         const button = {
              marginBottom: '0px',
         }
