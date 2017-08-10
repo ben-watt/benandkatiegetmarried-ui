@@ -10,25 +10,40 @@
 
 .nav.show {
     left: 0px;
-}
+} 
 
 .navbar {
     display: flex;
     justify-content: flex-end;
-    position: fixed;
+    max-height: 50px;
     width: 100%;
     z-index: 1;
-    background-color: transparent;
+    background-color: transparent; 
+    box-shadow: 0px 0px 3px #000000;
+}
+
+p {
+    display: inline-block;
+}
+
+.fixed {
+    position: fixed;
+    background-color: white;
+}
+
+.absolute {
+    position: absolute;
 }
 
 .navbar p {
     padding-right: 40px;
+    cursor: pointer;
 }
 
 .btn {
+    position: absolute;
     top: 10px;
-    left: 15px;
-    position: fixed;
+    left: 10px;
     background-color: transparent;
     border: 0;
     font-size: 1.1em;
@@ -49,3 +64,14 @@
     z-index: -1;
 } 
 
+@media(min-width: 500px){
+    .btn {
+        display: none;
+    }
+}
+
+@media(max-width: 500px){
+    .navbar p {
+        display: none;
+    }
+}

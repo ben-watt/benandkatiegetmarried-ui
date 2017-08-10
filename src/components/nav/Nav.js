@@ -7,8 +7,11 @@ class Nav extends React.Component {
         super(props);
         this.state = {
             show: false,
+            navClass: css.absolute,
+            navHeight: 0
         }
         this.tl = new TimelineLite();
+        this.lastOffset = 0;
     }
 
     getNavStyles = () => {
@@ -21,17 +24,43 @@ class Nav extends React.Component {
 
     getBtnStyle = () => {
         const styles = [css.btn];
-        if(this.state.show === true){
-            //styles.push('fa-times');
-        } else {
-            //styles.push('fa-bars');
-        }
         return styles.join(' ');
     }
 
+    componentDidMount(){
+        window.addEventListener('scroll', this.onScroll);
+        this.lastOffset = window.pageYOffset || 0;
+    }
+
+    componentDidUnMount(){
+        window.removeEventListener('scroll', this.onScroll);
+    }
+
+    onScroll = () => {
+        const pageOffset = window.pageYOffset;
+        const diff = this.lastOffset - pageOffset;
+
+        if(diff > 0 && pageOffset !== 0){
+            this.setState((prev) => ({ 
+                navClass: css.fixed, 
+                navHeight: prev.navHeight > 50 ? 50 : prev.navHeight + 2,
+            }));
+        } else {
+            if(pageOffset === 0){
+                this.setState({ navClass: css.absolute, navHeight: 0 });
+            }
+            
+            this.setState((prev) => ({ 
+                navHeight: prev.navHeight < 0 ? 0 : prev.navHeight - 2,
+            }));            
+        }
+        this.lastOffset = pageOffset;
+    }
+
     onClick = () => {  
+        console.log('click');
+        this.animate(); 
         this.setState(prevState => {        
-            this.animate(); 
             const show = !prevState.show;
             if(show){
                 document.body.classList.add('lock');
@@ -53,8 +82,12 @@ class Nav extends React.Component {
     }
 
     render() {
+        console.log(this.state.navHeight)
+        const navBarItems = (this.state.navHeight > 50 || window.pageYOffset === 0) ? 0 : this.state.navHeight - 50;
+        const navBarOpacity = window.pageYOffset < 50 ? 1 : this.state.navHeight * 2 / 100;
+        
         return (
-            <div className={css.navbar}>
+            <div className={[css.navbar, this.state.navClass].join(' ')} style={{height: this.state.navHeight}}>
                 <button onClick={this.onClick} className={this.getBtnStyle()}>
                     <svg width='30' height='30'>
                         <path ref={x => this.enterIcon = x } d='M0 2 H20 M0 7 H20 M0 12 H20' stroke='black'/>
@@ -63,10 +96,12 @@ class Nav extends React.Component {
                 </button>
                 <nav className={this.getNavStyles()}>
                 </nav>
-                <p>One</p>
-                <p>Two</p>
-                <p>Three</p>
-                <div className={this.state.show && css.onShade}></div>
+                <div style={{opacity: navBarOpacity, transform: 'translate(0px, '+ navBarItems +'px)'}}>
+                    <p>One</p>
+                    <p>Two</p>
+                    <p>Three</p>
+                </div>
+                <div onClick={this.onClick} className={this.state.show && css.onShade}></div>
             </div>
         )
     }
