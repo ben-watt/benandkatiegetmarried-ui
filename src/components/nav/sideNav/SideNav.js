@@ -31,10 +31,23 @@ class SideNav extends React.Component {
         this.props.onClick();
     }
 
+    getNavItems = () => {
+        const items = this.props.sections.map((x, i) => 
+        <a href={x.anchor} onClick={this.onClick}>
+            <div key={i} className={css.navItem}>
+                <i className={[x.icon, css.icon].join(' ')}></i>
+                {x.name}
+            </div>
+        </a>
+        )
+
+        return items;
+    }
+
     render () {
         return (
         <div>
-            <button  className={this.getBtnStyle()} onClick={this.onClick}>
+            <button className={this.getBtnStyle()} onClick={this.onClick}>
                     <svg width='30' height='20'>
                         <g transform='translate(0,2)'>
                             <path ref={x => this.enterIcon = x } d='M0 2 H20 M0 7 H20 M0 12 H20' stroke='black'/>
@@ -44,7 +57,7 @@ class SideNav extends React.Component {
                 </button>
             <nav className={this.getNavStyles()}>
                 <img className={css.image} alt='blah' src='https://upload.wikimedia.org/wikipedia/commons/a/a6/Templo_de_Debod_in_Madrid.jpg'/>
-                {this.props.children.map((x, i) => <div key={i} className={css.navItem}>{x}</div>)}
+                {this.getNavItems()}
             </nav>
             <div className={this.props.show && css.onShade} onClick={this.onClick}></div>
         </div>

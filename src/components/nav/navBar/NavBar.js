@@ -27,7 +27,7 @@ class NavBar extends React.Component {
             if(diff > 0 && pageOffset !== 0){
                 this.setState((prev) => ({ 
                     navClass: css.fixed, 
-                    navHeight: prev.navHeight > 50 ? 50 : prev.navHeight + 2,
+                    navHeight: prev.navHeight > 50 ? 50 : prev.navHeight + 3,
                 }));
             } else {
                 if(pageOffset === 0){
@@ -35,7 +35,7 @@ class NavBar extends React.Component {
                 }
                 
                 this.setState((prev) => ({ 
-                    navHeight: prev.navHeight < 0 ? 0 : prev.navHeight - 2,
+                    navHeight: prev.navHeight < 0 ? 0 : prev.navHeight - 3,
                 }));            
             }
             this.lastOffset = pageOffset;
@@ -51,7 +51,7 @@ class NavBar extends React.Component {
             <div className={[css.navbar, this.state.navClass].join(' ')} 
                  style={{ height: this.state.navHeight}}>
                 <div style={{opacity: navBarOpacity, transform: 'translate(0px, '+ navBarItems +'px)'}}>
-                    {this.props.children.map((x) => <p>{x}</p>)}
+                    {this.props.sections.map((x) => <a href={x.anchor}><p>{x.name}</p></a>)}
                 </div>    
             </div>
         )

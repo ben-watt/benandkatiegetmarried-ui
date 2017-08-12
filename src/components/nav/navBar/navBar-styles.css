@@ -1,3 +1,5 @@
+@import '../../../config.css';
+
 .navbar {
     width: 100%;
     display: flex;
@@ -6,6 +8,9 @@
     z-index: 1;
     background-color: transparent; 
     box-shadow: 0px 0px 3px #000000;
+    font-family: var(--mainFont);
+    font-weight: bold;
+    color: var(--fontColor);
 }
 
 .fixed {
@@ -18,7 +23,7 @@
 }
 
 
-@media(max-width: 500px){
+@media(max-width: 800px){
     .navbar p {
         display: none;
     }

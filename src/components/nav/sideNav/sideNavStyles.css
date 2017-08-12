@@ -1,3 +1,5 @@
+@import '../../../config.css';
+
 .nav {
     position: fixed;
     background-color: #f7f7f7 ;
@@ -7,14 +9,23 @@
     transition-duration: 0.3s;
     left: -300px;   
     z-index: 2;
+    font-family: var(--mainFont);
+    font-weight: bold;
+    color: var(--fontColor);
 }
 
 .navItem {
    padding: 10px;
+   cursor: pointer;
 }
 
 .navItem:hover {
     background-color: lightgray;
+}
+
+.icon {
+    padding-right: 25px;
+    padding-left: 10px;
 }
 
 .image {
@@ -27,7 +38,7 @@
 } 
 
 .btn {
-    position: absolute;
+    position: fixed;
     top: 15px;
     left: 10px;
     background-color: transparent;
@@ -41,7 +52,7 @@
     background-color: hsla(70, 1, 1, 0.5);
 }  
 
-@media(min-width: 500px){
+@media(min-width: 800px){
     .btn {
         display: none;
     }

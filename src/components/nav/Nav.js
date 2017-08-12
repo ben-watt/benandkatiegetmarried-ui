@@ -3,13 +3,15 @@ import React from 'react';
 import SideNav from './sideNav/SideNav';
 import NavBar from './navBar/NavBar';
 
+import navItems from './navItems';
+
 class Nav extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             show: false,
         }
-        this.sections = ['One', 'Two', 'Three']
+        this.sections = navItems;
     }
 
     onClick = () => {  
@@ -27,12 +29,13 @@ class Nav extends React.Component {
     render() {        
         return (
             <div>
-                <SideNav onClick={this.onClick} show={this.state.show}>
-                    {this.sections}
-                </SideNav>   
-                <NavBar onClick={this.onClick} show={this.state.show} navHeight={this.state.navHeight}>
-                    {this.sections}
-                </NavBar>
+                <SideNav sections={this.sections} 
+                         onClick={this.onClick} 
+                         show={this.state.show}/>
+                <NavBar sections={this.sections} 
+                        onClick={this.onClick} 
+                        show={this.state.show} 
+                        navHeight={this.state.navHeight}/>
             </div>
         )
     }

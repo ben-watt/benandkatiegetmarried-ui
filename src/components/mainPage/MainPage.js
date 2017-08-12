@@ -12,12 +12,12 @@ const MainPage = (props) => {
             <div>
                 <Nav />
                 <div className={css.container}>
-                    <Header />
+                    <Header/>
                     <WhenWhere />
-                    <section className={css.section70}>Main</section>
-                        <div className={css.section100}>
-                            <MapContainer/>
-                        </div>                     
+                    <section id='main' className={css.section70}>Main</section>
+                    <div id='map' className={css.section100}>
+                        <MapContainer/>
+                    </div>                     
                     <Footer />
                 </div>
             </div>
