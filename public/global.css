@@ -7,3 +7,7 @@ html, body {
 .lock {
     overflow: hidden;
 } 
+
+::-webkit-scrollbar {  
+    display:none;
+}
