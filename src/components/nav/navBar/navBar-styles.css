@@ -1,0 +1,42 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    max-height: 50px;
+    z-index: 1;
+    background-color: transparent; 
+    box-shadow: 0px 0px 3px #000000;
+}
+
+.fixed {
+    position: fixed;
+    background-color: white;
+}
+
+.absolute {
+    position: absolute;
+}
+
+
+@media(max-width: 500px){
+    .navbar p {
+        display: none;
+    }
+    .navbar {
+        display: none;
+    }
+}
+
+p {
+    display: inline-block;
+}
+
+.navbar p {
+    padding-right: 40px;
+    cursor: pointer;
+} 
+
+
+.display {
+    display: none;
+}
