@@ -4,7 +4,7 @@ const navItems = [{
     anchor: '#when'
 },{
     name: 'Where',
-    icon: 'fa fa-calendar-o',
+    icon: 'fa fa-compass',
     anchor: '#where'
 },{
     name: 'Main',
