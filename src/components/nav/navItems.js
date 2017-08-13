@@ -1,11 +1,11 @@
 const navItems = [{
     name: 'When',
     icon: 'fa fa-calendar-o',
-    anchor: '#whenWhere'
+    anchor: '#when'
 },{
-    name: 'Getting here',
-    icon: 'fa fa-compass',
-    anchor: '#'
+    name: 'Where',
+    icon: 'fa fa-calendar-o',
+    anchor: '#where'
 },{
     name: 'Main',
     icon: 'fa fa-question',

@@ -8,21 +8,17 @@ class WhenWhere extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            value: 'google',
             calendarVisible: false,
         };
         this.handleChange = this.handleChange.bind(this);
     }    
 
     handleChange(event) {
-        console.log(event.currentTarget.value);
         this.setState({
-            value: event.currentTarget.value,
             calendarVisible: !this.state.calendarVisible,
         }, selectCalendar(event.currentTarget.value));
        
-        event.preventDefault();
-       
+        event.preventDefault();    
   }
 
     showCalendarMenu() {
@@ -36,10 +32,6 @@ class WhenWhere extends React.Component {
     }
 
     render() {
-       
-        const button = {
-             marginBottom: '0px',
-        }
 
         return (
             <div className={css.setArea}>
@@ -53,20 +45,17 @@ class WhenWhere extends React.Component {
                     <h2 className={css.statement}>Are getting married</h2>
                     <p className={css.invite}>And we would love for you to celebrate with us...</p>
 
-                    <h1 className={[css.headings, css.details, css.ipadWhen].join(' ')}><u>WHEN</u></h1>
+                    <h1 id='when' className={[css.headings, css.details, css.ipadWhen].join(' ')}><u>WHEN</u></h1>
                     <p  className={[css.text, css.ipadWhenDeets].join(' ')}>The 24th of February 2018, at 2.30 in the afternoon.</p>
-
-                    <Button text={'Add to Calendar'} onClick={() => this.showCalendarMenu()} id={css.buttonLeft} style={button} />
-
+                    <Button text={'Add to Calendar'} onClick={() => this.showCalendarMenu()} id={css.buttonLeft} />
                     <Calendar handleChange={this.handleChange} visibility={this.state.calendarVisible}/> 
                         
                     <div className={css.border}></div>
                     <hr className={css.hr}/>
-                    
 
-                    <h1 className={[css.headings, css.details, css.ipadWhere].join(' ')}><u>WHERE</u></h1>
+                    <h1 id='where' className={[css.headings, css.details, css.ipadWhere].join(' ')}><u>WHERE</u></h1>
                     <p className={[css.text, css.ipadWhereDeets].join(' ')}>Worsley Park Marriott Hotel & Country Club, Manchester M28 2QT</p>
-                    <Button text={'Find on Map'} onClick={() => this.showDirections()} id={css.buttonRight} style={button} />
+                    <Button text={'Find on Map'} onClick={() => this.showDirections()} id={css.buttonRight} />
                 </div>
             </div>
         )

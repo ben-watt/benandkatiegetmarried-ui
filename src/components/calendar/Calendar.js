@@ -7,8 +7,6 @@ const Calendar = (props) => {
         margin: '0px',
         height: '0px',
         width: '0px',
-        borderRadius:'50%',
-        fontSize: '1.5em',
         transition: 'opacity 2s, height 0.01s, width 0.01s',
         visibility: 'hidden',
         opacity: '0',
@@ -16,11 +14,13 @@ const Calendar = (props) => {
 
     const visible = props.visibility 
     ? {
-        opacity: '1', 
+        margin: '10px 10px 20px 10px', 
         height: '50px', 
         width: '50px',
-        margin: '30px 10px 20px 10px', 
-        visibility: 'visible'
+        visibility: 'visible',
+        opacity: '1', 
+        borderRadius:'50%',
+        fontSize: '1.5em',
     } 
     : null;
 
