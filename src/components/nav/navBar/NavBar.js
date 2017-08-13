@@ -7,7 +7,7 @@ class NavBar extends React.Component {
         super(props);
         this.state = {
             navClass: css.absolute,
-            navHeight: 0
+            navHeight: 50
         }  
     }
 
@@ -23,27 +23,33 @@ class NavBar extends React.Component {
     onScroll = () => {
             const pageOffset = window.pageYOffset;
             const diff = this.lastOffset - pageOffset;
+            const speed = 3;
 
             if(diff > 0 && pageOffset !== 0){
                 this.setState((prev) => ({ 
                     navClass: css.fixed, 
-                    navHeight: prev.navHeight > 50 ? 50 : prev.navHeight + 3,
+                    navHeight: prev.navHeight > 50 ? 50 : prev.navHeight + speed,
                 }));
             } else {
                 if(pageOffset === 0){
                     this.setState({ navClass: css.absolute, navHeight: 0 });
                 }
                 
-                this.setState((prev) => ({ 
-                    navHeight: prev.navHeight < 0 ? 0 : prev.navHeight - 3,
-                }));            
+                this.setState((prev) => {
+                    let newHeight = prev.navHeight - speed
+                    if(prev.navHeight < 0)
+                        newHeight = 0;
+                    if(window.pageYOffset === 0)
+                        newHeight = 50;              
+
+                    return {navHeight: newHeight}
+                });            
             }
             this.lastOffset = pageOffset;
         }
 
 
     render(){
-
         const navBarItems = (this.state.navHeight > 50 || window.pageYOffset === 0) ? 0 : this.state.navHeight - 50;
         const navBarOpacity = window.pageYOffset < 50 ? 1 : this.state.navHeight * 2 / 100;
 
@@ -51,7 +57,7 @@ class NavBar extends React.Component {
             <div className={[css.navbar, this.state.navClass].join(' ')} 
                  style={{ height: this.state.navHeight}}>
                 <div style={{opacity: navBarOpacity, transform: 'translate(0px, '+ navBarItems +'px)'}}>
-                    {this.props.sections.map((x, i) => <a onClick={() => this.props.scroll(x.anchor)} key={i}><p>{x.name}</p></a>)}
+                    {this.props.sections.map((x, i) => <div className={css.navItem} onClick={() => this.props.scroll(x.anchor)} key={i}>{x.name}</div>)}
                 </div>    
             </div>
         )

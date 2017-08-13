@@ -26,6 +26,8 @@
 .icon {
     padding-right: 25px;
     padding-left: 10px;
+    width: 20px;
+    text-align: center;
 }
 
 .image {

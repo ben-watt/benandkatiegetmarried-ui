@@ -12,9 +12,7 @@ class App extends React.Component {
     }    
    
     handleClick() {
-    this.setState(prevState => (
-        { isToggleOn: !prevState.isToggleOn
-        }));
+    this.setState(prevState => ({ isToggleOn: !prevState.isToggleOn }));
   }
 
     render() {

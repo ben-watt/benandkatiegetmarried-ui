@@ -3,48 +3,44 @@
 .navbar {
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     max-height: 50px;
     z-index: 1;
-    background-color: transparent;
-    box-shadow: 0px 0px 3px #000000;
     font-family: var(--mainFont);
     font-weight: bold;
     color: var(--fontColor);
-        background-image: inherit;
 }
 
-.fixed {
+.navItem {
+    display: inline-block;
+    cursor: pointer;
+    padding: 14px;
+    margin: auto;
+}
+
+.navbar.fixed .navItem:hover {
+    background-color: lightgray;
+}
+
+.navbar.absolute .navItem:hover {
+    background-color: hsla(200, 0%, 50%, 0.5);
+}
+
+.navbar.fixed {
     position: fixed;
     background-color: white;
+    box-shadow: 0px 0px 3px #000000;
 }
 
-.absolute {
+.navbar.absolute {
+    transition: background-color 1s;
     position: absolute;
-
-    filter: blur(5);
 }
 
 
 @media(max-width: 800px){
-    .navbar p {
-        display: none;
-    }
     .navbar {
         display: none;
     }
-}
-
-p {
-    display: inline-block;
-}
-
-.navbar p {
-    padding-right: 40px;
-    cursor: pointer;
-} 
-
-
-.display {
-    display: none;
 }
