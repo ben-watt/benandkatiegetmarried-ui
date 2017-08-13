@@ -1,0 +1,74 @@
+@import '../../config.css';
+
+body {
+    overflow: hidden;
+}
+
+.loginPane {
+    position: fixed;
+    height: 100vh;
+    bottom: 0px;
+    z-index: 4;
+    width: 100%;
+    background-image: url('../header/images/img7.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 60% 50%;
+    background-size: cover;
+}
+
+.loginPane::before {
+    content: '';
+    background: inherit; 
+    position: absolute;
+    left: -2px;
+    right: 0px;
+    top: -2px; 
+    bottom: 0;
+    box-shadow: inset 0 0 0 3000px rgba(255,255,255,0.3);
+    filter: blur(5px);
+}
+
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pass1, .pass2, .btn {
+    width: 200px;
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.btn {
+    border: none;
+    display: block;
+    width: 200px;
+    margin: auto;
+    transition: background-color 0.5s;
+    background-color: var(--buttonColor);
+    color: white;
+    box-shadow: 0px 1px 3px black;
+}
+
+.btn:hover {
+    background-color: hsla(100, 0%, 50%, 0.5);
+}
+
+.dash {
+    display: inline;
+    padding: 10px;
+}
+
+@media(max-width: 800px){
+    .dash {
+        display: none;
+    }
+}
+

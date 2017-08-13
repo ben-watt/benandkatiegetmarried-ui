@@ -7,7 +7,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedIn: true,
+            loggedIn: false,
         }
     }    
    
@@ -16,10 +16,12 @@ class App extends React.Component {
   }
 
     render() {
-        if(this.state.loggedIn === true){
-            return <MainPage />
-        }
-        return <LoginPage /> 
+        return (
+            <div>
+                {(this.state.loggedIn === false) && <LoginPage /> }
+                <MainPage />
+            </div>
+        )
     }
 }
 
