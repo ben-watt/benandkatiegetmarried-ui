@@ -57,7 +57,12 @@ class NavBar extends React.Component {
             <div className={[css.navbar, this.state.navClass].join(' ')} 
                  style={{ height: this.state.navHeight}}>
                 <div style={{opacity: navBarOpacity, transform: 'translate(0px, '+ navBarItems +'px)'}}>
-                    {this.props.sections.map((x, i) => <div className={css.navItem} onClick={() => this.props.scroll(x.anchor)} key={i}>{x.name}</div>)}
+                    {
+                        this.props.sections.map((x, i) => 
+                            <div className={css.navItem} 
+                                onClick={() => this.props.scroll(x.anchor)} 
+                                key={i}>{x.name}</div>)
+                    }
                 </div>    
             </div>
         )
