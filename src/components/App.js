@@ -18,8 +18,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                {(this.state.loggedIn === false) && <LoginPage /> }
-                <MainPage />
+                {(this.state.loggedIn === false) 
+                    ? <LoginPage /> 
+                    : <MainPage />}
             </div>
         )
     }

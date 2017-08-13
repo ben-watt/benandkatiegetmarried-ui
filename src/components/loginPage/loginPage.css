@@ -13,6 +13,8 @@
     background-size: cover;
 }
 
+
+
 .loginPane::before {
     content: '';
     background: inherit; 
@@ -36,15 +38,16 @@
 }
 
 .pass1, .pass2 {
-    width: 60px;
+    width: 100px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid black;
     padding: 10px;
     font-size: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     text-align: center;
     outline: none;
+    border-radius: 0px;
 }
 
 .underline {
@@ -67,7 +70,7 @@
 #loginBtn {    
     display: block;
     margin: auto;
-    font-size: 1.2em;
+    font-size: 0.8em;
 }
 
  @media(min-width: 800px){
