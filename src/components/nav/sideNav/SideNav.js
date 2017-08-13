@@ -4,6 +4,12 @@ import css from './sideNavStyles.css'
 import { TimelineLite } from 'gsap';
 
 class SideNav extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            show: false,
+        }
+    }
 
     componentDidMount(){
         this.tl = new TimelineLite({ paused: true })
@@ -15,7 +21,7 @@ class SideNav extends React.Component {
 
     getNavStyles = () => {
         const styles = [css.nav];
-        if(this.props.show === true){
+        if(this.state.show === true){
             styles.push(css.show);
         }
         return styles.join(' ');
@@ -26,22 +32,30 @@ class SideNav extends React.Component {
         return styles.join(' ');
     }
 
-    onClick = () => {
-        this.props.show ? this.tl.reverse(0) : this.tl.play();
-        this.props.onClick();
-    }
-
     getNavItems = () => {
         const items = this.props.sections.map((x, i) => 
-        <a href={x.anchor} onClick={this.onClick}>
-            <div key={i} className={css.navItem}>
+        <a key={i} onClick={() => {this.onClick(); this.props.scroll(x.anchor)}}>
+            <div className={css.navItem}>
                 <i className={[x.icon, css.icon].join(' ')}></i>
                 {x.name}
             </div>
         </a>
         )
-
         return items;
+    }
+
+    onClick = () => { 
+        this.state.show ? this.tl.reverse(0) : this.tl.play();
+
+        this.setState(prevState => {        
+            const show = !prevState.show;
+            if(show){
+                document.body.classList.add('lock');
+            } else {
+                document.body.classList.remove('lock');
+            }
+            return { show: show }
+        });
     }
 
     render () {
@@ -59,7 +73,7 @@ class SideNav extends React.Component {
                 <img className={css.image} alt='blah' src='https://upload.wikimedia.org/wikipedia/commons/a/a6/Templo_de_Debod_in_Madrid.jpg'/>
                 {this.getNavItems()}
             </nav>
-            <div className={this.props.show && css.onShade} onClick={this.onClick}></div>
+            <div className={this.state.show && css.onShade} onClick={this.onClick}></div>
         </div>
     )
     } 

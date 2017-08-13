@@ -51,7 +51,7 @@ class NavBar extends React.Component {
             <div className={[css.navbar, this.state.navClass].join(' ')} 
                  style={{ height: this.state.navHeight}}>
                 <div style={{opacity: navBarOpacity, transform: 'translate(0px, '+ navBarItems +'px)'}}>
-                    {this.props.sections.map((x) => <a href={x.anchor}><p>{x.name}</p></a>)}
+                    {this.props.sections.map((x, i) => <a onClick={() => this.props.scroll(x.anchor)} key={i}><p>{x.name}</p></a>)}
                 </div>    
             </div>
         )
