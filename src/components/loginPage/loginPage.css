@@ -1,9 +1,5 @@
 @import '../../config.css';
 
-body {
-    overflow: hidden;
-}
-
 .loginPane {
     position: fixed;
     height: 100vh;
@@ -34,31 +30,29 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: var(--handwritingFont);
+    text-align: center;
+    width: 100%;
 }
 
-.pass1, .pass2, .btn {
-    width: 200px;
+.pass1, .pass2 {
+    width: 60px;
     background-color: transparent;
-    border: 1px solid black;
+    border: none;
+    border-bottom: 1px solid black;
     padding: 10px;
     font-size: 20px;
     margin-bottom: 30px;
     text-align: center;
+    outline: none;
 }
 
-.btn {
-    border: none;
-    display: block;
-    width: 200px;
-    margin: auto;
-    transition: background-color 0.5s;
-    background-color: var(--buttonColor);
-    color: white;
-    box-shadow: 0px 1px 3px black;
-}
-
-.btn:hover {
-    background-color: hsla(100, 0%, 50%, 0.5);
+.underline {
+    background-color: purple;
+    width: 80px;
+    height: 2px;
+    display: inline-block;
+    position: relative;
 }
 
 .dash {
@@ -66,9 +60,19 @@ body {
     padding: 10px;
 }
 
-@media(max-width: 800px){
-    .dash {
-        display: none;
-    }
+.prompt {
+    font-size: 35px;
 }
+
+#loginBtn {    
+    display: block;
+    margin: auto;
+    font-size: 1.2em;
+}
+
+ @media(min-width: 800px){
+    .pass1, .pass2 {
+        width: 200px;
+    }
+} 
 
