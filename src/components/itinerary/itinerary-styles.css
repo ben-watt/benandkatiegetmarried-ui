@@ -1,0 +1,32 @@
+@import '../../config.css'; 
+
+.setArea {
+    grid-column: 1/13;
+    background-image:  url('./images/floral1.png');
+    background-Size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.inner {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: solid green 1px;
+    /* height: 30%;
+    width: 50%; */
+    /* background-color: var(--offWhite);
+    opacity: 0.5; */
+} 
+
+.innerinner {
+    font-family: var(--handwritingFont);
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border: solid red 1px;
+}

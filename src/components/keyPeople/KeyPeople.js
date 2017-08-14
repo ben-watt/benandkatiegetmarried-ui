@@ -4,6 +4,9 @@ import css from './keyPeople-styles.css';
 const KeyPeople = () => {
     return (
         <div className={css.setArea}>
+
+        
+        
             <div className={css.container}>
                 <p id='people' className={css.head}> People </p>
                 
