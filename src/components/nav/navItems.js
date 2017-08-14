@@ -7,6 +7,10 @@ const navItems = [{
     icon: 'fa fa-compass',
     anchor: '#where'
 },{
+    name: 'People',
+    icon: 'fa fa-users',
+    anchor: '#people'
+},{
     name: 'Main',
     icon: 'fa fa-question',
     anchor: '#main'
