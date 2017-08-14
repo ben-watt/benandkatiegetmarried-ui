@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import WhenWhere from '../whenWhere/WhenWhere';
+import KeyPeople from '../keyPeople/KeyPeople';
 import css from './mainPage-styles.css';
 
 import MapContainer from '../googleMaps/MapContainer';
@@ -14,6 +15,7 @@ const MainPage = (props) => {
                 <div className={css.container}>
                     <Header/>
                     <WhenWhere />
+                    <KeyPeople />
                     <section id='main' className={css.section70}>Main</section>
                     <div id='map' className={css.section100}>
                         <MapContainer/>
