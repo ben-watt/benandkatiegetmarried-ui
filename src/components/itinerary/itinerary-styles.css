@@ -4,29 +4,35 @@
     grid-column: 1/13;
     background-image:  url('./images/floral1.png');
     background-Size: cover;
+    background-attachment:scroll;
+    background-repeat: no-repeat;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 0.6rem;
+    text-align: center;  
+
 }
 
 .inner {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    border: solid green 1px;
-    /* height: 30%;
-    width: 50%; */
-    /* background-color: var(--offWhite);
-    opacity: 0.5; */
+    align-items: center;
 } 
 
 .innerinner {
-    font-family: var(--handwritingFont);
-    margin-top: 20px;
+    font-family: var(--handwritingFont);  
+ 
+    text-align: center;  
     display: flex;
+    flex-direction: flex-row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
-    border: solid red 1px;
+    width: 50%;
+}
+
+p {
+    width: 100%;
+    margin: 0 auto;
 }

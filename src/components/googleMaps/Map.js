@@ -21,10 +21,6 @@ export default class Map extends React.Component {
       // google is available
       const {google} = this.props;
       const mapRef = this.refs.map;
-
-      let zoom = 15;
-
-
       var uluru = {lat: 53.506292, lng: -2.3931257};
       var map = new google.maps.Map(ReactDOM.findDOMNode(mapRef), {
             zoom: 15,

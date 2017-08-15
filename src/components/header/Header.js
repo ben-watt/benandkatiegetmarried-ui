@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './header-styles.css';
-// import globalCss from '../../../public.global.css'
 import scrollFunc from './scrollFunc';
+import backgroundHeight from '../common/backgroundHeight.js'
 
 
 class Header extends React.Component {
@@ -10,12 +10,21 @@ class Header extends React.Component {
         this.enterSiteSmoothScroll = this.enterSiteSmoothScroll.bind(this);   
     }    
 
+    componentDidMount(){
+        window.addEventListener('load', this.onLoad);
+    }
+
+    onLoad = () => {
+        backgroundHeight(this.backgroundHeight, 0);
+    }
+
     enterSiteSmoothScroll() {
-		scrollFunc(this.refs.height);
-	}
+		scrollFunc(this.backgroundHeight);
+    }
+
     render() {
         return (
-            <div ref={'height'} className={css.header}>
+            <div ref={(node) => {this.backgroundHeight = node}} className={css.header}>
                 <p className={css.title}> Katie & Ben </p>
                 <p className={css.date}>24.02.2018</p>  
                 <div className={css.enterDiv} onClick={this.enterSiteSmoothScroll}>

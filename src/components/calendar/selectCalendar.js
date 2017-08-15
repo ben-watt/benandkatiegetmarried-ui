@@ -18,6 +18,8 @@ let selectCalendar = (val) => {
         case "yahoo":
             url = "https://addevent.com/?kN536522+yahoo";
             break;
+        default:
+            url = "https://addevent.com/?kN536522";
     }
     window.open(url);
    }

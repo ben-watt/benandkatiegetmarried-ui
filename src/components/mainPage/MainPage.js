@@ -12,7 +12,7 @@ import Nav from '../nav/Nav';
 const MainPage = (props) => {
     return  (
             <div>
-                <Nav />
+            <Nav />
                 <div className={css.container}>
                     <Header/>
                     <WhenWhere />

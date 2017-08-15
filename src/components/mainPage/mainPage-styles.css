@@ -3,8 +3,10 @@
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr); 
-    grid-template-rows: 100vh auto auto 100vh 60vh 30vh;
+    grid-template-rows: auto auto auto auto 60vh 30vh;
     background-color: var(--offWhite);
+    width: 100%;
+    height: 100%;
 }
 
 .section100 {
