@@ -5,12 +5,12 @@
     background-image:  url('./images/floral1.png');
     background-Size: cover;
     background-attachment:scroll;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.6rem;
+    font-size: 1.1rem;
     text-align: center;  
 
 }
@@ -22,17 +22,22 @@
 } 
 
 .innerinner {
-    font-family: var(--handwritingFont);  
- 
+    font-family: var(--mainFont);  
     text-align: center;  
     display: flex;
     flex-direction: flex-row;
     flex-wrap: wrap;
-    justify-content: center;
-    width: 50%;
+    justify-content: center;  
+    background-color: white; 
+    width: 80%; 
+    height: auto;
 }
 
 p {
     width: 100%;
+    margin: 0 auto;
+}
+
+h1 {
     margin: 0 auto;
 }

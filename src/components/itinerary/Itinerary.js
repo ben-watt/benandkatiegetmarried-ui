@@ -16,7 +16,7 @@ class Itinerary extends React.Component {
             <div ref={(node) => {this.backgroundHeight = node}} className={css.setArea}>
                     <div className={css.innerinner}>
                         <h1>Itinerary</h1>
-                            <p>2.30pm</p><p> ceremony commences</p>
+                            <p> <b>2.30pm</b></p><p>ceremony commences</p>
                             <p>3pm</p><p> arrival drinks</p>
                             <p>4.30pm</p><p> Wedding breakfast commences, nom nom nom. </p>
                             <p>7pm</p><p> evening reception</p>
@@ -24,7 +24,8 @@ class Itinerary extends React.Component {
                             <p>8.30</p><p>  join us on the dance floor, yes that includes you!</p>
                             <p>9.15pm</p><p>  evening buffet served</p>
                             <p>12.30am</p><p>  bar closes</p>
-                            <p>1am</p><p> residents bar remains open until we’ve had enough. </p>
+                            <p>1.00am</p><p> residents bar remains open until we’ve had enough. </p>
+                            
                 
                 </div>
             </div>
