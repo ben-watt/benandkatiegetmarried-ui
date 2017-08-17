@@ -34,7 +34,22 @@
     transform: translate(-50%, -50%);
     font-family: var(--handwritingFont);
     text-align: center;
-    width: 100%;
+    width: 100%;    
+    transition:  left 0.5s;
+}
+
+.cat {
+    position: absolute;
+    top: 50%;
+    left: 150%;
+    transform: translate(-50%, -50%);
+    transition:  left 0.5s;
+}
+.cat.loginAttempt {
+    left: 50%;
+}
+.form.loginAttempt {
+    left: -100%;
 }
 
 .pass1, .pass2 {
