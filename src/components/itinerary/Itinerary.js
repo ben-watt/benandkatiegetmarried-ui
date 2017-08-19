@@ -1,7 +1,6 @@
 import React from 'react';
 import css from './itinerary-styles.css';
 import backgroundHeight from '../common/backgroundHeight.js'
-import restaurant from './images/restaurant.svg';
 import data from './itinerary-data.js';
 
 class Itinerary extends React.Component {  
