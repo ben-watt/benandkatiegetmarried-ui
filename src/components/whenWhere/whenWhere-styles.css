@@ -3,6 +3,7 @@
 .setArea {
     grid-column: 1/13;
     background-color: var(--offWhite);
+    margin-bottom: 50px;
 }
 
 .container {

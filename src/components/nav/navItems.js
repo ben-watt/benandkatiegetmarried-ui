@@ -11,6 +11,10 @@ const navItems = [{
     icon: 'fa fa-users',
     anchor: '#people'
 },{
+    name: 'Itinerary',
+    icon: 'fa fa-list-ul',
+    anchor: '#itinerary'
+},{
     name: 'Main',
     icon: 'fa fa-question',
     anchor: '#main'

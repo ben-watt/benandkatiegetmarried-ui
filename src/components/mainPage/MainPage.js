@@ -14,19 +14,25 @@ const MainPage = (props) => {
             <div>
             <Nav />
                 <div className={css.container}>
-                    <Header/>
-                    <WhenWhere />
-                    <KeyPeople />
-                    <Itinerary />
-                    <section id='main' className={css.section70}>Main</section>
-                    <div id='map' className={css.section100}>
-                        <MapContainer/>
-                    </div>                     
-                    <Footer />
+                    
+                    
+                <Header/>
+                <WhenWhere />
+                <KeyPeople />
+                <Itinerary />
+                <section id='main' className={css.section70}>Main</section>
+                <div id='map' className={css.section100}>
+                    <MapContainer/>
+                </div>                     
+
+                
+                                        
+                   
                 </div>
             </div>
     )
 }
 
 export default MainPage;
+
 
