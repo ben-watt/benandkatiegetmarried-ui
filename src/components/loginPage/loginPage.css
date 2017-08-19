@@ -13,8 +13,6 @@
     background-size: cover;
 }
 
-
-
 .loginPane::before {
     content: '';
     background: inherit; 
@@ -46,10 +44,17 @@
     transition:  left 0.5s;
 }
 .cat.loginAttempt {
-    left: 50%;
+    left: 45%;
 }
 .form.loginAttempt {
     left: -100%;
+}
+
+.perc {
+    text-align: center;
+    font-family: var(--handwritingFont);
+    font-size: 1.8em;
+    padding-left: 25%;
 }
 
 .pass1, .pass2 {
@@ -93,4 +98,3 @@
         width: 200px;
     }
 } 
-

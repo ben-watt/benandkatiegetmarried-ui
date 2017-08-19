@@ -5,20 +5,23 @@ const api = (function() {
 
     const api = axios.create({
         baseURL: 'http://benandkatiegetmarried.azurewebsites.net',
-        timeout: 3000,
+        timeout: 5000,
         headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
 
     obj.guestLogin = async function (securityCode, password, rememberMe) {
-        let res = api.post('/guest-login', {
-            SecurityCode: securityCode,
-            Password: password,
-            RememberMe: rememberMe,
-        });
+        try {
+            const res = await api.post('/guest-login', {
+                SecurityCode: securityCode,
+                Password: password,
+                RememberMe: rememberMe,
+            });
 
-        res
-         .then(res => console.log(res.data))
-         .catch((error) => console.log(error));
+            return res;
+        }
+        catch(err){
+            throw Error(err);
+        }
     }
 
     return {
