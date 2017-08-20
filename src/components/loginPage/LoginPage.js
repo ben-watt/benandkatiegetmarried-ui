@@ -5,6 +5,9 @@ import api from '../../api/mockapi';
 import Button from '../common/Button';
 import css from './loginPage.css';
 import loadingImg from './images/loading.svg';
+import LoginError from './LoginError';
+
+import App from '../App';
 
 class LoginPage extends React.Component {
     constructor(props){
@@ -17,7 +20,9 @@ class LoginPage extends React.Component {
             enterCodeCurrent: '',
             formClasses: [css.form],
             catClasses: [css.cat],
-            loadPercentage: 1
+            loadPercentage: 1,
+            errorMessage: '',
+            error: false,
         }
 
     }
@@ -61,6 +66,13 @@ class LoginPage extends React.Component {
         }));
     }
 
+    toggleLoader = () => {
+        this.setState(prev =>  ({
+            formClasses: prev.formClasses.length === 1 ? [css.form, css.loginAttempt] : [css.form],
+            catClasses: prev.catClasses.length === 1 ? [css.cat, css.loginAttempt] : [css.cat]
+        }))
+    }
+
     login = async () => {
         const req = api.guestLogin(this.state.securityCode, this.state.password, 1);
     
@@ -68,17 +80,24 @@ class LoginPage extends React.Component {
         const loaderInterval = duration / 6;
 
         this.loaderInterval = setInterval(this.incrementloaderPerc , loaderInterval);
-
         new Vivus('loader', {duration: duration});
-
-        this.setState({
-            formClasses: [css.form, css.loginAttempt],
-            catClasses: [css.cat, css.loginAttempt]
-        })
+        this.toggleLoader();
 
         const res = await req;
+        this.handleResponse(res);    
+    }
 
-        console.log(res);
+    handleResponse = async (res) => {
+        if(res.status === 200) {
+            console.log(this.loaderInterval);
+            //this.props.login();
+        } else if(res.status === 400) {
+            this.toggleLoader()
+            this.setState({ error: true, errorMessage: res.data.ErrorMessage })
+        } else {
+            this.toggleLoader()
+            this.setState({ error: true, errorMessage: res.data.ErrorMessage })
+        }
     }
 
     render() {    
@@ -89,13 +108,14 @@ class LoginPage extends React.Component {
                     <input id='securityCode' onChange={this.change} value={this.state.securityCode} className={css.pass1} type='password'/>
                     <h2 className={css.dash}>-</h2> 
                     <input id='password' onChange={this.change} value={this.state.password} className={css.pass2} type='password'/>
+                    { this.state.error && <LoginError errorMessage={this.state.errorMessage}/>}
                     <Button id={css.loginBtn} onClick={this.login} text={'Login'}/>
                 </form>
                 <div className={this.state.catClasses.join(' ')}>
                     <object className={css.loader} id="loader" type="image/svg+xml" data={loadingImg}></object>
                     <h2 className={css.perc}>{this.state.loadPercentage}%</h2>  
-                </div>            
-            </div>
+                </div>          
+            </div>    
         )
     }
 }

@@ -2,25 +2,32 @@ import React from 'react';
 import MainPage from './mainPage/MainPage';
 import LoginPage from './loginPage/LoginPage';
 
+import cookieParser from './common/cookieParser';
 
 class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedIn: true,
+            loggedIn: cookieParser.cookieExists('_ncfa') ? true : false,
         }
-    }    
-   
+    }  
+
+    login = () => {
+        this.setState({ loggedIn: true});
+    }
+       
     handleClick() {
-    this.setState(prevState => ({ isToggleOn: !prevState.isToggleOn }));
-  }
+        this.setState(prevState => ({ isToggleOn: !prevState.isToggleOn }));
+    }
 
     render() {
         return (
             <div>
-                {(this.state.loggedIn === false) 
-                    ? <LoginPage /> 
-                    : <MainPage />}
+                {
+                    (this.state.loggedIn === false) 
+                    ? <LoginPage login={this.login} /> 
+                    : <MainPage />
+                }
             </div>
         )
     }
