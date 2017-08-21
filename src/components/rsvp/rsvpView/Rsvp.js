@@ -8,42 +8,63 @@ class Rsvp extends React.Component {
         super(props);
         this.state = {
             formVisible: false,
-            formContainer: null,
-            form: null,
+            formOpen: null,
         }
     }    
 
-    openForm = () => {
-        console.log('hey');
-        this.setState({
-            formVisible: true,
-            formContainer: {
-                visibility: 'visible',
-            },
-            form: {
-                display: 'flex',
-            }
-        })
+    handleClick = () => {
+        this.state.formVisible ? null : this.openForm();
+    }
+
+    openForm = (event) => {
+        this.setState(prevState => ({
+            formVisible: true,  
+            formOpen:  {
+                width: '90%',
+                height: '90%',
+                borderRadius: '0px', 
+                bottom: '50%',
+                right: '50%',
+                backgroundColor: 'white',
+                transform: 'translate(50%, 50%)',
+                margin: '0 auto',
+                zIndex: '6',
+            } ,      
+        }))
+       
+    }
+
+    closeForm = () => {
+        this.setState(prevState=>({
+            formVisible: !this.state.formVisible, 
+            formOpen: null,           
+        }))
+    }
+
+    formVisible = () => {
+        return (
+            <div>
+                <div onClick={this.closeForm}>
+                    <i className={['fa fa-times', css.close].join(' ')}aria-hidden="true" />
+                </div>
+                <RsvpForm />
+            </div> 
+        )
     }
 
     render () {
-
-        var style = null;
         return (
-            <div>
+            <div className={[css.setArea].join(' ')}>
                 <div className={this.state.formVisible && css.onShade}></div>
-                <div className={css.container} onClick={this.openForm}>
-                    <i className='fa fa-envelope-o' />
-                </div>
-                <div className={this.state.formVisible && css.formContainer} style={this.state.formContainer}>
-                    <div className={css.form} style={this.state.form}>
-                    <RsvpForm />
-                    </div>
-                </div>
+                <div className={css.button} style={this.state.formOpen} onClick={this.handleClick}>
+                    {
+                        this.state.formVisible ? this.formVisible() : <i className='fa fa-envelope-o' />
+                    }
+                </div>          
             </div>
         )
     }
 }
 
-
 export default Rsvp;
+
