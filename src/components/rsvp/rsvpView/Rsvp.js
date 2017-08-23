@@ -8,7 +8,6 @@ class Rsvp extends React.Component {
         super(props);
         this.state = {
             formVisible: false,
-            formOpen: null,
         }
     }    
 
@@ -19,25 +18,13 @@ class Rsvp extends React.Component {
     openForm = (event) => {
         this.setState(prevState => ({
             formVisible: true,  
-            formOpen:  {
-                width: '90%',
-                height: '90%',
-                borderRadius: '0px', 
-                bottom: '50%',
-                right: '50%',
-                backgroundColor: 'white',
-                transform: 'translate(50%, 50%)',
-                margin: '0 auto',
-                zIndex: '6',
-            } ,      
         }))
-       
+
     }
 
     closeForm = () => {
         this.setState(prevState=>({
             formVisible: !this.state.formVisible, 
-            formOpen: null,           
         }))
     }
 
@@ -54,11 +41,11 @@ class Rsvp extends React.Component {
 
     render () {
         return (
-            <div className={[css.setArea].join(' ')}>
+            <div>
                 <div className={this.state.formVisible && css.onShade}></div>
-                <div className={css.button} style={this.state.formOpen} onClick={this.handleClick}>
+                <div className={[this.state.formVisible && css.formOpen, css.button].join(' ')}  onClick={this.handleClick}>
                     {
-                        this.state.formVisible ? this.formVisible() : <i className='fa fa-envelope-o' />
+                        this.state.formVisible ? this.formVisible() : <div className={css.center}>RSVP <i  className='fa fa-envelope-o' aria-hidden='true'/></div>
                     }
                 </div>          
             </div>
@@ -67,4 +54,3 @@ class Rsvp extends React.Component {
 }
 
 export default Rsvp;
-
