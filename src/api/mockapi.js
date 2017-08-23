@@ -11,18 +11,13 @@ const api = (function() {
 
     obj.guestLogin = async function (securityCode, password, rememberMe) {
 
-        try {
-            const res = await api.post('/guest-login', {
-                SecurityCode: securityCode,
-                Password: password,
-                RememberMe: rememberMe,
-            });
-            
-            return res;
-        }
-        catch(err){
-            return err.response;
-        }
+        const req = await api.post('/guest-login', {
+            SecurityCode: securityCode,
+            Password: password,
+            RememberMe: rememberMe,
+        });
+
+        return req;
     }
 
     return {

@@ -17,17 +17,18 @@ class LoginPage extends React.Component {
             securityCode : '',
             password : '',
             enterCodeMessage: 'Please enter your unique code:',
-            enterCodeCurrent: '',
-            formClasses: [css.form],
-            catClasses: [css.cat],
-            loadPercentage: 1,
+            showLoader: false,
             errorMessage: '',
             error: false,
         }
-
+    }
+    
+    componentDidMount = () => {
+        this.duration = 400; 
+        this.animation = new Vivus('loader', {duration: this.duration, start: 'manual'});    
     }
 
-    change = (e) => {
+    inputChange = (e) => {
         const input = e.target.value;
         const id = e.target.id;
 
@@ -35,20 +36,6 @@ class LoginPage extends React.Component {
             securityCode: id === 'securityCode' ? input : prev.securityCode,
             password: id === 'password' ? input : prev.password,
         }));
-    }
-
-    enterCode = () =>{
-        this.setState(prev => {
-            const currM = prev.enterCodeCurrent;
-            const fullM = prev.enterCodeMessage;
-            const newLetter = fullM.slice(currM.length, currM.length + 1);
-
-            return {enterCodeCurrent: currM.concat(newLetter)}
-        });
-    }
-
-    componentDidMount = () => {
-        setInterval(this.enterCode, 60);       
     }
 
     enter = (e) => {
@@ -60,58 +47,78 @@ class LoginPage extends React.Component {
     incrementloaderPerc = () => {
         if(this.state.loadPercentage === 99){
             clearInterval(this.loaderInterval);
+            this.loaderCompleted = true;
         }
         this.setState((prev) => ({
             loadPercentage : prev.loadPercentage + 1
         }));
     }
 
-    toggleLoader = () => {
-        this.setState(prev =>  ({
-            formClasses: prev.formClasses.length === 1 ? [css.form, css.loginAttempt] : [css.form],
-            catClasses: prev.catClasses.length === 1 ? [css.cat, css.loginAttempt] : [css.cat]
-        }))
+    toggleLoader = () => {     
+        this.setState(prev => {
+            const showLoader = !prev.showLoader;
+
+            if(showLoader){
+                this.loaderInterval = setInterval(this.incrementloaderPerc, this.duration / 6);
+            } else {
+                clearInterval(this.loaderInterval);
+            }
+            
+            return { 
+                showLoader: showLoader,
+                loadPercentage: 1
+            }
+        })
     }
 
     login = async () => {
-        const req = api.guestLogin(this.state.securityCode, this.state.password, 1);
-    
-        const duration = 400; 
-        const loaderInterval = duration / 6;
+        
+        try {
+            
+            const req = api.guestLogin(this.state.securityCode, this.state.password, 1);
 
-        this.loaderInterval = setInterval(this.incrementloaderPerc , loaderInterval);
-        new Vivus('loader', {duration: duration});
-        this.toggleLoader();
+            this.animation.play();
+            this.toggleLoader();
+        
+            const res = await req;
+            this.handleResponse(res); 
+        
+        } catch(err){
+            this.animation.stop();
+            this.animation.reset();
+            this.toggleLoader();
+            this.handleError(err);
+        }   
+    }
 
-        const res = await req;
-        this.handleResponse(res);    
+    handleError = (err) => {   
+        const message = err.response && err.response.data && err.response.data.ErrorMessage || err.message;  
+        
+        this.setState({ 
+            error: true, 
+            errorMessage: `${err.name}: ${message}. Contact us if your having problems.`,
+        });
     }
 
     handleResponse = async (res) => {
-        if(res.status === 200) {
-            console.log(this.loaderInterval);
-            //this.props.login();
-        } else if(res.status === 400) {
-            this.toggleLoader()
-            this.setState({ error: true, errorMessage: res.data.ErrorMessage })
-        } else {
-            this.toggleLoader()
-            this.setState({ error: true, errorMessage: res.data.ErrorMessage })
-        }
+        setInterval(() => this.loaderCompleted && this.props.login(), 100);
     }
 
-    render() {    
+    render() {  
+        const formClasses = this.state.showLoader ? [css.form, css.loginAttempt] : [css.form];
+        const catClasses = this.state.showLoader ? [css.cat, css.loginAttempt] : [css.cat];
+
         return (
             <div className={css.loginPane}>
-                <form onKeyUp={this.enter} className={this.state.formClasses.join(' ')}>
-                    <h2 className={css.prompt}>{this.state.enterCodeCurrent}</h2>
-                    <input id='securityCode' onChange={this.change} value={this.state.securityCode} className={css.pass1} type='password'/>
+                <form onKeyUp={this.enter} className={formClasses.join(' ')}>
+                    <h2 className={css.prompt}>{this.state.enterCodeMessage}</h2>
+                    <input id='securityCode' onChange={this.inputChange} value={this.state.securityCode} className={css.pass1} type='password'/>
                     <h2 className={css.dash}>-</h2> 
-                    <input id='password' onChange={this.change} value={this.state.password} className={css.pass2} type='password'/>
+                    <input id='password' onChange={this.inputChange} value={this.state.password} className={css.pass2} type='password'/>
                     { this.state.error && <LoginError errorMessage={this.state.errorMessage}/>}
                     <Button id={css.loginBtn} onClick={this.login} text={'Login'}/>
                 </form>
-                <div className={this.state.catClasses.join(' ')}>
+                <div className={catClasses.join(' ')}>
                     <object className={css.loader} id="loader" type="image/svg+xml" data={loadingImg}></object>
                     <h2 className={css.perc}>{this.state.loadPercentage}%</h2>  
                 </div>          
