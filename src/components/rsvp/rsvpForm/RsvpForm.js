@@ -16,7 +16,7 @@ class RsvpForm extends React.Component {
     render() {
         return (
             <div className={css.setArea}>
-               <button type='button' onClick={this.func}>HEY</button>
+               <button className={css.button} type='button' onClick={this.func}>HEY</button>
             </div>
         )
     }
