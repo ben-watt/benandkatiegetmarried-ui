@@ -8,7 +8,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedIn: cookieParser.cookieExists('_ncfa') ? true : false,
+            loggedIn: true,
         }
     }  
 
