@@ -11,11 +11,15 @@ class Nav extends React.Component {
         this.sections = navItems;
     }
 
-    scroll(selector, seconds = 1000, offset = 50){
+    scroll(selector, options = {seconds: 1000 , upOffset: 0, downOffset: 50}) {
         let element = document.querySelector(selector);
-        let elementPosition = element.getBoundingClientRect().top;
-        let scroll = elementPosition + window.pageYOffset;
-        smoothScroll(scroll - offset , seconds);
+        let elementsRelativePosition = element.getBoundingClientRect().top;
+        let scroll = elementsRelativePosition + window.pageYOffset;
+        if(elementsRelativePosition > 0){
+            smoothScroll(scroll - options.upOffset , options.seconds);
+        } else {
+            smoothScroll(scroll - options.downOffset , options.seconds);
+        }
     }
 
     render() {        

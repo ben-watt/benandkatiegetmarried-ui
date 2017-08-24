@@ -1,7 +1,7 @@
 const navItems = [{
     name: 'When',
     icon: 'fa fa-calendar-o',
-    anchor: '#when'
+    anchor: '#when',
 },{
     name: 'Where',
     icon: 'fa fa-compass',
@@ -17,11 +17,15 @@ const navItems = [{
 },{
     name: 'Main',
     icon: 'fa fa-question',
-    anchor: '#main'
+    anchor: '#main',
+    // options: {
+    //     downOffset: '200',
+    //     upOffset: '200'
+    // }
 },{
     name: 'Map',
     icon: 'fa fa-map-marker',
-    anchor: '#map'
+    anchor: '#map',
 }]
 
 export default navItems;

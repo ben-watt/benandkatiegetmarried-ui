@@ -60,7 +60,7 @@ class NavBar extends React.Component {
                     {
                         this.props.sections.map((x, i) => 
                             <div className={css.navItem} 
-                                onClick={() => this.props.scroll(x.anchor)} 
+                                onClick={() => this.props.scroll(x.anchor, x.options)} 
                                 key={i}>{x.name}</div>)
                     }
                 </div>    

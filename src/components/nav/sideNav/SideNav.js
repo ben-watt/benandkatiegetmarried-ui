@@ -34,7 +34,7 @@ class SideNav extends React.Component {
 
     getNavItems = () => {
         const items = this.props.sections.map((x, i) => 
-        <a key={i} onClick={() => {this.onClick(); this.props.scroll(x.anchor)}}>
+        <a key={i} onClick={() => {this.onClick(); this.props.scroll(x.anchor, x.options)}}>
             <div className={css.navItem}>
                 <i className={[x.icon, css.icon].join(' ')}></i>
                 {x.name}
