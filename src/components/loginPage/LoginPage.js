@@ -92,11 +92,12 @@ class LoginPage extends React.Component {
     }
 
     handleError = (err) => {   
-        const message = err.response && err.response.data && err.response.data.ErrorMessage || err.message;  
-        
+        const message = (err.response && err.response.data && err.response.data.ErrorMessage) || err.message;  
+        console.log(err.response)
         this.setState({ 
             error: true, 
-            errorMessage: `${err.name}: ${message}. Contact us if your having problems.`,
+            errorMessage: `${err.name}: ${message}.
+             Contact us if your having problems.`,
         });
     }
 
