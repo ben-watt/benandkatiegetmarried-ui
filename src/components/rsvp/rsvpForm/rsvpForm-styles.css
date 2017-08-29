@@ -1,15 +1,59 @@
 @import '../../../config.css'; 
 
-.setArea {
-width: 80vw;
-height: 80vh;
-border: solid red 2px;
-position: relative;
 
+
+.notVisible {
+    position: fixed;
+    right: 0%;
+    bottom: 0%;
+    z-index: 2;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    color: black;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    opacity: 0;
+
+    
+    transition: border-radius 0.3s ease-in-out, 
+                background-color 0.2s ease-in-out, 
+                bottom 0.2s ease-in-out, 
+                right 0.2s ease-in-out, 
+                height 0.3s ease-in-out,
+                width 0.3s ease-in-out;
+}
+
+.visible {
+ 
+    width: 80%;
+    height: 80%;
+    border-radius: 0px; 
+    bottom: 50%;
+    right: 50%;
+    margin: 0 auto;
+    background-color: var(--offWhite);
+    z-index: 2;
+    transform: translate(50%, 50%);
+    opacity: 1;
+    border: solid red 1px;
 }
 
 .button {
     position: absolute;
-    right: 0%;
-    bottom: 0%;
+    top: 0px;
+    right: 0px;
+    width: 15%;
+    height: 5%;
+
 }
+
+@media (min-width: 768px) {
+    .notVisible {
+        transition: all 0.5s ease-in-out;
+    } 
+
+} 

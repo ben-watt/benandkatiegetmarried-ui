@@ -5,17 +5,19 @@ class RsvpForm extends React.Component {
 
     constructor(props) {
         super(props);
-
     }
+
 
     func = () => {
         console.log('clicked');
     }
 
-
-    render() {
+    render() {            
         return (
-            <div className={css.setArea}>
+            <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
+               <button className={css.button} type='button' onClick={this.func}>HEY</button>
+               <button className={css.button} type='button' onClick={this.func}>HEY</button>
+               <button className={css.button} type='button' onClick={this.func}>HEY</button>
                <button className={css.button} type='button' onClick={this.func}>HEY</button>
             </div>
         )
