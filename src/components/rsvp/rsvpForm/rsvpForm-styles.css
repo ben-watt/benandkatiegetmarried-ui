@@ -24,13 +24,14 @@
                 bottom 0.2s ease-in-out, 
                 right 0.2s ease-in-out, 
                 height 0.3s ease-in-out,
-                width 0.3s ease-in-out;
+                width 0.3s ease-in-out,
+                opacity 0.2s ease-in-out;
 }
 
 .visible {
  
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     border-radius: 0px; 
     bottom: 50%;
     right: 50%;
@@ -39,21 +40,55 @@
     z-index: 2;
     transform: translate(50%, 50%);
     opacity: 1;
-    border: solid red 1px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto auto auto auto 60vh 60vh;
+    font-size: 1rem;
+    color: grey;
 }
 
 .button {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    grid-column: 1/6;    
     width: 15%;
     height: 5%;
 
 }
 
+.heading {
+    grid-column: 1/6;
+    font-family: var(--handwritingFont);
+    font-size: 2em;
+    margin: 0px;
+    color: var(--goldFont);
+    text-align: center;
+}
+
+.subHeading {
+    grid-column: 1/6;
+    font-family: var(--mainFont);
+    font-size: 1em;
+    color: grey;
+    margin: 20px;
+    text-align: center;
+}
+
+.names{
+    grid-column: 1/6;
+    text-align: left;
+    width: 100%;
+    font-family: var(--mainFont);
+}
+
+.disclaimer {
+    grid-column: 1/6;
+    text-align: center;
+    font-style: italic;
+}
+
+
 @media (min-width: 768px) {
     .notVisible {
-        transition: all 0.5s ease-in-out;
+        transition: all 0.3s ease-in-out;
     } 
 
 } 

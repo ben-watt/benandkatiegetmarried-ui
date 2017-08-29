@@ -75,11 +75,17 @@
     width: 100%;
     flex-wrap: wrap;
     padding: 15%;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.iconVisible {
+    opacity: 1;
 }
 
 @media (min-width: 768px) {
     .button {
-        transition: all 0.5s ease-in-out;
+        transition: all 0.3s ease-in-out;
     } 
 
 } 

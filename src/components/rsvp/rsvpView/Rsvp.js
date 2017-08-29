@@ -9,6 +9,7 @@ class Rsvp extends React.Component {
         this.state = {
             formVisible: false,
             rsvpFormVisible: false,
+            iconVisible: true,
         }
     }    
 
@@ -20,6 +21,7 @@ class Rsvp extends React.Component {
         this.setState(prevState => ({
             formVisible: true,  
             rsvpFormVisible: true,
+            iconVisible: false,
         }))
 
     }
@@ -28,6 +30,7 @@ class Rsvp extends React.Component {
         this.setState(prevState=>({
             formVisible: !this.state.formVisible, 
             rsvpFormVisible: false,
+            iconVisible: true,
         }))
     }
 
@@ -47,7 +50,7 @@ class Rsvp extends React.Component {
                 <div className={this.state.formVisible && css.onShade}></div>
                 <div className={[this.state.formVisible && css.formOpen, css.button].join(' ')}  onClick={this.handleClick}>
                     {
-                        this.state.formVisible ? this.formVisible() : <div className={css.center}>RSVP <i  className='fa fa-envelope-o' aria-hidden='true'/></div>
+                        this.state.formVisible ? this.formVisible() : <div className={[this.state.iconVisible && css.iconVisible, css.center].join(' ')}>RSVP <i  className='fa fa-envelope-o' aria-hidden='true'/></div>
                     }
                     <RsvpForm visibility={this.state.rsvpFormVisible}/>
                 </div>          
