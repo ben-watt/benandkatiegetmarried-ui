@@ -52,7 +52,7 @@ class Rsvp extends React.Component {
                     {
                         this.state.formVisible ? this.formVisible() : <div className={[this.state.iconVisible && css.iconVisible, css.center].join(' ')}>RSVP <i  className='fa fa-envelope-o' aria-hidden='true'/></div>
                     }
-                    <RsvpForm visibility={this.state.rsvpFormVisible}/>
+                    <RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm}/>
                 </div>          
             </div>
         )

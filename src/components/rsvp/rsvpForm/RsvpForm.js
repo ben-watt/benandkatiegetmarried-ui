@@ -1,63 +1,75 @@
 import React from 'react';
 import css from './rsvpForm-styles.css';
 import data from '../guest-data.js';
+import FormData from './FormData.js';
 class RsvpForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            guest: [{name: '', going: false, meal: ''}],
-        }
         this.handleSubmit.bind(this);
+        this.handleChange.bind(this);
+        this.state = {
+            guest: [],
+        }
     }
 
+    componentDidMount = () => {
+        const guest = [];
+        data.names.map(val => {
+            guest.push({name: val, going: null, meal: null})
+        })
 
-    func = () => {
-        console.log('clicked');
-    }
-
-    doThis = (val) => {
-        return (
-            <div className={css.formElements} key={val} >
-                <h4 className={css.name}>{val}</h4>
-                <div className={css.input}><input type="radio" name={val} value="yes"  onClick={this.handleChange}/>I'll be there</div>
-                <div className={css.input}> <input type="radio" name={val} value="no"  onClick={this.handleChange}/>Cannot attend</div>
-                <select name={val}onChange={this.handleChange} >
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="meat">Meat</option>
-                    <option selected value="choose">Meal Choice</option>
-                </select>
-            </div>
-        )
+        this.setState({
+            guest: guest
+        })
     }
 
     handleChange = (event) => {
-        var field = event.target.name;
+        var name = event.target.name;
         var value = event.target.value;
-        console.log(field);
-        console.log(value);
-        
+        var type = event.target.type;
 
+        var index = this.state.guest.findIndex(val => {
+           return val.name === name 
+        })
+        
         this.setState((prevState) => {
-            // console.log(prevState.guest)
-            prevState.guest[field] = value  
-        });      
-  
+            var newArr = prevState.guest;
+            type === 'radio' ?
+            newArr[index].going = value 
+            :newArr[index].meal = value
+            return {guest: newArr}
+        })
     }
 
     handleSubmit = (event) => {
-        console.log(event.target);
+     
+        this.state.guest.map(val => {
+            console.log(val.meal)
+            if (val.name === null || val.going=== null || val.meal === null) {
+                console.log('NO')
+            }
+
+            else this.props.closeForm(); 
+        })
+        
         event.preventDefault();
     }
 
-    render() {            
+    generateData = (val) => {
+        return (<FormData key={val} name={val} handleChange={this.handleChange}/>)
+
+    }
+
+    render() {  
+        // console.log(this.state.guest);          
         return (
             <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
                 <p className={css.heading}> Will you attend? </p>
                 <p className={css.subHeading}>Please sign your RSVP</p>
                 
                 <form className={css.formOutline} onSubmit={this.handleSubmit} >
-                    {data.names.map(this.doThis)}
+                    {data.names.map(this.generateData)}
                     <input type="submit" value="Submit" />
                 </form>
                 <p className={css.disclaimer}>*please note when making your meal choice, kosher catering will not be provided.  </p>
