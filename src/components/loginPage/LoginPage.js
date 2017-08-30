@@ -113,9 +113,11 @@ class LoginPage extends React.Component {
             <div className={css.loginPane}>
                 <form onKeyUp={this.enter} className={formClasses.join(' ')}>
                     <h2 className={css.prompt}>{this.state.enterCodeMessage}</h2>
-                    <input id='securityCode' onChange={this.inputChange} value={this.state.securityCode} className={css.pass1} type='password'/>
+                    <input id='securityCode' onChange={this.inputChange} value={this.state.securityCode} className={css.securityCode} type='password'/>
+                    <span></span>
                     <h2 className={css.dash}>-</h2> 
-                    <input id='password' onChange={this.inputChange} value={this.state.password} className={css.pass2} type='password'/>
+                    <input id='password' onChange={this.inputChange} value={this.state.password} className={css.password} type='password'/>
+                    <span></span>
                     { this.state.error && <LoginError errorMessage={this.state.errorMessage}/>}
                     <Button id={css.loginBtn} onClick={this.login} text={'Login'}/>
                 </form>
