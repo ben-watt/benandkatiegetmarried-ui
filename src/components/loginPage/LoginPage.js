@@ -31,6 +31,9 @@ class LoginPage extends React.Component {
     inputChange = (e) => {
         const input = e.target.value;
         const id = e.target.id;
+        console.log(this.state.securityCode);
+
+        console.log('input stuff:', input , id);
 
         this.setState(prev => ({
             securityCode: id === 'securityCode' ? input : prev.securityCode,
@@ -113,11 +116,15 @@ class LoginPage extends React.Component {
             <div className={css.loginPane}>
                 <form onKeyUp={this.enter} className={formClasses.join(' ')}>
                     <h2 className={css.prompt}>{this.state.enterCodeMessage}</h2>
-                    <input id='securityCode' onChange={this.inputChange} value={this.state.securityCode} className={css.securityCode} type='password'/>
-                    <span></span>
+                    <div className={css.input} >
+                        <input id='securityCode' className={css.securityCode} onChange={this.inputChange} value={this.state.securityCode} type='password'/>
+                        <span></span>
+                    </div>
                     <h2 className={css.dash}>-</h2> 
-                    <input id='password' onChange={this.inputChange} value={this.state.password} className={css.password} type='password'/>
-                    <span></span>
+                    <div className={css.input}>
+                        <input id='password' className={css.password} onChange={this.inputChange} value={this.state.password} type='password'/>
+                        <span></span>
+                    </div>
                     { this.state.error && <LoginError errorMessage={this.state.errorMessage}/>}
                     <Button id={css.loginBtn} onClick={this.login} text={'Login'}/>
                 </form>

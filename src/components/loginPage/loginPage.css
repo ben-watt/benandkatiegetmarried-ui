@@ -57,11 +57,15 @@
     padding-left: 25%;
 }
 
-.securityCode, .password {
+.input {
+    display: inline-block;
+    position: relative;
+}
+
+.input > input  {
     width: 100px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid black;
     padding: 10px;
     font-size: 20px;
     margin-bottom: 50px;
@@ -70,23 +74,19 @@
     border-radius: 0px;
 }
 
+.input > span {
+    background-color: grey;
+    display: inline-block;
+    position: absolute;
+    width: 120px;
+    height: 1px;
+    right: 0px;
+    top: 42px;
+    transition: background-color 1s;
+}
+
 .securityCode:focus + span , .password:focus + span {
-    background-color: blue;
-}
-
-.form > span {
-    background-color: red;
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-}
-
-.underline {
-    background-color: purple;
-    width: 80px;
-    height: 2px;
-    display: inline-block;
-    position: relative;
+    background-color: black;
 }
 
 .dash {
@@ -105,7 +105,10 @@
 }
 
  @media(min-width: 800px){
-    .pass1, .pass2 {
+    .input > input {
         width: 200px;
+    }
+    .input > span {
+        width: 220px;
     }
 } 
