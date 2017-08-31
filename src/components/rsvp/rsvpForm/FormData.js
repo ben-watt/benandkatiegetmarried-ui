@@ -7,8 +7,8 @@ const FormData = (props) => {
             <h4 className={css.name}>{props.name}</h4>
             <div className={css.input}><input type="radio" name={props.name} value="yes"  onClick={props.handleChange}/>I'll be there</div>
             <div className={css.input}> <input type="radio" name={props.name} value="no"  onClick={props.handleChange}/>Cannot attend</div>
-            <select name={props.name}onChange={props.handleChange} >
-                <option value="choose">Meal Choice</option>
+            <select value={props.selected} name={props.name}onChange={props.handleChange} >
+                <option  disabled hidden value='choose'>Meal Choice</option>
                 <option value="vegetarian">Vegetarian</option>
                 <option value="meat">Meat</option>
             </select>

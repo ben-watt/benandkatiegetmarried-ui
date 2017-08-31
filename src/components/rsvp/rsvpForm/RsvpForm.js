@@ -10,6 +10,8 @@ class RsvpForm extends React.Component {
         this.handleChange.bind(this);
         this.state = {
             guest: [],
+            submit: null,
+            selected: 'selected',
         }
     }
 
@@ -29,6 +31,8 @@ class RsvpForm extends React.Component {
         var value = event.target.value;
         var type = event.target.type;
 
+        console.log(value)
+
         var index = this.state.guest.findIndex(val => {
            return val.name === name 
         })
@@ -43,21 +47,30 @@ class RsvpForm extends React.Component {
     }
 
     handleSubmit = (event) => {
-     
-        this.state.guest.map(val => {
-            console.log(val.meal)
-            if (val.name === null || val.going=== null || val.meal === null) {
-                console.log('NO')
-            }
-
-            else this.props.closeForm(); 
+        
+           var submit = 0;
+            // console.log(val.meal)
+            this.state.guest.map(val => {
+                if (Object.values(val).indexOf(null) > -1) {
+                    this.setState((prevState) => {
+                        return {submit: false}
+                    })
+                    submit++;
+                }      
         })
+       
+        if (submit === 0) {
+            this.setState((prevState) => {
+                return {submit: true}
+            })
+            this.props.closeForm();
+        }
         
         event.preventDefault();
     }
 
     generateData = (val) => {
-        return (<FormData key={val} name={val} handleChange={this.handleChange}/>)
+        return (<FormData key={val} name={val} selected={this.state.selected} handleChange={this.handleChange}/>)
 
     }
 
@@ -71,6 +84,7 @@ class RsvpForm extends React.Component {
                 <form className={css.formOutline} onSubmit={this.handleSubmit} >
                     {data.names.map(this.generateData)}
                     <input type="submit" value="Submit" />
+                    {this.state.submit === false ? <p className={css.warning}>Please ensure all fields are filled out YOU IDIOT</p> :null}
                 </form>
                 <p className={css.disclaimer}>*please note when making your meal choice, kosher catering will not be provided.  </p>
             </div>
