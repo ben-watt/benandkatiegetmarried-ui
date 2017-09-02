@@ -31,9 +31,6 @@ class LoginPage extends React.Component {
     inputChange = (e) => {
         const input = e.target.value;
         const id = e.target.id;
-        console.log(this.state.securityCode);
-
-        console.log('input stuff:', input , id);
 
         this.setState(prev => ({
             securityCode: id === 'securityCode' ? input : prev.securityCode,
