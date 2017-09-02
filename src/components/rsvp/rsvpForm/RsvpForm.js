@@ -2,6 +2,7 @@ import React from 'react';
 import css from './rsvpForm-styles.css';
 import data from '../guest-data.js';
 import FormData from './FormData.js';
+import Button from '../../common/Button.js'
 class RsvpForm extends React.Component {
 
     constructor(props) {
@@ -11,7 +12,7 @@ class RsvpForm extends React.Component {
         this.state = {
             guest: [],
             submit: null,
-            selected: 'selected',
+            selected: 'meal choice',
         }
     }
 
@@ -69,9 +70,16 @@ class RsvpForm extends React.Component {
         event.preventDefault();
     }
 
-    generateData = (val) => {
-        return (<FormData key={val} name={val} selected={this.state.selected} handleChange={this.handleChange}/>)
-
+    generateData = (val, i) => {
+        // console.log(i);
+        return (<FormData 
+                key={i} 
+                name={val} 
+                guest={this.state.guest} 
+                index={i} 
+                handleChange={this.handleChange}
+                visibility={this.props.visibility}
+                />)
     }
 
     render() {  
@@ -82,14 +90,19 @@ class RsvpForm extends React.Component {
                 <p className={css.subHeading}>Please sign your RSVP</p>
                 
                 <form className={css.formOutline} onSubmit={this.handleSubmit} >
-                    {data.names.map(this.generateData)}
-                    <input type="submit" value="Submit" />
-                    {this.state.submit === false ? <p className={css.warning}>Please ensure all fields are filled out YOU IDIOT</p> :null}
-                </form>
-                <p className={css.disclaimer}>*please note when making your meal choice, kosher catering will not be provided.  </p>
+                {data.names.map(this.generateData)}
+                
+                 {this.state.submit === false ? <p className={css.warning}>Please ensure all fields are filled out YOU IDIOT</p> :null}
+                 <p className={css.disclaimer}>*please note when making your meal choice, kosher catering will not be provided.  </p>
+                 
+                 <input className={css.submit} type="submit" value="Submit" />
+                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </form>            
             </div>
         )
     }
 }
 
 export default RsvpForm;
+
+
