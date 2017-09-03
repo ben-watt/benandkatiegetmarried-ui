@@ -20,6 +20,7 @@ class LoginPage extends React.Component {
             showLoader: false,
             errorMessage: '',
             error: false,
+            fadeOut: false,
         }
     }
     
@@ -93,7 +94,6 @@ class LoginPage extends React.Component {
 
     handleError = (err) => {   
         const message = (err.response && err.response.data && err.response.data.ErrorMessage) || err.message;  
-        console.log(err.response)
         this.setState({ 
             error: true, 
             errorMessage: `${err.name}: ${message}.
@@ -102,15 +102,21 @@ class LoginPage extends React.Component {
     }
 
     handleResponse = async (res) => {
-        setInterval(() => this.loaderCompleted && this.props.login(), 100);
+        setInterval(() => {
+            if(this.loaderCompleted) {
+                this.setState({ fadeOut: true });
+                setTimeout(this.props.login, 1000);
+            }
+        }, 100);
     }
 
     render() {  
         const formClasses = this.state.showLoader ? [css.form, css.loginAttempt] : [css.form];
         const catClasses = this.state.showLoader ? [css.cat, css.loginAttempt] : [css.cat];
+        const loginClasses = this.state.fadeOut ? [css.loginPane, css.fadeOut] : [css.loginPane];
 
         return (
-            <div className={css.loginPane}>
+            <div className={loginClasses.join(' ')}>
                 <form onKeyUp={this.enter} className={formClasses.join(' ')}>
                     <h2 className={css.prompt}>{this.state.enterCodeMessage}</h2>
                     <div className={css.input} >

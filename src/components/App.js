@@ -12,21 +12,17 @@ class App extends React.Component {
     }  
 
     componentDidMount = async () => {
-        //Hit endpoint to check if session is active
-        try {
-
-            const res = await api.eventDetails()
+        try{
+            const res = await api.eventDetails();
             if(res.status === 200)
-                this.login();
-
-        } catch(err){
-            console.log('Unable to login', err);
+                this.login(true);
+        } catch(err) {
+            this.login(false);
         }
-
     }
 
-    login = () => {
-        this.setState({ loggedIn: true});
+    login = (state) => {
+        this.setState({ loggedIn: state});
     }
        
     handleClick() {
@@ -38,7 +34,7 @@ class App extends React.Component {
             <div>
                 {
                     (this.state.loggedIn === false) 
-                    ? <LoginPage login={this.login} /> 
+                    ? <LoginPage login={() => this.login(true)} /> 
                     : <MainPage />
                 }
             </div>

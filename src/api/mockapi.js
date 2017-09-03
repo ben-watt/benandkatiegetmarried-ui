@@ -4,23 +4,33 @@ const api = (function() {
     let obj = {};
 
     const api = axios.create({
-        baseURL: 'http://benandkatiegetmarried.azurewebsites.net',
+        baseURL: 'http://benandkatiegetmarried.azurewebsites.net/api',
         timeout: 8000,
         headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
 
     obj.guestLogin = async function (securityCode, password, rememberMe) {
 
-        const res = await api.post('/guest-login', {
-            SecurityCode: securityCode,
-            Password: password,
-            RememberMe: rememberMe,
-        });
-        return res;
+        try {
+
+            const res = await api.post('/guest-login', {
+                SecurityCode: securityCode,
+                Password: password,
+                RememberMe: rememberMe,
+            });   
+
+            localStorage.setItem("eventId", res.data.eventId);
+
+            return res;
+
+        } catch(err){
+            console.log(err);
+        }
     }
 
     obj.eventDetails = async function(){
-        const res = await api.get('api/event-details')
+        const eventId = localStorage.getItem("eventId");
+        const res = await api.get(eventId + '/event-details')
         return res;
     }
 
