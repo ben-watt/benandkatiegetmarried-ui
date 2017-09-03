@@ -1,19 +1,28 @@
 import React from 'react';  
 import MainPage from './mainPage/MainPage';
 import LoginPage from './loginPage/LoginPage';
-
-import cookieParser from './common/cookieParser';
+import api from '../api/mockapi';
 
 class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedIn: true,
+            loggedIn: false,
         }
     }  
 
-    login = () => {
-        this.setState({ loggedIn: true});
+    componentDidMount = async () => {
+        // try{
+        //     const res = await api.eventDetails();
+        //     if(res.status === 200)
+        //         this.login(true);
+        // } catch(err) {
+        //     this.login(false);
+        // }
+    }
+
+    login = (state) => {
+        this.setState({ loggedIn: state});
     }
        
     handleClick() {
@@ -25,7 +34,7 @@ class App extends React.Component {
             <div>
                 {
                     (this.state.loggedIn === false) 
-                    ? <LoginPage login={this.login} /> 
+                    ? <LoginPage login={() => this.login(true)} /> 
                     : <MainPage />
                 }
             </div>

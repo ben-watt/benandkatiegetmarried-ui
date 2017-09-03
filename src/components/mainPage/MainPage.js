@@ -5,6 +5,8 @@ import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/KeyPeople';
 import Itinerary from '../itinerary/Itinerary';
 import Rsvp from '../rsvp/rsvpView/Rsvp';
+import CommentPage from '../commentPage/CommentPage';
+
 import css from './mainPage-styles.css';
 
 import MapContainer from '../googleMaps/MapContainer';
@@ -15,17 +17,16 @@ const MainPage = (props) => {
             <div>
             <Nav />
             <Rsvp />
-                <div className={css.container}>
-                    
-                    
-                <Header/>
-                <WhenWhere />
-                <KeyPeople />
-                <Itinerary />
-                <section id='main' className={css.section70}>Main</section>
-                <div id='map' className={css.section100}>
-                    <MapContainer/>
-                </div>                         
+                <div className={css.container}>             
+                    <Header/>
+                    <WhenWhere />
+                    <KeyPeople />
+                    <Itinerary />
+                    <section id='main' className={css.section70}>Main</section>
+                    <div id='map' className={css.section100}>
+                        <MapContainer/>
+                    </div>            
+                    <CommentPage />            
                 </div>
             </div>
     )
