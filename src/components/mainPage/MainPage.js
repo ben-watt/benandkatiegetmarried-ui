@@ -25,11 +25,7 @@ const MainPage = (props) => {
                 <section id='main' className={css.section70}>Main</section>
                 <div id='map' className={css.section100}>
                     <MapContainer/>
-                </div>                     
-
-                
-                                        
-                   
+                </div>                         
                 </div>
             </div>
     )

@@ -93,10 +93,12 @@ class RsvpForm extends React.Component {
                 {data.names.map(this.generateData)}
                 
                  {this.state.submit === false ? <p className={css.warning}>Please ensure all fields are filled out YOU IDIOT</p> :null}
+                 <textarea className={css.diet} rows="4" cols="25" placeholder="Please notify us of any dietary requirements..."></textarea>
+
                  <p className={css.disclaimer}>*please note when making your meal choice, kosher catering will not be provided.  </p>
-                 
-                 <input className={css.submit} type="submit" value="Submit" />
-                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p className={css.song}> What song will get you on the dance floor? <input className={css.songAns} type="text" placeholder="optional"/></p>
+<input className={css.submit} type="submit" value="Submit" />
+
                 </form>            
             </div>
         )

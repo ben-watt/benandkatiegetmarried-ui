@@ -41,6 +41,7 @@
 }
 
 .formOpen {
+    position: fixed;
     width: 90%;
     height: 90%;
     border-radius: 0px; 
@@ -50,6 +51,7 @@
     background-color: var(--offWhite);
     z-index: 2;
     transform: translate(50%, 50%);
+
 }
 
 .close {
@@ -83,9 +85,14 @@
     opacity: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 568px) {
     .button {
         transition: all 0.3s ease-in-out;
     } 
+    .formOpen {
+        height: 90%;
+        bottom: 50%;
+
+    }
 
 } 
