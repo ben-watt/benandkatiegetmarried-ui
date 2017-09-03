@@ -7,18 +7,18 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedIn: false,
+            loggedIn: true
         }
     }  
 
     componentDidMount = async () => {
-        try{
-            const res = await api.eventDetails();
-            if(res.status === 200)
-                this.login(true);
-        } catch(err) {
-            this.login(false);
-        }
+        // try{
+        //     const res = await api.eventDetails();
+        //     if(res.status === 200)
+        //         this.login(true);
+        // } catch(err) {
+        //     this.login(false);
+        // }
     }
 
     login = (state) => {

@@ -30,7 +30,7 @@ const api = (function() {
 
     obj.eventDetails = async function(){
         const eventId = localStorage.getItem("eventId");
-        const res = await api.get(eventId + '/event-details')
+        const res = await api.get('/guest/' + eventId + '/event-details')
         return res;
     }
 

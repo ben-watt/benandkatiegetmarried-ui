@@ -1,0 +1,22 @@
+.container {
+    background-color: red;
+    grid-column: 1/13;
+}
+
+.innerContainer {
+    max-width: 600px;
+    background-color: blue;
+    margin: 80px auto 80px auto;
+}
+
+.inputComment {
+    display: flex;
+    align-items: center;
+    background-color: green;
+    height: 60px;
+    padding-left: 20px;
+}
+
+.inputComment.active {
+    height: 200px;
+}
