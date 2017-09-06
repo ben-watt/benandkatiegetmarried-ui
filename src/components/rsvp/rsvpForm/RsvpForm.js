@@ -17,10 +17,12 @@ class RsvpForm extends React.Component {
     }
 
     componentDidMount = () => {
+       
         const guest = [];
         data.names.map(val => {
             guest.push({name: val, going: null, meal: null})
         })
+        guest.push({dietry: 'none', song: 'none'})
 
         this.setState({
             guest: guest
@@ -32,25 +34,33 @@ class RsvpForm extends React.Component {
         var value = event.target.value;
         var type = event.target.type;
 
-        console.log(value)
-
-        var index = this.state.guest.findIndex(val => {
-           return val.name === name 
-        })
-        
-        this.setState((prevState) => {
-            var newArr = prevState.guest;
-            type === 'radio' ?
-            newArr[index].going = value 
-            :newArr[index].meal = value
-            return {guest: newArr}
-        })
+       if (name === 'dietry' || name === 'song') {
+            this.setState((prevState) => {
+                var newArr = prevState.guest;
+                
+                newArr[name] = value 
+                return {guest: newArr}
+            })
+       }
+        else {
+            var index = this.state.guest.findIndex(val => {
+            return val.name === name 
+            })
+            
+            this.setState((prevState) => {
+                var newArr = prevState.guest;
+                type === 'radio' ?
+                newArr[index].going = value 
+                :newArr[index].meal = value
+                
+                return {guest: newArr}
+            })
+        } 
     }
 
     handleSubmit = (event) => {
         
            var submit = 0;
-            // console.log(val.meal)
             this.state.guest.map(val => {
                 if (Object.values(val).indexOf(null) > -1) {
                     this.setState((prevState) => {
@@ -64,14 +74,13 @@ class RsvpForm extends React.Component {
             this.setState((prevState) => {
                 return {submit: true}
             })
-            this.props.closeForm();
+            this.props.closeForm('final');
         }
         
         event.preventDefault();
     }
 
     generateData = (val, i) => {
-        // console.log(i);
         return (<FormData 
                 key={i} 
                 name={val} 
@@ -82,22 +91,35 @@ class RsvpForm extends React.Component {
                 />)
     }
 
-    render() {  
-        // console.log(this.state.guest);          
+    render() {    
+        console.log(this.state.guest);
+ 
         return (
             <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
                 <p className={css.heading}> Will you attend? </p>
                 <p className={css.subHeading}>Please sign your RSVP</p>
                 
                 <form className={css.formOutline} onSubmit={this.handleSubmit} >
-                {data.names.map(this.generateData)}
-                
-                 {this.state.submit === false ? <p className={css.warning}>Please ensure all fields are filled out YOU IDIOT</p> :null}
-                 <textarea className={css.diet} rows="4" cols="25" placeholder="Please notify us of any dietary requirements..."></textarea>
-
-                 <p className={css.disclaimer}>*please note when making your meal choice, kosher catering will not be provided.  </p>
-                <p className={css.song}> What song will get you on the dance floor? <input className={css.songAns} type="text" placeholder="optional"/></p>
-<input className={css.submit} type="submit" value="Submit" />
+                    {data.names.map(this.generateData)}
+                    
+                    {this.state.submit === false 
+                    ?<p className={css.warning}>Please ensure all fields are filled out YOU IDIOT</p> 
+                    :null}
+                    
+                    <textarea className={css.diet} rows="4" cols="25" name="dietry" onChange={this.handleChange}
+                        placeholder="Please notify us of any other dietary requirements..." >
+                    </textarea>
+                    <p className={css.disclaimer}>
+                        *please note when making your meal choice, strict kosher catering will not be provided.  
+                    </p>
+                    <div className={css.line}></div>
+                    <p className={css.song}> 
+                        What song will get you on the dance floor?
+                    </p>
+                    <p> 
+                        <input className={css.songAns} type="text" placeholder="optional" name="song" onChange={this.handleChange}/>
+                    </p>
+                    <input className={css.submit} type="submit" value="SIGN RSVP" />
 
                 </form>            
             </div>

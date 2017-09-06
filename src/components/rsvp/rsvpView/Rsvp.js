@@ -13,6 +13,8 @@ class Rsvp extends React.Component {
         }
     }    
 
+
+
     handleClick = () => {
         this.state.formVisible ? null : this.openForm();
     }
@@ -26,7 +28,9 @@ class Rsvp extends React.Component {
 
     }
 
-    closeForm = () => {
+    closeForm = (final) => {
+        console.log(final);
+      
         this.setState(prevState=>({
             formVisible: !this.state.formVisible, 
             rsvpFormVisible: false,
@@ -35,8 +39,11 @@ class Rsvp extends React.Component {
     }
 
     formVisible = () => {
+        this.state.formVisible === true 
+        ?  document.body.classList.add('lock') 
+        : document.body.classList.remove('lock') 
+
         return (
-    
                 <div onClick={this.closeForm}>
                     <i className={['fa fa-times', css.close].join(' ')}aria-hidden="true" />
                 </div>
