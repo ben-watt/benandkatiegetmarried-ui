@@ -5,7 +5,7 @@ const Button = (props) => {
     return (
         <button type="button" 
             id={props.id}
-            className={css.button} 
+            className={[css.button, props.className].join(' ')} 
             style={props.style}
             onClick={props.onClick}
             value={props.value}>

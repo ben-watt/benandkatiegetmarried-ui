@@ -55,7 +55,7 @@ class WhenWhere extends React.Component {
 
                     <h1 id='where' className={[css.headings, css.details, css.ipadWhere].join(' ')}><u>WHERE</u></h1>
                     <p className={[css.text, css.ipadWhereDeets].join(' ')}>Worsley Park Marriott Hotel & Country Club, Manchester M28 2QT</p>
-                    <Button text={'Find on Map'} onClick={() => this.showDirections()} id={css.buttonRight} />
+                    <Button text={'Get Directions'} onClick={() => this.showDirections()} id={css.buttonRight} />
                 </div>
             </div>
         )

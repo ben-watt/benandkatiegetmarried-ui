@@ -5019,6 +5019,10 @@ react-error-overlay@^1.0.9:
     settle-promise "1.0.0"
     source-map "0.5.6"
 
+react-native-listener@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-listener/-/react-native-listener-1.0.2.tgz#3e9f8f0492b63280d50674d0be8a93d669705e92"
+
 react-transition-group@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.2.0.tgz#793bf8cb15bfe91b3101b24bce1c1d2891659575"

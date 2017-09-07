@@ -27,3 +27,7 @@
     height: 70%;
     align-self: center;
 }
+
+::selection {
+    background-color: var(--buttonColor)
+}
