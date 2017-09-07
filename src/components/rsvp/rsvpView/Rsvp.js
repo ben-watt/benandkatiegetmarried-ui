@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './rsvp-styles.css';
 import RsvpForm from '../rsvpForm/RsvpForm.js';
+import RsvpComplete from '../rsvpComplete/RsvpComplete.js'
 
 class Rsvp extends React.Component {
 
@@ -10,6 +11,9 @@ class Rsvp extends React.Component {
             formVisible: false,
             rsvpFormVisible: false,
             iconVisible: true,
+            rsvp: false,
+            complete: false,
+            style: {},
         }
     }    
 
@@ -29,7 +33,13 @@ class Rsvp extends React.Component {
     }
 
     closeForm = (final) => {
-        console.log(final);
+        final === 'final' ?
+
+        this.setState(prevState=>({
+            rsvp: true
+        }))
+
+        : 
       
         this.setState(prevState=>({
             formVisible: !this.state.formVisible, 
@@ -39,10 +49,6 @@ class Rsvp extends React.Component {
     }
 
     formVisible = () => {
-        this.state.formVisible === true 
-        ?  document.body.classList.add('lock') 
-        : document.body.classList.remove('lock') 
-
         return (
                 <div onClick={this.closeForm}>
                     <i className={['fa fa-times', css.close].join(' ')}aria-hidden="true" />
@@ -51,7 +57,22 @@ class Rsvp extends React.Component {
         )
     }
 
+    completeForm = () => {
+        setTimeout(() =>{ this.closeForm() }, 3000);
+        
+
+        return (
+        <RsvpComplete />
+        )
+    }
+
     render () {
+        this.state.formVisible === true 
+        ? document.getElementById('root').classList.add('lock')
+        : document.getElementById('root').classList.remove('lock')
+
+       
+        
         return (
             <div>
                 <div className={this.state.formVisible && css.onShade}></div>
@@ -59,10 +80,14 @@ class Rsvp extends React.Component {
                     {
                         this.state.formVisible ? this.formVisible() : <div className={[this.state.iconVisible && css.iconVisible, css.center].join(' ')}>RSVP <i  className='fa fa-envelope-o' aria-hidden='true'/></div>
                     }
-                    <RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm}/>
+                    {
+                        this.state.rsvp ? this.completeForm() :    
+                        <RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm}/>
+                    }
                 </div>          
             </div>
         )
+    
     }
 }
 

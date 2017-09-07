@@ -92,8 +92,6 @@ class RsvpForm extends React.Component {
     }
 
     render() {    
-        console.log(this.state.guest);
- 
         return (
             <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
                 <p className={css.heading}> Will you attend? </p>
@@ -103,16 +101,12 @@ class RsvpForm extends React.Component {
                     {data.names.map(this.generateData)}
                     
                     {this.state.submit === false 
-                    ?<p className={css.warning}>Please ensure all fields are filled out YOU IDIOT</p> 
+                    ?<p className={css.warning}>Please ensure all above fields are filled out</p> 
                     :null}
                     
                     <textarea className={css.diet} rows="4" cols="25" name="dietry" onChange={this.handleChange}
                         placeholder="Please notify us of any other dietary requirements..." >
                     </textarea>
-                    <p className={css.disclaimer}>
-                        *please note when making your meal choice, strict kosher catering will not be provided.  
-                    </p>
-                    <div className={css.line}></div>
                     <p className={css.song}> 
                         What song will get you on the dance floor?
                     </p>
