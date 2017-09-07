@@ -1,6 +1,9 @@
 @import '../../../config.css'; 
 
-
+/* body {
+    overflow-y:hidden;
+     overflow: hidden;
+} */
 
 .notVisible {
     position: fixed;
@@ -30,7 +33,7 @@
 
 .visible {
     width: 95%;
-    height: 90%;
+    height: 85%;
     border-radius: 0px; 
     bottom: 50%;
     right: 50%;
@@ -47,6 +50,7 @@
     font-size: 1rem;
     color: grey;
     overflow: scroll;
+    font-size: 1em;
 }
 
 .heading {
@@ -63,7 +67,7 @@
     font-family: var(--mainFont);
     font-size: 1.2em;
     color: grey;
-    margin: 0px 0px 0px 5px;
+    margin: 5px 0px 0px 0px;
     grid-row: 2;
 }
 
@@ -88,6 +92,7 @@
     font-style: italic;
     padding: 7px;
    margin-top: 20px;
+   margin-bottom: 5px;
     text-transform: uppercase;
     width: 150px;
     position: absolute;
@@ -95,6 +100,11 @@
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
+    -webkit-appearance:none;
+    
+    -webkit-border-radius:0px;
+    border-radius: 0px;
+
 }
 
 .submit:hover, .submit:focus {
@@ -122,28 +132,22 @@
     grid-column: 4/6;
     text-align: center;
     padding: 20px 0px 5px 0px;
+    font-size: 1.2em;
 }
 
 .input {
     display: inline-block;
 }
 
-.disclaimer {
-    grid-column: 1/8;
-    text-align: center;
-    font-style: italic;
-    margin: 0px 0px 10px 0px;
-}
-
 
 .select {
-    /* background: transparent;
+    /* background: transparent; */
     border: none;
     outline: none;
     padding: 0px; 
     margin: 0px;
     width: 100px;
-    text-align: right; */
+    text-align: right;
 }
 
 .warning {
@@ -153,35 +157,41 @@
 .left {
 grid-column: 1/4;
 
+
    
 }
 
 .middle {
     grid-column: 4/6;
+
 }
 
 .right {
     grid-column: 6/9;
+
 }
 
 .hideSelect {
     visibility: hidden;
 }
 
+
 .song {
-    margin: 0 auto;
-    width: 50%;
+    text-align: center;
+    font-size: 1.2em;
 }
 
 .songAns {
     outline: none;
     border: none;
+    border-radius: 0px;
     border-bottom: solid black 1px;
     background: transparent;
     font-style: italic;
     font-family: var(--mainFont);
     text-align: center;
     color: grey;
+    width: 30%;
 }
 
 .diet {
@@ -190,12 +200,26 @@ grid-column: 1/4;
     font-style: italic;
     font-family: var(--mainFont);
     text-align: center;
-    margin: 15px 0px 10px 0px;
+    margin: 20px 0px 10px 0px;
     color: grey;
     resize: none;
+    font-size: 1.2em;
 }
 
+
+.diet:focus::-webkit-input-placeholder  {color:transparent;}
+.diet:focus::-moz-placeholder   {color:transparent;}
+.diet-moz-placeholder   {color:transparent;}
+.songAns:focus::-webkit-input-placeholder  {color:transparent;}
+.songAns:focus::-moz-placeholder   {color:transparent;}
+.songAns-moz-placeholder   {color:transparent;}
+
+
 @media (min-width: 768px) {
+    .visible {
+        font-size: 1.2em;
+    }
+    
     .notVisible {
         transition: all 0.3s ease-in-out;
     } 
@@ -203,7 +227,6 @@ grid-column: 1/4;
     .formElements > * {
         margin: 0px 50px 0px 50px;
     }
-
 
 
 } 
