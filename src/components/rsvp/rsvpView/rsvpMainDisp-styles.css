@@ -15,11 +15,11 @@
     right: 0%;
     bottom: 0%;
     z-index: 2;
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
-    background-color: pink;
-    color: black;
+    background-color: #3F51B5;
+    color: white;
     margin: 20px;
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background-color: pink;
+    background-color: #458ccd;
     color: black;
     margin: 20px;
     display: flex;
@@ -70,12 +70,12 @@
     font-size: 0.8em;
     box-shadow: 0px 1px 3px #2F4F4F;
     
-    transition: border-radius 0.3s ease-in-out, 
-                background-color 0.2s ease-in-out, 
-                bottom 0.2s ease-in-out, 
-                right 0.2s ease-in-out, 
-                height 0.3s ease-in-out, 
-                width 0.3s ease-in-out,
+    transition: border-radius 0.5s ease-in-out, 
+                background-color 0.5s ease-in-out, 
+                bottom 0.5s ease-in-out, 
+                right 0.5s ease-in-out, 
+                height 0.5s ease-in-out, 
+                width 0.5s ease-in-out,
                 opacity 1s ease-in-out,
                 visibility 1s ease-in-out;
 
@@ -83,6 +83,7 @@
     opacity: 0;
     
 }
+
 
 .close {
     position: absolute;
@@ -97,6 +98,7 @@
     justify-content: center;;
     transition:  all 0.2s ease-in;
     font-size: 1.3em;
+    color: black;
 }
 
 .center {
@@ -109,6 +111,7 @@
     padding: 15%;
     opacity: 0;
     transition: opacity 2s;
+    font-size: 1.2em;
 }
 
 .iconVisible {
@@ -121,12 +124,12 @@
     } 
 
     .rsvpComplete {
-    transition: border-radius 0.3s ease-in-out, 
-    background-color 0.2s ease-in-out, 
-    bottom 0.2s ease-in-out, 
-    right 0.2s ease-in-out, 
-    height 0.3s ease-in-out, 
-    width 0.3s ease-in-out,
+    transition: border-radius 0.5s ease-in-out, 
+    background-color 0.5s ease-in-out, 
+    bottom 0.5s ease-in-out, 
+    right 0.5s ease-in-out, 
+    height 0.5s ease-in-out, 
+    width 0.5s ease-in-out,
     opacity 1s ease-in-out,
     visibility 1s ease-in-out;
     }

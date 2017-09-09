@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './rsvpForm-styles.css';
-import data from '../guest-data.js';
+import data from './guest-data.js';
 import FormData from './FormData.js';
 import Button from '../../common/Button.js'
 class RsvpForm extends React.Component {
@@ -13,6 +13,7 @@ class RsvpForm extends React.Component {
             guest: [],
             submit: null,
             selected: 'meal choice',
+            aa: false,
         }
     }
 
@@ -32,7 +33,9 @@ class RsvpForm extends React.Component {
     handleChange = (event) => {
         var name = event.target.name;
         var value = event.target.value;
-        var type = event.target.type;
+        var type = event.target.type;      
+        
+        console.log(value);
 
        if (name === 'dietry' || name === 'song') {
             this.setState((prevState) => {
@@ -92,6 +95,7 @@ class RsvpForm extends React.Component {
     }
 
     render() {    
+        console.log(this.state.guest)
         return (
             <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
                 <p className={css.heading}> Will you attend? </p>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '../../common/Button.js'
-class RsvpForm extends React.Component {
+import css from './complete-styles.css';
+
+class RsvpComplete extends React.Component {
 
     constructor(props) {
         super(props);
@@ -9,13 +11,13 @@ class RsvpForm extends React.Component {
 
     render() {    
         return (
-           <div>
-           Thankyou!
+           <div className={css.completeMessage}>
+           <p>Thankyou!</p>
            </div>
         )
     }
 }
 
-export default RsvpForm;
+export default RsvpComplete;
 
 

@@ -1,9 +1,10 @@
 import React from 'react';
-import css from './rsvp-styles.css';
+import css from './rsvpMainDisp-styles.css';
 import RsvpForm from '../rsvpForm/RsvpForm.js';
 import RsvpComplete from '../rsvpComplete/RsvpComplete.js'
+import Material from '../rsvpComplete/Material.js';
 
-class Rsvp extends React.Component {
+class RsvpMainDisp extends React.Component {
 
     constructor(props){
         super(props);
@@ -36,7 +37,7 @@ class Rsvp extends React.Component {
         final === 'final' ?
 
         this.setState(prevState=>({
-            rsvp: true
+            complete: true
         }))
 
         : 
@@ -45,6 +46,7 @@ class Rsvp extends React.Component {
             formVisible: !this.state.formVisible, 
             rsvpFormVisible: false,
             iconVisible: true,
+            complete: false,
         }))
     }
 
@@ -58,12 +60,21 @@ class Rsvp extends React.Component {
     }
 
     completeForm = () => {
-        setTimeout(() =>{ this.closeForm() }, 3000);
         
+        setTimeout(() =>{ 
+            
+            this.setState(prevState=>({
+                formVisible: false, 
+                rsvpFormVisible: false,
+                iconVisible: false,
+                complete: false,
+                rsvp: true,
+            }))
+         }, 2000);
 
-        return (
-        <RsvpComplete />
-        )
+         return (
+            <RsvpComplete />
+            )
     }
 
     render () {
@@ -75,13 +86,14 @@ class Rsvp extends React.Component {
         
         return (
             <div>
+                {this.state.rsvp ? <Material /> : null}
                 <div className={this.state.formVisible && css.onShade}></div>
-                <div className={[this.state.formVisible && css.formOpen, css.button].join(' ')}  onClick={this.handleClick}>
+                <div className={[this.state.formVisible && css.formOpen, this.state.rsvp && css.rsvpComplete, css.button].join(' ')}  onClick={this.handleClick}>
                     {
-                        this.state.formVisible ? this.formVisible() : <div className={[this.state.iconVisible && css.iconVisible, css.center].join(' ')}>RSVP <i  className='fa fa-envelope-o' aria-hidden='true'/></div>
+                        this.state.formVisible ? this.formVisible() : <div className={[this.state.iconVisible && css.iconVisible, css.center].join(' ')}> <i  className='fa fa-envelope-o' aria-hidden='true'/></div>
                     }
                     {
-                        this.state.rsvp ? this.completeForm() :    
+                        this.state.complete ? this.completeForm() :    
                         <RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm}/>
                     }
                 </div>          
@@ -91,4 +103,4 @@ class Rsvp extends React.Component {
     }
 }
 
-export default Rsvp;
+export default RsvpMainDisp;

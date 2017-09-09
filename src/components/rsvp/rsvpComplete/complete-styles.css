@@ -1,0 +1,20 @@
+.position {
+    position: fixed;
+    right: 0%;
+    bottom: 0%;
+    z-index: 2;
+    height: 50px;
+    width: 50px;
+    margin: 20px;
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 3s ease-in, opacity 3s ease-in;
+}
+
+.completeMessage {
+    color: black;
+}
