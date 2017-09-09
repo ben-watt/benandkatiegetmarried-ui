@@ -102,8 +102,9 @@ class LoginPage extends React.Component {
     }
 
     handleResponse = async (res) => {
-        setInterval(() => {
+        this.interval = setInterval(() => {
             if(this.loaderCompleted) {
+                clearInterval(this.interval);
                 this.setState({ fadeOut: true });
                 setTimeout(this.props.login, 1000);
             }
