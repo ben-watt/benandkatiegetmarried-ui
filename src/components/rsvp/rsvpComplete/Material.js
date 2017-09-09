@@ -5,7 +5,6 @@ import { CircularProgress } from 'material-ui/Progress';
 import green from 'material-ui/colors/green';
 import Button from 'material-ui/Button';
 import CheckIcon from 'material-ui-icons/Check';
-import SaveIcon from 'material-ui-icons/Save';
 import css from './complete-styles.css';
 
 const styles = {
@@ -33,7 +32,7 @@ class CircularFab extends React.Component {
     visibility: false,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.handleButtonClick();
   }
 
@@ -76,7 +75,7 @@ class CircularFab extends React.Component {
     return (
       <div className={[this.state.visibility && css.hidden, css.position].join(' ')}>
         <Button fab color="primary" className={buttonClass} >
-          {success ? <CheckIcon /> :  <i  className='fa fa-envelope-o' aria-hidden='true'/>}
+          {success ? <CheckIcon /> :  <i  className={['fa fa-envelope-o', css.icon].join(' ')} aria-hidden='true'/>}
         </Button>
         {loading && <CircularProgress size={60} className={classes.progress} />}
       </div>

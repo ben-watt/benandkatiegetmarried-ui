@@ -2,7 +2,7 @@ import React from 'react';
 import css from './rsvpForm-styles.css';
 import data from './guest-data.js';
 import FormData from './FormData.js';
-import Button from '../../common/Button.js'
+
 class RsvpForm extends React.Component {
 
     constructor(props) {
@@ -18,10 +18,9 @@ class RsvpForm extends React.Component {
     }
 
     componentDidMount = () => {
-       
         const guest = [];
         data.names.map(val => {
-            guest.push({name: val, going: null, meal: null})
+           return guest.push({name: val, going: null, meal: null})
         })
         guest.push({dietry: 'none', song: 'none'})
 
@@ -35,16 +34,13 @@ class RsvpForm extends React.Component {
         var value = event.target.value;
         var type = event.target.type;      
         
-        console.log(value);
-
-       if (name === 'dietry' || name === 'song') {
+        if (name === 'dietry' || name === 'song') {
             this.setState((prevState) => {
                 var newArr = prevState.guest;
-                
                 newArr[name] = value 
                 return {guest: newArr}
             })
-       }
+        }
         else {
             var index = this.state.guest.findIndex(val => {
             return val.name === name 
@@ -52,34 +48,31 @@ class RsvpForm extends React.Component {
             
             this.setState((prevState) => {
                 var newArr = prevState.guest;
-                type === 'radio' ?
-                newArr[index].going = value 
-                :newArr[index].meal = value
-                
+                value === 'no' ? newArr[index].meal = false : newArr[index].meal = null; 
+                type === 'radio' ? newArr[index].going = value :newArr[index].meal = value;
                 return {guest: newArr}
             })
         } 
     }
 
     handleSubmit = (event) => {
-        
-           var submit = 0;
-            this.state.guest.map(val => {
-                if (Object.values(val).indexOf(null) > -1) {
-                    this.setState((prevState) => {
-                        return {submit: false}
-                    })
-                    submit++;
-                }      
+        var submit = 0;
+        this.state.guest.map(val => {
+            if (Object.values(val).indexOf(null) > -1) {
+                this.setState((prevState) => {
+                    return {submit: false}
+                })
+                submit++;
+            }     
+            return true; 
         })
        
         if (submit === 0) {
             this.setState((prevState) => {
                 return {submit: true}
             })
-            this.props.closeForm('final');
+            this.props.closeForm('validate', this.state.guest);
         }
-        
         event.preventDefault();
     }
 
@@ -94,8 +87,8 @@ class RsvpForm extends React.Component {
                 />)
     }
 
-    render() {    
-        console.log(this.state.guest)
+    render() {  
+        console.log(this.state.guest);  
         return (
             <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
                 <p className={css.heading}> Will you attend? </p>

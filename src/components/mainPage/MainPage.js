@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/KeyPeople';

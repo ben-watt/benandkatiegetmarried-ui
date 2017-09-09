@@ -1,5 +1,5 @@
 import React from 'react';
-import NativeListener from 'react-native-listener';
+// import NativeListener from 'react-native-listener';
 
 import Button from '../common/Button'
 

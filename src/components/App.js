@@ -1,7 +1,7 @@
 import React from 'react';  
 import MainPage from './mainPage/MainPage';
 import LoginPage from './loginPage/LoginPage';
-import api from '../api/mockapi';
+// import api from '../api/mockapi';
 
 class App extends React.Component {
     constructor(props){
