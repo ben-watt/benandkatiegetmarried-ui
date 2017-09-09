@@ -1,54 +1,36 @@
 import React from 'react';
-import NativeListener from 'react-native-listener';
 
-import Button from '../common/Button'
+import CommentList from './commentList/CommentList';
+import CommentInput from './commentInput/CommentInput';
 
 import css from './commentPage-styles.css';
+import Comment from '../../domainObjects/comment.js'
 
 class CommentPage extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            activeInput: false,
             comments: []
         }
     }
 
-    toggleInput = (val, e) => { 
-        e.stopPropagation();
+    createComment = (text, attribution) => {
+        const newComment = [new Comment(text, attribution)];
         this.setState(prev => ({
-            activeInput: val 
+            comments : prev.comments.concat(newComment)
         }));
-    }  
-    
-    componentDidUpdate = () => {
-        this.state.activeInput && this.input.focus();
     }
 
     render(){
-        const activeInput = this.state.activeInput;
-        const inputClasses = activeInput ? [css.inputComment, css.active] : [css.inputComment];
-        const input = activeInput && <div className={css.input} ref={(i) => this.input = i} contentEditable></div>
+        const activeInput = this.state.activeInput;                                            
 
         return (        
-            <div className={css.container} onClick={(e) => this.toggleInput(false, e)}>
+            <div className={css.container}>
                 <div className={css.innerContainer}>        
-                <p className={css.header}>Comments</p>
-                        <div className={inputClasses.join(' ')} onClick={(e) => this.toggleInput(true, e)}>
-                            <div className={css.textarea}>
-                                <p>Leave a note</p>
-                                {input}
-                            </div>
-                            <Button className={css.post} text="Post" />
-                        </div>
-                    <div className={css.comment}>
-                        <p>This is a really really really long comment. It's got lots of nice things
-                        to say about us in it. Something funny, sweet etc. WAHOOOOOOOOOOO WEDDING!</p>
-                    </div>
-                    <div className={css.comment}>
-                        <p>This is a really really really long comment. It's got lots of nice things
-                        to say about us in it. Something funny, sweet etc. WAHOOOOOOOOOOO WEDDING!</p>
-                    </div>
+                    <p className={css.header}>Guest Book</p>
+                    <CommentInput defaultState={false} 
+                        post={this.createComment}/>
+                    <CommentList comments={this.state.comments} />
                 </div>
             </div>
         )
