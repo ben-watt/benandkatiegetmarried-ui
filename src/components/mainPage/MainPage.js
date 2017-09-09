@@ -1,10 +1,9 @@
 import React from 'react';
-import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/KeyPeople';
 import Itinerary from '../itinerary/Itinerary';
-import Rsvp from '../rsvp/rsvpView/Rsvp';
+import Rsvp from '../rsvp/rsvpView/RsvpMainDisp';
 import CommentPage from '../commentPage/CommentPage';
 
 import css from './mainPage-styles.css';
