@@ -5,6 +5,7 @@ import KeyPeople from '../keyPeople/KeyPeople';
 import Itinerary from '../itinerary/Itinerary';
 import Rsvp from '../rsvp/rsvpView/RsvpMainDisp';
 import CommentPage from '../commentPage/CommentPage';
+import Accommodations from '../accommodations/accommodations.js';
 
 import css from './mainPage-styles.css';
 
@@ -19,6 +20,7 @@ const MainPage = (props) => {
                 <div className={css.container}>             
                     <Header/>
                     <WhenWhere />
+                    <Accommodations />
                     <KeyPeople />
                     <Itinerary />
                     <section id='main' className={css.section70}>Main</section>

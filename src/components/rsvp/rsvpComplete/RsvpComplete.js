@@ -6,7 +6,7 @@ class RsvpComplete extends React.Component {
 
     render() {    
         return (
-           <div className={css.completeMessage}>
+           <div>
            <p className={css.completeMessage}> Thankyou for your RSVP!</p>
            <p className={css.image}></p>
            </div>

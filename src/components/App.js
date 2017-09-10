@@ -11,15 +11,19 @@ class App extends React.Component {
         }
     }  
 
-    componentDidMount = async () => {
-        // try{
-        //     const res = await api.eventDetails();
-        //     if(res.status === 200)
-        //         this.login(true);
-        // } catch(err) {
-        //     this.login(false);
-        // }
-    }
+    // componentDidMount = async () => {
+    //     try{
+    //         const eventPromise =  api.eventDetails();
+    //         const guestPromise = api.getGuests();
+
+    //        const res = await Promise.all([eventPromise, guestPromise]);
+
+    //         if(res[0].status === 200 || res[1].status === 200)
+    //             this.login(true);
+    //     } catch(err) {
+    //         this.login(false);
+    //     }
+    // }
 
     login = (state) => {
         this.setState({ loggedIn: state});

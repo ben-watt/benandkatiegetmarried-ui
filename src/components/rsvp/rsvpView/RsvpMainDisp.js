@@ -32,9 +32,11 @@ class RsvpMainDisp extends React.Component {
     }
 
     closeForm = (validate, final) => {
+        console.log(final);
         validate === 'validate' 
         ?
-            this.setState(prevState=>{
+            
+        this.setState(prevState=>{
                 return {complete: true}
             })
         : 

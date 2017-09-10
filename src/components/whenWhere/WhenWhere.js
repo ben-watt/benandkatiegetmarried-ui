@@ -28,7 +28,7 @@ class WhenWhere extends React.Component {
     }
 
     showDirections() {
-        window.open("https://goo.gl/maps/yHsZ5JCkkrP2", '_blank');
+        window.open("https://www.google.co.uk/maps/dir//''/@53.5183175,-2.4592602,12.59z/data=!4m8!4m7!1m0!1m5!1m1!1s0x0:0x63e9bf1416b0ca94!2m2!1d-2.390937!2d53.506292", '_blank');
     }
 
     render() {

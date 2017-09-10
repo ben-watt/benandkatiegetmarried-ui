@@ -11,7 +11,7 @@ const api = (function() {
 
     obj.guestLogin = async function (securityCode, password, rememberMe) {
 
-        try {
+  
 
             const res = await api.post('/guest-login', {
                 SecurityCode: securityCode,
@@ -23,9 +23,12 @@ const api = (function() {
 
             return res;
 
-        } catch(err){
-            console.log(err);
-        }
+    }
+
+    obj.getGuests = async function () {
+        const eventId = localStorage.getItem('eventId');
+        const res = await api.get('/guest/'+ eventId + '/guests-on-invite')
+        return res;
     }
 
     obj.eventDetails = async function(){
@@ -34,9 +37,17 @@ const api = (function() {
         return res;
     }
 
+    obj.sendRsvp = async function () {
+        const eventId = localStorage.getItem("eventId");
+        const res = await api.post('/guest/' + eventId)
+        return res;
+    }
+
     return {
         guestLogin: obj.guestLogin,
-        eventDetails: obj.eventDetails
+        eventDetails: obj.eventDetails,
+        sendRsvp: obj.Rsvp,
+        getGuests: obj.getGuests
     }
 
 })();

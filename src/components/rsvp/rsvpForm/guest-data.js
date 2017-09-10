@@ -3,6 +3,5 @@ module.exports = {
         'Amanda',
         'kobi',
         'Nadav',
-        'Bibi'
     ]
 };

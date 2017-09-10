@@ -35,12 +35,19 @@ class RsvpForm extends React.Component {
         var type = event.target.type;      
         
         if (name === 'dietry' || name === 'song') {
+            var index = this.state.guest.findIndex(val => {
+                if (name in val) {
+                    return val;
+                }
+            })
             this.setState((prevState) => {
                 var newArr = prevState.guest;
-                newArr[name] = value 
+                
+                newArr[index][name] = value 
                 return {guest: newArr}
             })
         }
+
         else {
             var index = this.state.guest.findIndex(val => {
             return val.name === name 
@@ -88,7 +95,6 @@ class RsvpForm extends React.Component {
     }
 
     render() {  
-        console.log(this.state.guest);  
         return (
             <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
                 <p className={css.heading}> Will you attend? </p>
