@@ -47,6 +47,11 @@
     overflow: scroll;
     font-size: 1em;
 }
+.inner {
+    grid-column: 1/8;
+}
+
+
 
 .heading {
     grid-column: 1/8;
@@ -74,8 +79,8 @@
     text-align: center;
     width: 100%;
     margin: 0px;
-
 }
+
 
 .submit {
     background-color: #ADCCC2; 

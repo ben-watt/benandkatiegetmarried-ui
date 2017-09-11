@@ -53,6 +53,23 @@
     transform: translate(50%, 50%);
 }
 
+
+.arrow {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    z-index: 2;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    transition:  all 0.2s ease-in;
+    font-size: 1.3em;
+    color: black;
+
+}
 .rsvpComplete {
     position: fixed;
     right: 0%;
@@ -117,6 +134,8 @@
 .iconVisible {
     opacity: 1;
 }
+
+
 
 @media (min-width: 568px) {
     .button {

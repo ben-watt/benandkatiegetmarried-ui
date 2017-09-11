@@ -21,12 +21,11 @@ const MainPage = (props) => {
                     <Header/>
                     <WhenWhere />
                     <Accommodations />
-                    <KeyPeople />
-                    <Itinerary />
-                    <section id='main' className={css.section70}>Main</section>
-                    <div id='map' className={css.section100}>
+                    <div id='map' className={css.map}>
                         <MapContainer/>
-                    </div>            
+                    </div>     
+                    <KeyPeople />
+                    <Itinerary />       
                     <CommentPage />            
                 </div>
             </div>

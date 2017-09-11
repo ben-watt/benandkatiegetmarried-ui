@@ -7,6 +7,10 @@ const navItems = [{
     icon: 'fa fa-compass',
     anchor: '#where'
 },{
+    name: 'Accommodation',
+    icon: 'fa fa-bed',
+    anchor: '#accommodations',
+},{
     name: 'People',
     icon: 'fa fa-users',
     anchor: '#people'
@@ -26,6 +30,6 @@ const navItems = [{
     name: 'Map',
     icon: 'fa fa-map-marker',
     anchor: '#map',
-}]
+},]
 
 export default navItems;

@@ -5,7 +5,7 @@
     background-color: var(--lightGold);
     height: auto;
     font-size: 1rem;
-    padding-bottom: 0px;
+    padding-bottom: 20px;
 }
 
 
@@ -38,6 +38,8 @@
     height: 100%;
     margin: 0 auto;
     background-color: var(--offWhite);
+    position: relative;
+    box-shadow:  0 4px 2px -2px grey;
 }
 .accom0 {
     grid-column: 1;
@@ -55,6 +57,21 @@
     grid-column: 2; 
 }
 
+.name {
+height: 15%;
+font-size: 1.2em;
+/* font-weight: bold; */
+font-family: var(--handwritingFont);
+}
+
+.distance {
+    margin: 0;
+    color: var(--goldFont);
+}
+
+.miles {
+    font-size: 0.8em;
+}
 .image {
     position: absolute;
     margin: auto;
@@ -69,4 +86,11 @@
 }
 .button {
     width: 80px;
+}
+
+
+@media (min-width: 768px) {
+    .name {
+       font-size: 1.6em;
+    } 
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import css from './rsvpForm-styles.css';
 import data from './guest-data.js';
 import FormData from './FormData.js';
+import scroll from '../scroll.js';
 
 class RsvpForm extends React.Component {
 
@@ -13,10 +14,15 @@ class RsvpForm extends React.Component {
             guest: [],
             submit: null,
             selected: 'meal choice',
-            aa: false,
+            scrollArrow: false,
         }
     }
+    
+    componentDidUpdate = () => {
+        this.cont.addEventListener("transitionend", this.scrollArrow) 
+    }
 
+    
     componentDidMount = () => {
         const guest = [];
         data.names.map(val => {
@@ -28,6 +34,13 @@ class RsvpForm extends React.Component {
             guest: guest
         })
     }
+
+    scrollArrow = () => {
+        if (this.inner.clientHeight > this.cont.clientHeight) {
+            this.props.scrollArrow();  
+            this.props.scroll('yo');
+            }
+        }
 
     handleChange = (event) => {
         var name = event.target.name;
@@ -94,9 +107,11 @@ class RsvpForm extends React.Component {
                 />)
     }
 
+
     render() {  
         return (
-            <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
+            <div ref={(node) => {this.cont = node}} className={[css.notVisible, this.props.visibility && css.visible].join(' ')}>
+                <div ref={(node) => {this.inner = node}} className={css.inner}>
                 <p className={css.heading}> Will you attend? </p>
                 <p className={css.subHeading}>Please sign your RSVP</p>
                 
@@ -117,8 +132,8 @@ class RsvpForm extends React.Component {
                         <input className={css.songAns} type="text" placeholder="optional" name="song" onChange={this.handleChange}/>
                     </p>
                     <input className={css.submit} type="submit" value="SIGN RSVP" />
-
-                </form>            
+                </form>  
+                </div>
             </div>
         )
     }

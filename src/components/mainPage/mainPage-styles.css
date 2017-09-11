@@ -3,13 +3,13 @@
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr); 
-    grid-template-rows: auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto 60vh auto auto auto;
     background-color: var(--offWhite);
     width: 100%;
     height: 100%;
 }
 
-.section100 {
+.map {
     background-color: var(--offWhite);
     color: var(--gold);
     font-weight: bold;
@@ -18,15 +18,6 @@
     height: 100%;
 }
 
-.section70 {
-    background-color: var(--lightGold);
-    color: var(--goldFont);
-    font-weight: bold;
-    font-size: 1.5em;
-    grid-column: 2 / 12;
-    height: 70%;
-    align-self: center;
-}
 
 ::selection {
     background-color: var(--buttonColor)
