@@ -53,9 +53,8 @@
     transform: translate(50%, 50%);
 }
 
-
 .arrow {
-    position: absolute;
+    position: fixed;
     right: 0%;
     bottom: 0%;
     z-index: 2;
@@ -66,10 +65,16 @@
     align-items: center;
     justify-content: center;;
     transition:  all 0.2s ease-in;
-    font-size: 1.3em;
+    font-size: 1.6em;
     color: black;
+    /* border: solid black 1px;
+    border-radius: 50%; */
+    margin: 10px;
+    z-index: 5;
+    font-weight: bold;
 
 }
+
 .rsvpComplete {
     position: fixed;
     right: 0%;
@@ -114,8 +119,11 @@
     align-items: center;
     justify-content: center;;
     transition:  all 0.2s ease-in;
-    font-size: 1.3em;
+    font-size: 1.6em;
     color: black;
+    margin: 10px;
+    font-weight: lighter;
+    
 }
 
 .center {

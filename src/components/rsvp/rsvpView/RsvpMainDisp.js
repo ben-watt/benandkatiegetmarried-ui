@@ -9,7 +9,7 @@ class RsvpMainDisp extends React.Component {
 
     constructor(props){
         super(props);
-        this.scroll.bind(this);
+        this.updateScrollState.bind(this);
         this.state = {
             formVisible: false,
             rsvpFormVisible: false,
@@ -17,9 +17,21 @@ class RsvpMainDisp extends React.Component {
             rsvp: false,
             complete: false,
             style: {},
-            height: 0,
+            arrow: false,
+            offsets: {},
         }
     }    
+
+    updateScrollState = (container, inner) => {
+        this.setState((prevState) => ({
+            arrow: true,
+            offsets: {container: container, inner: inner }
+        }))
+    }
+
+    scrollDown = () => {
+        scroll(this.state.offsets.container, this.state.offsets.inner);
+    }
 
     handleClick = () => {
         return this.state.formVisible ? null : this.openForm();
@@ -40,7 +52,6 @@ class RsvpMainDisp extends React.Component {
     }
 
     closeForm = (validate, final) => {
-        console.log(final);
         validate === 'validate' 
         ?
             
@@ -63,12 +74,10 @@ class RsvpMainDisp extends React.Component {
                     <div>
                         <div onClick={this.closeForm}>
                             {!this.state.complete 
-                            ? <i className={['fa fa-times', css.close].join(' ')}aria-hidden="true" />
-                        
+                            ? <i className={['fa fa-times', css.close].join(' ')}aria-hidden="true" />   
                             : <span />}
-
                         </div>
-                        <div onClick={this.scroll}> {this.state.scrollArrow ? <i className={[css.arrow, "fa fa-arrow-down"].join(' ')} aria-hidden="true"></i> : null}</div>
+                        {this.state.arrow && this.state.formVisible ? <div onClick={this.scrollDown}> <i className={[css.arrow, "fa fa-angle-double-down"].join(' ')} aria-hidden="true"></i> </div> : null}
                     </div>
             )
         }
@@ -80,10 +89,6 @@ class RsvpMainDisp extends React.Component {
         }
     }
 
-    scroll = (val) => {
-        console.log(val)
-        scroll(val);
-    }
     completeForm = () => {
         setTimeout(() =>{ 
             this.setState(prevState=>({
@@ -109,9 +114,9 @@ class RsvpMainDisp extends React.Component {
             <div >
                 {this.state.rsvp ? <Material /> : null}
                 <div className={this.state.formVisible && css.onShade}></div>
-                <div ref={(node) => {this.blob = node}} className={[this.state.formVisible && css.formOpen, this.state.rsvp && css.rsvpComplete, css.button].join(' ')}  onClick={this.handleClick}>
+                <div className={[this.state.formVisible && css.formOpen, this.state.rsvp && css.rsvpComplete, css.button].join(' ')}  onClick={this.handleClick}>
                     {this.state.formVisible ? this.formVisible(true) : this.formVisible(false)}
-                    {this.state.complete ? this.completeForm() :<RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm} scrollArrow={this.displayScroll} scroll={this.scroll}/>}
+                    {this.state.complete ? this.completeForm() :<RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm} updateScrollState={this.updateScrollState}/>}
                 </div>          
             </div>
         )

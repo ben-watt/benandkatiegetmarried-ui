@@ -8,6 +8,7 @@ let scrollTo = (reference) => {
         }
     };
     var node = reference;
+
     var nodeTop = node.offsetHeight;
     var startTime = Date.now();
     var timer = null;

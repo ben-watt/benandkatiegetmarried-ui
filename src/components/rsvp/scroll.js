@@ -1,4 +1,4 @@
-let scrollTo = (reference) => {
+let scrollTo = (container, inner) => {
 	var settings = {
         duration: 1000,
         easing: {
@@ -9,27 +9,28 @@ let scrollTo = (reference) => {
     };
 
     
-    var topPos = reference.offsetTop;
 
 
-    var node = reference;
-    var nodeTop = node.offsetHeight;
+    var nodeTop = inner.offsetHeight;
 
-    console.log(nodeTop);
+
     var startTime = Date.now();
     var timer = null;
 
+
     function step () {
+    
         var yScroll;
         var elapsed = Date.now() - startTime;
 
         if (elapsed > settings.duration) {
+
             clearTimeout(timer);
         }
 
         else {
             yScroll = settings.easing.outQuint(elapsed, nodeTop, settings.duration);
-            window.scrollTop -=10;
+            container.scrollTop += yScroll;
             timer = setTimeout(step, 10);     
         }
     }
