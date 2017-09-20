@@ -9,7 +9,7 @@ class Accommodations extends React.Component  {
         return (
             <div key={i} className={[data.accommodations[i].class, css.accom].join(' ')}>
                     <p className={css.name}>{data.accommodations[i].name}</p>
-                    <p className={css.distance} >Distance from venue:</p><p className={[css.distance, css.miles].join(' ')}>  {data.accommodations[i].distance}</p>
+                    <p className={[css.distance, css.miles].join(' ')}>  {data.accommodations[i].distance} from venue</p>
                     <Button text={'Book'} onClick={()=>{this.handleClick(i)}} className={css.button}/>
             </div>    
         )
@@ -23,7 +23,7 @@ class Accommodations extends React.Component  {
     render () {
         return (
             <div id='accommodations' className={css.container}>
-            <p className={css.heading}>Accommodations</p>
+            <p className={css.heading}>Accommodation</p>
                 <div className={css.innerCont}>
                     {data.accommodations.map(this.populate)}     
                     <div className={css.image}></div>

@@ -29,7 +29,7 @@
     text-align: center;
     font-family: var(--mainFont);
     color:  grey;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 
@@ -60,7 +60,6 @@
 .name {
 height: 15%;
 font-size: 1.2em;
-/* font-weight: bold; */
 font-family: var(--handwritingFont);
 }
 
@@ -86,6 +85,8 @@ font-family: var(--handwritingFont);
 }
 .button {
     width: 80px;
+  padding: 2px;
+  font-size: 0.5em;
 }
 
 
@@ -93,4 +94,14 @@ font-family: var(--handwritingFont);
     .name {
        font-size: 1.6em;
     } 
+
+    .distance {
+        font-size: 1.2em;
+    }
+
+    .button {
+        width: 80px;
+      padding: 7px;
+      font-size: 0.7rem;
+    }
 }

@@ -120,7 +120,8 @@
 .samPic {
     grid-column: 1/4;
     grid-row: 9;
-    background-image:  url('./images/sam3.png');
+    background-image:  url('./images/sam4.png');
+    background-position: -10% -10%;
 }
 
 .samRow {
