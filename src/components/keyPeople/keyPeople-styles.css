@@ -18,7 +18,7 @@
     grid-column: 1/6;
     font-family: var(--handwritingFont);
     text-align: center;
-    font-size: 2.4em;
+    font-size: var(--headingSize);
     margin: 30px 0px 0px 0px;
 }
 
@@ -26,7 +26,7 @@
     grid-column: 1/6;
     font-family: var(--handwritingFont);
     text-align: center;
-    font-size: 1.8em;
+    font-size: var(--subHeadingSize);
     margin: 15px;
     color: var(--goldFont);
 }
@@ -43,6 +43,7 @@
     margin: 10px 5px 40px 5px;
     font-family: var(--mainFont);
     color: grey;
+    font-size: var(--textSize);
 }
 
 .davidPic {
@@ -148,11 +149,4 @@
         height: 150px;
     }
 
-    .head {
-        font-size: 4em;
-    }
-
-    .subhead {
-        font-size: 2.5em;
-    }
 }

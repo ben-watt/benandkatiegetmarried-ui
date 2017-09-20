@@ -9,7 +9,7 @@ class Accommodations extends React.Component  {
         return (
             <div key={i} className={[data.accommodations[i].class, css.accom].join(' ')}>
                     <p className={css.name}>{data.accommodations[i].name}</p>
-                    <p className={[css.distance, css.miles].join(' ')}>  {data.accommodations[i].distance} from venue</p>
+                    <p className={[css.distance, css.miles].join(' ')}>  {data.accommodations[i].distance} </p>
                     <Button text={'Book'} onClick={()=>{this.handleClick(i)}} className={css.button}/>
             </div>    
         )

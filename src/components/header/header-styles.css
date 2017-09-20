@@ -12,29 +12,29 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 16px; 
+    font-size:1rem; 
     position: relative;
 }
 
 .title {
     font-family: var(--handwritingFont);
-    font-size: 3em;
+    font-size: var(--headingSize);
     color: black ; 
     opacity: 0.7;
-    margin: 0px;
-    margin-top: 90px;
+
+    margin: 90px 0px 10px 0px;
     text-align: center;
 };
 
 @media (min-width: 768px) {
     .title {
-        font-size: 4em;
+        font-size: var(--headingSize);
     }
 }
 
 .date {
     font-family: var(--mainFont);
-    font-size: 1em;
+    font-size: var(--subHeadingSize);
     color: black ; 
     margin: 0px;
     text-align: center;
@@ -42,13 +42,13 @@
 
 @media (min-width: 768px) {
     .date {
-        font-size: 1.5em;
+        font-size: var(--subHeadingSize);
     }
 }
 
 .enterDiv {
     font-family: var(--mainFont);
-    font-size: 1em;
+    font-size: var(--subSubHeadingSize);
     color: black ; 
     position: absolute;
     left: 0;
@@ -67,7 +67,7 @@
 
 @media (min-width: 768px) {
     .enterDiv {
-        font-size: 1.5em;
+        font-size: var(--subSubHeadingSize);
     }
 }
 
