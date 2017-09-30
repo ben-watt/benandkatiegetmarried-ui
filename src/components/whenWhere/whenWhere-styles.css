@@ -72,10 +72,11 @@
 }
 
 .invite {
-    grid-column: 2/5;
-    font-size: var(--subHeadingSize);
+    grid-column: 1/6;
+    font-size: var(--subSubHeadingSize);
     font-family: var(--mainFont);
-    margin-bottom: 15px;
+    margin: 15px 0px 15px 0px;
+    width: 90%;
 }
 
 .details {
@@ -146,13 +147,11 @@ hr {
 
     .statement {
         grid-column: 1/8; 
-        font-size: 3em;
     }
 
     .invite {
         grid-column: 2/7;
         margin-bottom: 40px;
-        font-size: 1.6em;
     }
 
      .ipadWhen {

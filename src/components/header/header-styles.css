@@ -34,7 +34,7 @@
 
 .date {
     font-family: var(--mainFont);
-    font-size: var(--subHeadingSize);
+    font-size: var(--textSize);
     color: black ; 
     margin: 0px;
     text-align: center;
@@ -42,13 +42,13 @@
 
 @media (min-width: 768px) {
     .date {
-        font-size: var(--subHeadingSize);
+        font-size: var(--textSize);
     }
 }
 
 .enterDiv {
     font-family: var(--mainFont);
-    font-size: var(--subSubHeadingSize);
+    font-size: var(--textSize);
     color: black ; 
     position: absolute;
     left: 0;

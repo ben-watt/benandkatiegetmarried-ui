@@ -110,7 +110,7 @@
 .catrionaPic {
     grid-column: 3;
     grid-row: 6;
-    background-image:  url('./images/catriona2.png');
+    background-image:  url('./images/catriona.png');        
 }
 
 .catrionaRow {
