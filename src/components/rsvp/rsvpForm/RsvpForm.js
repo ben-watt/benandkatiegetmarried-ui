@@ -16,9 +16,8 @@ class RsvpForm extends React.Component {
             scrollArrow: false,
         }
     }
-    
+
     componentDidMount = () => {
-        setTimeout(() => { this.scrollDown(); }, 3000);
         const guest = [];
         data.names.map(val => {
            return guest.push({name: val, going: null, meal: null})
@@ -30,41 +29,52 @@ class RsvpForm extends React.Component {
         })
     }
 
+    componentWillReceiveProps = (nextProps) => {
+         if (nextProps.visibility === true && this.props.complete === false) {
+            this.timer = setTimeout(() => { this.scrollDown(); }, 2000);
+         }
 
-    scrollDown = () => {
-       
-            if (this.inner.offsetHeight > this.cont.offsetHeight) {
-                console.log(this.state.submit);
-                    var container = this.cont;
-                    var inner = this.input;
-                    this.props.updateScrollState(container, inner);
-            }
-        
+         if (nextProps.arrow === true) {
+            clearTimeout(this.timer);
+         }
+     }
+
+    componentWillUnmount() {
+        clearTimeout(this.timer);
+      }
+
+    scrollDown = () => {    
+        if (this.inner.offsetHeight > this.cont.offsetHeight) {
+                var container = this.cont;
+                var inner = this.input;
+                this.props.updateScrollState(container, inner);
+        }
     }
-     
 
     handleChange = (event) => {
         var name = event.target.name;
         var value = event.target.value;
         var type = event.target.type; 
-        var index;     
+        var index;    
+
         
+        //dietry or song
         if (name === 'dietry' || name === 'song') {
             index = this.state.guest.findIndex(val => {
                 if (name in val) {
-                    return val;
+                    return name;
                 }
-                return true;
+                return false;
+           
             })
             this.setState((prevState) => {
                 var newArr = prevState.guest;
-                
                 newArr[index][name] = value 
                 return {guest: newArr}
             })
         }
-
-        if (value === 'choose') {
+        //meal choice or attending
+        else if (value === 'choose') {
             value = null;
         }
 
@@ -72,6 +82,7 @@ class RsvpForm extends React.Component {
             index = this.state.guest.findIndex(val => {
             return val.name === name 
             })
+
             
             this.setState((prevState) => {
                 var newArr = prevState.guest;
@@ -114,6 +125,7 @@ class RsvpForm extends React.Component {
                 />)
     }
 
+    timer = undefined;
 
     render() {  
         return (
@@ -146,7 +158,4 @@ class RsvpForm extends React.Component {
 }
 
 export default RsvpForm;
-
-// {this.state.scrollArrow && this.props.visibility ? <div onClick={this.scrollForm}> <i className={[css.arrow, "fa fa-arrow-down"].join(' ')} aria-hidden="true"></i> </div> : null}
-
 

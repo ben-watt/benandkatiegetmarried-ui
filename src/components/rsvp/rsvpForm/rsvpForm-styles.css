@@ -216,6 +216,7 @@ grid-column: 1/4;
     color: grey;
     resize: none;
     font-size: 1.2em;
+    padding-top: 20px;
 }
 
 .disabled {

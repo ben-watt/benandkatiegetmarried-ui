@@ -23,11 +23,7 @@ const MainPage = (props) => {
                 <div className={css.container}>             
                     <Header/>
                     <WhenWhere />
-                    {/* <div className={css.accommodation}>
-                        <LazyLoad  offsetVertical={0}> */}
-                            <Accommodations />
-                        {/* </LazyLoad>
-                    </div> */}
+                    <Accommodations />
                     <div id='map' className={css.map}>
                         <MapContainer/>
                     </div>     

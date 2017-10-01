@@ -52,6 +52,7 @@ class RsvpMainDisp extends React.Component {
     }
 
     closeForm = (validate, final) => {
+        console.log(final);
         validate === 'validate' 
         ?
             
@@ -116,7 +117,7 @@ class RsvpMainDisp extends React.Component {
                 <div className={this.state.formVisible && css.onShade}></div>
                 <div className={[this.state.formVisible && css.formOpen, this.state.rsvp && css.rsvpComplete, css.button].join(' ')}  onClick={this.handleClick}>
                     {this.state.formVisible ? this.formVisible(true) : this.formVisible(false)}
-                    {this.state.complete ? this.completeForm() :<RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm} updateScrollState={this.updateScrollState}/>}
+                    {this.state.complete ? this.completeForm() :<RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm} updateScrollState={this.updateScrollState} complete={this.state.complete} arrow={this.state.arrow}/>}
                 </div>          
             </div>
         )
