@@ -6,6 +6,7 @@ import Itinerary from '../itinerary/Itinerary';
 import Rsvp from '../rsvp/rsvpView/RsvpMainDisp';
 import CommentPage from '../commentPage/CommentPage';
 import Accommodations from '../accommodations/accommodations.js';
+import DressCode from '../dressCode/dressCode.js';
 
 import css from './mainPage-styles.css';
 
@@ -28,7 +29,8 @@ const MainPage = (props) => {
                         <MapContainer/>
                     </div>     
                     <KeyPeople />
-                    <Itinerary />       
+                    <Itinerary /> 
+                    <DressCode />      
                     <CommentPage />            
                 </div>
             </div>

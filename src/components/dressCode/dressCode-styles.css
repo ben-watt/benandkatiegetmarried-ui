@@ -1,0 +1,54 @@
+@import '../../config.css';
+
+.container {
+    grid-column: 1/13;
+}
+
+.innerContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    height: auto;
+}
+
+.head {
+    grid-column: 1/6;
+    font-family: var(--handwritingFont);
+    font-size: var(--headingSize);
+    text-align: center;
+    font-weight: lighter;
+}
+
+.dress {
+    grid-column: 2/2;
+    height: 150px;
+    width: 100px;
+    background-image: url('./images/dress.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.textArea {
+    grid-column: 3/3;
+    text-align: center;
+    font-family: var(--mainFont);
+    color: grey;
+}
+
+.subHead {
+    font-size: var(--subSubHeadingSize)
+}
+
+.text {
+    font-size: var(--textSize);
+    padding-bottom: 20px;
+}
+
+.suit {
+    grid-column: 5/5;
+    height: 150px;
+    width: 100px;
+    background-image: url('./images/suit.svg');
+    background-repeat: no-repeat;
+    background-position: center;    
+    
+}
