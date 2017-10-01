@@ -12,6 +12,9 @@ import css from './mainPage-styles.css';
 import MapContainer from '../googleMaps/MapContainer';
 import Nav from '../nav/Nav';
 
+import LazyLoad from 'react-lazy-load';
+
+
 const MainPage = (props) => {
     return  (
             <div>
@@ -20,7 +23,11 @@ const MainPage = (props) => {
                 <div className={css.container}>             
                     <Header/>
                     <WhenWhere />
-                    <Accommodations />
+                    {/* <div className={css.accommodation}>
+                        <LazyLoad  offsetVertical={0}> */}
+                            <Accommodations />
+                        {/* </LazyLoad>
+                    </div> */}
                     <div id='map' className={css.map}>
                         <MapContainer/>
                     </div>     

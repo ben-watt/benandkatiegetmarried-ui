@@ -18,7 +18,7 @@ class RsvpForm extends React.Component {
     }
     
     componentDidMount = () => {
-        setTimeout(() => { this.scrollDown(); }, 2000);
+        setTimeout(() => { this.scrollDown(); }, 3000);
         const guest = [];
         data.names.map(val => {
            return guest.push({name: val, going: null, meal: null})

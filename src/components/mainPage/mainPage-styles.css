@@ -9,6 +9,11 @@
     height: 100%;
 }
 
+.accommodation {
+    grid-column: 1 / 13;
+    height: auto;
+}
+
 .map {
     background-color: var(--offWhite);
     color: var(--gold);

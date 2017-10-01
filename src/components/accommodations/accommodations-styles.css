@@ -18,6 +18,10 @@
     margin: 20px;;
 }
 
+.outerCont {
+    height: 100%;
+}
+
 .innerCont {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
