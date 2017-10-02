@@ -1,8 +1,8 @@
 module.exports = {
     names: [
-        'Amanda',
-        'kobi',
-        'Nadav',
-        'Bibi'
+     'Ben',
+     'Katie',
+     'Bob',
+     'zed',
     ]
 };

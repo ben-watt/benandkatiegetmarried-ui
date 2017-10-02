@@ -7,6 +7,10 @@ const navItems = [{
     icon: 'fa fa-compass',
     anchor: '#where'
 },{
+    name: 'Accommodation',
+    icon: 'fa fa-bed',
+    anchor: '#accommodations',
+},{
     name: 'People',
     icon: 'fa fa-users',
     anchor: '#people'
@@ -14,6 +18,10 @@ const navItems = [{
     name: 'Itinerary',
     icon: 'fa fa-list-ul',
     anchor: '#itinerary'
+},{
+    name: 'Dress Code',
+    icon: 'fa fa-black-tie',
+    anchor: '#dressCode',
 },{
     name: 'Main',
     icon: 'fa fa-question',
@@ -26,6 +34,8 @@ const navItems = [{
     name: 'Map',
     icon: 'fa fa-map-marker',
     anchor: '#map',
-}]
+},
+]
 
 export default navItems;
+

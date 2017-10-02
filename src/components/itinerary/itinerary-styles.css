@@ -39,13 +39,14 @@
 .heading {
     margin: 30px 0px 10px 0px;
     font-family: var(--handwritingFont);  
-    font-size: 3em;
+    font-size: var(--headingSize);
+    font-weight: lighter;
  }
 
  .time {
     width: 100%;
     margin: 0px 0px 0px 0px;
-    font-size: 2em;
+    font-size: var(--subHeadingSize);
     font-family: var(--handwritingFont);  
 
  }
@@ -54,7 +55,7 @@
     width: 100%;
     margin: 0px 45px 35px 45px;
     font-weight: bolder;
-    font-size: 1.6em;
+    font-size: var(--subSubHeadingSize);
 }
 
 
@@ -64,7 +65,5 @@
        font-size: 1rem; 
     } 
 
-    .heading {
-        font-size: 2.5em;
-    }
+  
  }

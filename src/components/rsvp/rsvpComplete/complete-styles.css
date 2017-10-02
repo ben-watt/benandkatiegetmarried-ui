@@ -25,7 +25,6 @@
     font-size: 1.2em;
     color: grey;
     text-align: center;
-
 }
 .image {
     margin: 0 auto;
@@ -33,6 +32,7 @@
     height: 100px;
     background-image:  url('../images/letter.png');
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 @media (min-width: 768px) {

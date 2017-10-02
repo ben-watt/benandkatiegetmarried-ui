@@ -44,6 +44,7 @@
     "react-dom": "^15.6.1",
     "react-emojipicker": "^1.0.3",
     "react-error-overlay": "^1.0.9",
+    "react-lazy-load": "^3.0.12",
     "react-native-listener": "^1.0.2",
     "react-transition-group": "^2.2.0",
     "smoothscroll": "^0.3.0",

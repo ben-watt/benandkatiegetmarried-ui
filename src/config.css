@@ -8,17 +8,9 @@
     --goldFont: #D4C4AF;
     --offWhite: #F7F7F7;
     --fontColor: hsla(0, 0%, 0%, .8);
-
-
-/* --mainFont: 'Abhaya Libre', serif; */
-/* --mainFont: 'Alegreya', serif; */
-/* --mainFont: 'Alegreya Sans', sans-serif; */
-/* --mainFont: 'David Libre', serif; */
-/* --mainFont: 'Jacques Francois', serif quite like; */
-/* --mainFont: 'Josefin Slab', serif meh but maybe menu; */
-/* --mainFont: 'Peddana', serif nice; */
-/* --mainFont: 'Playfair Display', serif; */
-/* --mainFont: 'Rokkitt', serif;   poss menu*/ 
-/* --mainFont: 'Suranna', serif; */
+    --headingSize: 3rem;
+    --subHeadingSize: 2rem;
+    --subSubHeadingSize: 1.4rem;
+    --textSize: 1.1rem;
 
 }

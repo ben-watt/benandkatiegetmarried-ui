@@ -13,7 +13,7 @@ class RsvpForm extends React.Component {
             guest: [],
             submit: null,
             selected: 'meal choice',
-            aa: false,
+            scrollArrow: false,
         }
     }
 
@@ -29,22 +29,60 @@ class RsvpForm extends React.Component {
         })
     }
 
+    componentWillReceiveProps = (nextProps) => {
+         if (nextProps.visibility === true && this.props.complete === false) {
+            this.timer = setTimeout(() => { this.scrollDown(); }, 2000);
+         }
+
+         if (nextProps.arrow === true) {
+            clearTimeout(this.timer);
+         }
+     }
+
+    componentWillUnmount() {
+        clearTimeout(this.timer);
+      }
+
+    scrollDown = () => {    
+        if (this.inner.offsetHeight > this.cont.offsetHeight) {
+                var container = this.cont;
+                var inner = this.input;
+                this.props.updateScrollState(container, inner);
+        }
+    }
+
     handleChange = (event) => {
         var name = event.target.name;
         var value = event.target.value;
-        var type = event.target.type;      
+        var type = event.target.type; 
+        var index;    
+
         
+        //dietry or song
         if (name === 'dietry' || name === 'song') {
+            index = this.state.guest.findIndex(val => {
+                if (name in val) {
+                    return name;
+                }
+                return false;
+           
+            })
             this.setState((prevState) => {
                 var newArr = prevState.guest;
-                newArr[name] = value 
+                newArr[index][name] = value 
                 return {guest: newArr}
             })
         }
+        //meal choice or attending
+        else if (value === 'choose') {
+            value = null;
+        }
+
         else {
-            var index = this.state.guest.findIndex(val => {
+            index = this.state.guest.findIndex(val => {
             return val.name === name 
             })
+
             
             this.setState((prevState) => {
                 var newArr = prevState.guest;
@@ -87,37 +125,37 @@ class RsvpForm extends React.Component {
                 />)
     }
 
-    render() {  
-        console.log(this.state.guest);  
-        return (
-            <div className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
-                <p className={css.heading}> Will you attend? </p>
-                <p className={css.subHeading}>Please sign your RSVP</p>
-                
-                <form className={css.formOutline} onSubmit={this.handleSubmit} >
-                    {data.names.map(this.generateData)}
-                    
-                    {this.state.submit === false 
-                    ?<p className={css.warning}>Please ensure all above fields are filled out</p> 
-                    :null}
-                    
-                    <textarea className={css.diet} rows="4" cols="25" name="dietry" onChange={this.handleChange}
-                        placeholder="Please notify us of any other dietary requirements..." >
-                    </textarea>
-                    <p className={css.song}> 
-                        What song will get you on the dance floor?
-                    </p>
-                    <p> 
-                        <input className={css.songAns} type="text" placeholder="optional" name="song" onChange={this.handleChange}/>
-                    </p>
-                    <input className={css.submit} type="submit" value="SIGN RSVP" />
+    timer = undefined;
 
-                </form>            
+    render() {  
+        return (
+            <div ref={(node) => {this.cont = node}} className={[css.notVisible, this.props.visibility && css.visible].join(' ')}>
+                <div ref={(node) => {this.inner = node}} className={css.inner}>
+                    <p className={css.heading}> Will you attend? </p>
+                    <p className={css.subHeading}>Please sign your RSVP</p>
+                    <form className={css.formOutline} onSubmit={this.handleSubmit} >
+                        {data.names.map(this.generateData)}
+                        
+                        {this.state.submit === false 
+                        ?<p className={css.warning}>Please ensure all above fields are filled out</p> 
+                        :null}
+                        
+                        <textarea className={css.diet} rows="4" cols="25" name="dietry" onChange={this.handleChange}
+                            placeholder="Please notify us of any other dietary requirements..." >
+                        </textarea>
+                        <p className={css.song}> 
+                            What song will get you on the dance floor?
+                        </p>
+                        <p> 
+                            <input className={css.songAns} type="text" placeholder="optional" name="song" onChange={this.handleChange}/>
+                        </p>
+                        <input ref={(node) => {this.input = node}}className={css.submit} type="submit" value="SIGN RSVP" />
+                    </form>  
+                </div>
             </div>
         )
     }
 }
 
 export default RsvpForm;
-
 

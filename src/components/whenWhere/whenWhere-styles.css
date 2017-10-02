@@ -56,7 +56,7 @@
 }
 
 .headings {    
-    font-size: 1em;
+    font-size: var(--textSize);
     font-weight: bold;
     color: grey; 
     font-family: var(--mainFont);
@@ -65,17 +65,18 @@
 .statement {
     grid-column: 1/6; 
     font-family: var(--handwritingFont);
-    font-size: 2.4em;
+    font-size: var(--headingSize);
     color: var(--goldFont);
     margin-top: 20px;
     margin-bottom: 5px;
 }
 
 .invite {
-    grid-column: 2/5;
-    font-size: 1.2em;
+    grid-column: 1/6;
+    font-size: var(--subSubHeadingSize);
     font-family: var(--mainFont);
-    margin-bottom: 15px;
+    margin: 15px 0px 15px 0px;
+    width: 90%;
 }
 
 .details {
@@ -85,7 +86,7 @@
 
 .text {
     grid-column: 2/5;
-    font-size: 1.1em;
+    font-size: var(--textSize);
     font-weight: bold;
     text-align: center;
     color: var(--goldFont);
@@ -146,13 +147,11 @@ hr {
 
     .statement {
         grid-column: 1/8; 
-        font-size: 3em;
     }
 
     .invite {
         grid-column: 2/7;
         margin-bottom: 40px;
-        font-size: 1.6em;
     }
 
      .ipadWhen {

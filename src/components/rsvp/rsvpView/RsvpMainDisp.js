@@ -3,11 +3,13 @@ import css from './rsvpMainDisp-styles.css';
 import RsvpForm from '../rsvpForm/RsvpForm.js';
 import RsvpComplete from '../rsvpComplete/RsvpComplete.js'
 import Material from '../rsvpComplete/Material.js';
+import scroll from '../scroll.js';
 
 class RsvpMainDisp extends React.Component {
 
     constructor(props){
         super(props);
+        this.updateScrollState.bind(this);
         this.state = {
             formVisible: false,
             rsvpFormVisible: false,
@@ -15,8 +17,21 @@ class RsvpMainDisp extends React.Component {
             rsvp: false,
             complete: false,
             style: {},
+            arrow: false,
+            offsets: {},
         }
     }    
+
+    updateScrollState = (container, inner) => {
+        this.setState((prevState) => ({
+            arrow: true,
+            offsets: {container: container, inner: inner }
+        }))
+    }
+
+    scrollDown = () => {
+        scroll(this.state.offsets.container, this.state.offsets.inner);
+    }
 
     handleClick = () => {
         return this.state.formVisible ? null : this.openForm();
@@ -28,13 +43,20 @@ class RsvpMainDisp extends React.Component {
             rsvpFormVisible: true,
             iconVisible: false,
         }))
+    }
 
+    displayScroll = () => {
+        this.setState((prevState)=> ({
+            scrollArrow: true,
+        }))
     }
 
     closeForm = (validate, final) => {
+        console.log(final);
         validate === 'validate' 
         ?
-            this.setState(prevState=>{
+            
+        this.setState(prevState=>{
                 return {complete: true}
             })
         : 
@@ -50,10 +72,13 @@ class RsvpMainDisp extends React.Component {
 
         if (val === true) {
             return (
-                    <div onClick={this.closeForm}>
-                        {!this.state.complete 
-                        ? <i className={['fa fa-times', css.close].join(' ')}aria-hidden="true" /> 
-                        : <span />}
+                    <div>
+                        <div onClick={this.closeForm}>
+                            {!this.state.complete 
+                            ? <i className={['fa fa-times', css.close].join(' ')}aria-hidden="true" />   
+                            : <span />}
+                        </div>
+                        {this.state.arrow && this.state.formVisible ? <div onClick={this.scrollDown}> <i className={[css.arrow, "fa fa-angle-double-down"].join(' ')} aria-hidden="true"></i> </div> : null}
                     </div>
             )
         }
@@ -87,12 +112,12 @@ class RsvpMainDisp extends React.Component {
         : document.getElementById('root').classList.remove('lock')
 
         return (
-            <div>
+            <div >
                 {this.state.rsvp ? <Material /> : null}
                 <div className={this.state.formVisible && css.onShade}></div>
                 <div className={[this.state.formVisible && css.formOpen, this.state.rsvp && css.rsvpComplete, css.button].join(' ')}  onClick={this.handleClick}>
                     {this.state.formVisible ? this.formVisible(true) : this.formVisible(false)}
-                    {this.state.complete ? this.completeForm() :<RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm}/>}
+                    {this.state.complete ? this.completeForm() :<RsvpForm visibility={this.state.rsvpFormVisible} closeForm={this.closeForm} updateScrollState={this.updateScrollState} complete={this.state.complete} arrow={this.state.arrow}/>}
                 </div>          
             </div>
         )

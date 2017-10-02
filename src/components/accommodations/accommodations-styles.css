@@ -1,0 +1,186 @@
+@import '../../config.css';
+
+.container {
+    grid-column: 1/13;
+    background-color: var(--lightGold);
+    font-size: 1rem;
+    padding-bottom: 20px;
+    height: auto;
+}
+
+.heading {
+    grid-column: 1/13;
+    font-family: var(--handwritingFont);
+    color: black;
+    font-size: var(--headingSize);
+    text-align: center;
+    margin: 20px;;
+}
+
+.innerCont {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    margin: 30px;
+    position: relative;
+    text-align: center;
+    font-family: var(--mainFont);
+    color:  grey;
+    height: 100%;
+    
+}
+
+.accom {    
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: var(--offWhite);
+    position: relative;
+    box-shadow:  0 4px 2px -2px grey;
+}
+
+.accom0 {
+    grid-column: 1/5;
+}
+
+.accom1 {
+    grid-column: 1/5;
+}
+
+.accom2 {
+    grid-column: 1/5;
+}
+
+.accom3 {
+    grid-column: 1/5; 
+}
+
+.lazy {
+    height: 250px;
+}
+
+.image {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    opacity: 0.8;
+}
+
+.image0 {
+    background-image:  url('./images/animal1.png');
+}
+.image1 {
+    background-image:  url('./images/animal2.jpg');
+}
+
+.image2 {
+    background-image:  url('./images/animal1.jpg');
+}
+
+.image3 {
+    background-image:  url('./images/animal6.jpeg');
+}
+
+
+.name {
+    z-index: 3;
+    color: grey;
+    font-size: var(--subHeadingSize);
+    font-family: var(--handwritingFont);
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.distanceHead {
+    color: var(--goldFont);
+    color: grey;
+    font-size: var(--textSize);
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 5px;
+}
+.distance {
+    color: var(--goldFont);
+    color: grey;
+    font-size: var(--textSize);
+    margin: 0 auto;
+    width: 70%;
+}
+
+
+.button {
+    width: 200px;
+    padding: 7px;
+}
+
+
+@media (min-width: 600px) {
+
+    .innerCont {
+        height: 100%;
+        grid-gap: 20px;
+        margin: 50px;
+    }
+
+    .accom0 {
+        grid-column: 1/3;
+
+    }
+    
+    .accom1 {
+        grid-column: 3/5;
+
+    }
+    
+    .accom2 {
+        grid-column: 1/3;
+
+    }
+    
+    .accom3 {
+        grid-column: 3/5; 
+
+    }
+
+    .name {
+       font-size: var(--subHeadingSize);
+    } 
+
+    .button {
+        width: 200px;
+        padding: 7px;
+    }
+
+}
+
+@media (min-width: 1263px) {
+    .innerCont {
+        margin: 30px;
+    }
+    
+    .accom0 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    .accom1 {
+        grid-column: 2;
+        grid-row: 2;
+        
+    }
+    
+    .accom2 {
+        grid-column: 3;
+        grid-row: 2;
+        
+    }
+    
+    .accom3 {
+        grid-column: 4; 
+        grid-row: 2;
+        
+    }
+}

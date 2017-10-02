@@ -55,7 +55,7 @@ class CircularFab extends React.Component {
               success: true,
               visibility: true,
             });    
-          }, 2000);
+          }, 1000);
         },
       );
     }
