@@ -7,6 +7,7 @@ import Rsvp from '../rsvp/rsvpView/RsvpMainDisp';
 import CommentPage from '../commentPage/CommentPage';
 import Accommodations from '../accommodations/accommodations.js';
 import DressCode from '../dressCode/dressCode.js';
+import Gifts from '../gifts/gifts.js';
 
 import css from './mainPage-styles.css';
 
@@ -31,6 +32,7 @@ const MainPage = (props) => {
                     <KeyPeople />
                     <Itinerary /> 
                     <DressCode />      
+                    <Gifts />
                     <CommentPage />            
                 </div>
             </div>
