@@ -10,11 +10,12 @@ class Accommodations extends React.Component  {
     populate = (val, i) => {
         return (
             <div key={i} className={[data.accommodations[i].class, css.accom].join(' ')}>
-                <LazyLoad  offsetVertical={200}>
+                <LazyLoad  className={css.lazy}  offsetVertical={200}>
                     <div className={[data.accommodations[i].image, css.image].join(' ')}>
-                        <p className={css.name}>{data.accommodations[i].name}</p>
+                       
                     </div>
                 </LazyLoad>
+                <p className={css.name}>{data.accommodations[i].name}</p>
                 <p className={[css.distanceHead].join(' ')}>  Distance from Venue: </p>  
                 <p className={[css.distance, css.miles].join(' ')}>  {data.accommodations[i].distance} </p>             
                 <Button text={'Book'} onClick={()=>{this.handleClick(i)}} className={css.button}/>

@@ -19,6 +19,10 @@ const navItems = [{
     icon: 'fa fa-list-ul',
     anchor: '#itinerary'
 },{
+    name: 'Dress Code',
+    icon: 'fa fa-black-tie',
+    anchor: '#dressCode',
+},{
     name: 'Main',
     icon: 'fa fa-question',
     anchor: '#main',
@@ -30,6 +34,8 @@ const navItems = [{
     name: 'Map',
     icon: 'fa fa-map-marker',
     anchor: '#map',
-},]
+},
+]
 
 export default navItems;
+
