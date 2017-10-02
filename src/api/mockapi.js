@@ -4,28 +4,27 @@ const api = (function() {
     let obj = {};
 
     const api = axios.create({
-        baseURL: 'http://benandkatiegetmarried.azurewebsites.net/api',
+        baseURL: 'http://localhost:18399/api',
         timeout: 8000,
-        headers: {'X-Requested-With': 'XMLHttpRequest'}
+        headers: {'X-Requested-With': 'XMLHttpRequest'}     
     })
 
     obj.guestLogin = async function (securityCode, password, rememberMe) {
+        const res = await api.post('/guest-login', {
+            SecurityCode: securityCode,
+            Password: password,
+            RememberMe: rememberMe,
+        });   
 
-        try {
+        localStorage.setItem("eventId", res.data.eventId);
 
-            const res = await api.post('/guest-login', {
-                SecurityCode: securityCode,
-                Password: password,
-                RememberMe: rememberMe,
-            });   
+        return res;
+    }
 
-            localStorage.setItem("eventId", res.data.eventId);
-
-            return res;
-
-        } catch(err){
-            console.log(err);
-        }
+    obj.getGuests = async function() {
+        const eventId = localStorage.getItem("eventId");
+        const res = await api.get('/guest/' + eventId + '/guests-on-invite');
+        return res;
     }
 
     obj.eventDetails = async function(){
@@ -34,9 +33,17 @@ const api = (function() {
         return res;
     }
 
+    obj.sendRsvp = async function() {
+        const eventId = localStorage.getItem("eventId");
+        const res = await api.post('/guest/' + eventId);
+        return res;
+    }
+
     return {
         guestLogin: obj.guestLogin,
-        eventDetails: obj.eventDetails
+        eventDetails: obj.eventDetails,
+        sendRsvp: obj.sendRsvp,
+        getGuests: obj.getGuests,
     }
 
 })();

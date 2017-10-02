@@ -1,24 +1,33 @@
 import React from 'react';  
 import MainPage from './mainPage/MainPage';
 import LoginPage from './loginPage/LoginPage';
-// import api from '../api/mockapi';
+import api from '../api/mockapi';
 
 class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedIn: true,
+            loggedIn: false,
         }
     }  
 
     componentDidMount = async () => {
-        // try{
-        //     const res = await api.eventDetails();
-        //     if(res.status === 200)
-        //         this.login(true);
-        // } catch(err) {
-        //     this.login(false);
-        // }
+        this.getPageData();
+    }
+
+    getPageData = async () => {
+        try{
+            const eventPromise = api.eventDetails();
+            const guestPromise = api.getGuests();
+
+            const res = await Promise.all([eventPromise, guestPromise]);
+
+            if(res[0].status === 200 || res[1].status === 200)
+                console.log(res);
+                this.login(true);
+        } catch(err) {
+            this.login(false);
+        }
     }
 
     login = (state) => {
@@ -35,7 +44,7 @@ class App extends React.Component {
                 {
                     (this.state.loggedIn === false) 
                     ? <LoginPage login={() => this.login(true)} /> 
-                    : <MainPage />
+                    : <MainPage getPageData={this.getPageData}/>
                 }
             </div>
         )

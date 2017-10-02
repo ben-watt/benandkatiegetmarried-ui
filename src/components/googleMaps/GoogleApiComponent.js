@@ -24,10 +24,7 @@ export const wrapper = (options) => (WrappedComponent) => {
       const refs = this.refs;
       this.scriptCache.google.onLoad((err, tag) => {
         const maps = window.google.maps;
-        // const props = Object.assign({}, this.props, {
-        //   loaded: this.state.loaded
-        // });
-
+        
         const mapRef = refs.map;
 
         const node = ReactDOM.findDOMNode(mapRef);
