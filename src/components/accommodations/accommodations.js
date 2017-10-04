@@ -7,6 +7,12 @@ import LazyLoad from 'react-lazy-load';
 
 
 class Accommodations extends React.Component  {
+
+    handleClick = (i) => {
+        var link = data.accommodations[i].link;
+        window.open(link,'_blank');
+    }
+    
     populate = (val, i) => {
         return (
             <div key={i} className={[data.accommodations[i].class, css.accom].join(' ')}>
@@ -21,11 +27,6 @@ class Accommodations extends React.Component  {
                 <Button text={'Book'} onClick={()=>{this.handleClick(i)}} className={css.button}/>
             </div>    
         )
-    }
-
-    handleClick = (i) => {
-        var link = data.accommodations[i].link;
-        window.open(link,'_blank');
     }
 
     render () {
