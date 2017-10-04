@@ -75,6 +75,8 @@ class LoginPage extends React.Component {
     login = async () => {
         
         try {
+
+
             
             const req = api.guestLogin(this.state.securityCode, this.state.password, 1);
 

@@ -5,6 +5,10 @@ import RsvpComplete from '../rsvpComplete/RsvpComplete.js'
 import Material from '../rsvpComplete/Material.js';
 import scroll from '../scroll.js';
 
+import RsvpResp from '../rsvpRespData.js';
+
+import api from '../../../api/mockapi.js';
+
 class RsvpMainDisp extends React.Component {
 
     constructor(props){
@@ -51,21 +55,35 @@ class RsvpMainDisp extends React.Component {
         }))
     }
 
-    closeForm = (validate, final) => {
-        console.log(final);
-        validate === 'validate' 
-        ?
-            
-        this.setState(prevState=>{
-                return {complete: true, arrow:false}
-            })
-        : 
+    closeForm = async (validate, final) => {
+        RsvpResp(final);
+        if(validate === 'validate') { 
+        
+            try{
+                const req = api.sendRsvp();
+
+                const res = await req
+
+            if(res === 200) {
+                    this.setState(prevState=>{
+                    return {complete: true, arrow:false}
+                    })
+                }
+            }
+            catch(err) {
+                console.log(err);
+
+            }
+        }
+        
+        else {
             this.setState(prevState=>({
                 formVisible: !this.state.formVisible, 
                 rsvpFormVisible: false,
                 iconVisible: true,
                 complete: false,
             }))
+        }
     }
 
     formVisible = (val) => {

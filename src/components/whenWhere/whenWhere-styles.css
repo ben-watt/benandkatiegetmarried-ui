@@ -65,6 +65,7 @@
 .statement {
     grid-column: 1/6; 
     font-family: var(--handwritingFont);
+    font-weight: lighter;
     font-size: var(--headingSize);
     color: var(--goldFont);
     margin-top: 20px;

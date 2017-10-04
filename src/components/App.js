@@ -7,7 +7,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedIn: false,
+            loggedIn: true,
         }
     }  
 
@@ -16,18 +16,18 @@ class App extends React.Component {
     }
 
     getPageData = async () => {
-        try{
-            const eventPromise = api.eventDetails();
-            const guestPromise = api.getGuests();
+        // try{
+        //     const eventPromise = api.eventDetails();
+        //     const guestPromise = api.getGuests();
 
-            const res = await Promise.all([eventPromise, guestPromise]);
+        //     const res = await Promise.all([eventPromise, guestPromise]);
 
-            if(res[0].status === 200 || res[1].status === 200)
-                console.log(res);
-                this.login(true);
-        } catch(err) {
-            this.login(false);
-        }
+        //     if(res[0].status === 200 || res[1].status === 200)
+        //         console.log(res);
+        //         this.login(true);
+        // } catch(err) {
+        //     this.login(false);
+        // }
     }
 
     login = (state) => {

@@ -14,7 +14,11 @@ import css from './mainPage-styles.css';
 import MapContainer from '../googleMaps/MapContainer';
 import Nav from '../nav/Nav';
 
-
+class MainPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    
     componentDidMount = () => {
         this.props.getPageData();
     }
@@ -25,41 +29,23 @@ import Nav from '../nav/Nav';
                 <Nav />
                 <Rsvp />
                     <div className={css.container}>             
-                    	<Header/>
-                    	<WhenWhere />
-                    	<Accommodations />
-                    	<div id='map' className={css.map}>
-                        	<MapContainer/>
-                    	</div>     
-                    	<KeyPeople />
-                    	<Itinerary /> 
-                    	<DressCode />
+                        <Header/>
+                        <WhenWhere />
+                        <Accommodations />
+                        <div id='map' className={css.map}>
+                            <MapContainer/>
+                        </div>     
+                        <KeyPeople />
+                        <Itinerary /> 
+                        <DressCode />
                         <Gifts />      
-                    	<CommentPage />             
+                        <CommentPage />             
                     </div>
-    render() {
-        return  (
-                <div>
-            <Nav />
-            <Rsvp />
-                <div className={css.container}>             
-                    <Header/>
-                    <WhenWhere />
-                    <Accommodations />
-                    <div id='map' className={css.map}>
-                        <MapContainer/>
-                    </div>     
-                    <KeyPeople />
-                    <Itinerary /> 
-                    <DressCode />      
-                    <Gifts />
-                    <CommentPage />            
-                </div>
                 </div>
         )
+    
     }
 }
-
 export default MainPage;
 
 
