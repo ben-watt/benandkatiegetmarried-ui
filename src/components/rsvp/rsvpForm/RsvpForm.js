@@ -10,6 +10,12 @@ class RsvpForm extends React.Component {
         this.handleSubmit.bind(this);
         this.handleChange.bind(this);
         this.state = {
+            responseData: {
+                Dietary : "",
+                Song: "",
+                Responses: []
+            },
+
             guest: [],
             submit: null,
             selected: 'meal choice',
@@ -18,6 +24,16 @@ class RsvpForm extends React.Component {
     }
 
     componentDidMount = () => {
+        const responses = [];
+        data.names.map(val => {
+            return responses.push({name:val, Response: false})
+        });
+
+
+
+
+
+
         const guest = [];
         data.names.map(val => {
            return guest.push({name: val, going: null, meal: null})
@@ -25,7 +41,10 @@ class RsvpForm extends React.Component {
         guest.push({dietry: 'none', song: 'none'})
 
         this.setState({
-            guest: guest
+            guest: guest,
+            responseData: {
+                Responses: responses
+            },
         })
     }
 
@@ -128,6 +147,7 @@ class RsvpForm extends React.Component {
     timer = undefined;
 
     render() {  
+        console.log(this.state.responseData);
         return (
             <div ref={(node) => {this.cont = node}} className={[css.notVisible, this.props.visibility && css.visible].join(' ')}>
                 <div ref={(node) => {this.inner = node}} className={css.inner}>

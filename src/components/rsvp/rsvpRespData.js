@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RsvpResp = (final) => {
-// console.log(final);
+console.log(final);
 
 final.map((val, i) => {
     console.log(val);

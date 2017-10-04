@@ -56,8 +56,9 @@ class RsvpMainDisp extends React.Component {
     }
 
     closeForm = async (validate, final) => {
-        RsvpResp(final);
+        
         if(validate === 'validate') { 
+            RsvpResp(final);
         
             try{
                 const req = api.sendRsvp();
