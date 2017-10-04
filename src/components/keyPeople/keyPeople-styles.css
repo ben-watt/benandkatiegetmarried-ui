@@ -3,6 +3,7 @@
 .setArea {
     grid-column: 1/13;
     background-color: var(--lightGold);
+    width: 100%;
 }
 
 .container {
@@ -12,6 +13,11 @@
     text-align: center;
     justify-content: center;
     justify-items: center;   
+    height: auto;
+}
+
+.lazy {
+    height: 100px
 }
 
 .head {
@@ -31,6 +37,26 @@
     color: var(--goldFont);
 }
 
+.one {
+    grid-column: 1/3;
+}
+
+.two {
+    grid-column: 3;
+}
+
+.three {
+    grid-column: 4/6;
+}
+
+.four {
+    grid-column: 2/3;
+}
+
+.five {
+    grid-column: 3/6;
+}
+
 .pic {
     height: 100px;
     width: 100px;
@@ -39,6 +65,7 @@
     opacity: 1;
 
 }
+
 .name {
     margin: 10px 5px 40px 5px;
     font-family: var(--mainFont);
@@ -47,106 +74,54 @@
 }
 
 .davidPic {
-    grid-column: 4/6;
-    grid-row: 3;
     background-image:  url('./images/david3.png');
     background-position: 0% 25%;
 }
 
-.davidRow {
-    grid-column: 4/6;
-    grid-row: 4;
-}
 
 .janinePic {
-    grid-column: 3;
-    grid-row: 3;
     background-image:  url('./images/janine.png');
     background-position: 0% 25%;
 }
 
-.janineRow {
-    grid-column: 3;
-    grid-row: 4;
-}
-
 .ericPic {
-    grid-column: 1/3;
-    grid-row: 3;
     background-image:  url('./images/eric4.png');
     background-position: 0% 15%;
 }
 
-.ericRow {
-    grid-column: 1/3;
-    grid-row: 4;
-}
-
-
 .sopPic {
-    grid-column: 1/3;
-    grid-row: 6;
     background-image:  url('./images/soph5.png');
     background-position: 0% 15%;
 }
 
-.sopRow {
-    grid-column: 1/3;
-    grid-row: 7;
-}
-
 .trishPic {
-    grid-column: 4/6;
-    grid-row: 6;
     background-image:  url('./images/trish3.png');
     background-position: 0% 15%;
 }
 
-.trishRow {
-    grid-column: 4/6;
-    grid-row: 7;
-}
-
 .catrionaPic {
-    grid-column: 3;
-    grid-row: 6;
     background-image:  url('./images/catriona.png');        
 }
 
-.catrionaRow {
-    grid-column: 3;
-    grid-row: 7;
-}
-
 .samPic {
-    grid-column: 1/4;
-    grid-row: 9;
     background-image:  url('./images/sam4.png');
     background-position: -10% -10%;
-}
-
-.samRow {
-    grid-column: 1/4;
-
-    grid-row: 10;
+    
+    
 }
 
 .scottPic {
-    grid-column: 3/6;
-
-    grid-row: 9;
     background-image:  url('./images/scott.png');
-}
-
-.scottRow {
-    grid-column: 3/6;
-    grid-row: 10;
 }
 
 @media (min-width: 768px) {
     .pic {
         width: 150px;
         height: 150px;
+    }
+
+    .lazy {
+        height: 150px
     }
 
 }

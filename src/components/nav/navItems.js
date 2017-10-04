@@ -23,6 +23,10 @@ const navItems = [{
     icon: 'fa fa-black-tie',
     anchor: '#dressCode',
 },{
+    name: 'Gifts',
+    icon: 'fa fa-gift',
+    anchor: '#gifts',
+},{
     name: 'Main',
     icon: 'fa fa-question',
     anchor: '#main',

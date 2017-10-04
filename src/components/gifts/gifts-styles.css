@@ -1,0 +1,30 @@
+@import '../../config.css';
+
+.container {
+    grid-column: 1/13;
+    text-align: center;
+    justify-items: center;
+}
+
+.rule {
+    color: grey;
+    border-top: solid grey 1px;
+    border-radius: none;
+    margin: 5%;
+}
+.heading {
+    font-family: var(--handwritingFont);
+    font-size: var(--headingSize);
+    font-weight: lighter;
+    color: black;
+}
+
+.text {
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
+    color: grey;
+    padding-bottom: 20px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
