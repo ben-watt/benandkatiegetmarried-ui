@@ -10,7 +10,7 @@ class KeyPeople extends React.Component   {
        var pictures =  data.info[i].people.map((text, y) => {
             return (
                 <div key={y} className={text.col}>
-                    <LazyLoad className={css.lazy} offsetVertical={200}><div className={[css.pic, text.picClass].join(' ')}></div></LazyLoad>
+                    <LazyLoad className={css.lazy} offsetVertical={600}><div className={[css.pic, text.picClass].join(' ')}></div></LazyLoad>
                     <p className={[css.name, text.nameClass].join(' ')}>{text.name}</p>
                 </div>
             )

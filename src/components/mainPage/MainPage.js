@@ -14,7 +14,6 @@ import css from './mainPage-styles.css';
 import MapContainer from '../googleMaps/MapContainer';
 import Nav from '../nav/Nav';
 
-import LazyLoad from 'react-lazy-load';
 
 
 const MainPage = (props) => {

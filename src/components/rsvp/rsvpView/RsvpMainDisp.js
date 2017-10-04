@@ -57,7 +57,7 @@ class RsvpMainDisp extends React.Component {
         ?
             
         this.setState(prevState=>{
-                return {complete: true}
+                return {complete: true, arrow:false}
             })
         : 
             this.setState(prevState=>({
