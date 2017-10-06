@@ -3,7 +3,9 @@ import Header from '../header/Header';
 import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/keyPeople';
 import Itinerary from '../itinerary/Itinerary';
-import Rsvp from '../rsvp/rsvpView/RsvpMainDisp';
+// import Rsvp from '../rsvp/rsvpView/RsvpMainDisp';
+import Rsvp from '../RsvpNew/rsvpButton/RsvpButton';
+
 import CommentPage from '../commentPage/CommentPage';
 import Accommodations from '../accommodations/accommodations.js';
 import DressCode from '../dressCode/dressCode.js';
