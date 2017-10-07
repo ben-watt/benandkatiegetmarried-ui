@@ -156,7 +156,7 @@ class RsvpForm extends React.Component {
                     <form className={css.formOutline} onSubmit={this.handleSubmit} >
                         {data.names.map(this.generateData)}
                         
-                        {this.state.submit === false 
+                        {this.props.checkFields === false 
                         ?<p className={css.warning}>Please ensure all above fields are filled out</p> 
                         :null}
                         

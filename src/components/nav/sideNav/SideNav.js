@@ -50,9 +50,9 @@ class SideNav extends React.Component {
         this.setState(prevState => {        
             const show = !prevState.show;
             if(show){
-                document.getElementById('root').classList.add('lock');
+                document.body.classList.add('lock');
             } else {
-                document.getElementById('root').classList.remove('lock');
+                document.body.classList.remove('lock');
             }
             return { show: show }
         });

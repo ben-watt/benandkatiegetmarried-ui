@@ -7,6 +7,19 @@ class Form extends React.Component  {
         super()
     }
 
+    componentDidMount = () => {
+        if (this.props.visibility === true) {
+            this.timer = setTimeout(() => {
+                var container = this.cont;
+                var inner = this.inner;
+                this.props.scrollCalculate(container, inner); }, 2000);
+         }
+    }
+
+    componentWillUnmount = () => {
+        clearTimeout(this.timer);
+    }
+
     generateData = (val, i) => { 
         let meal = false
         if(this.props.responseData.responses.length >= 1) {
@@ -33,7 +46,7 @@ class Form extends React.Component  {
 
                 {meal ?
                 <select className={[!this.props.visibility && css.hideSelect, css.select, css.right].join(' ')}  name={val}  onChange={this.props.handleChange} >
-                    <option  hidden value='choose'>Meal Choice</option>
+                    <option  hidden value='choose'>Meal</option>
                     <option value="meat">Meat</option>
                     <option value="vegetarian">Vegetarian</option>
                 </select> 
@@ -45,6 +58,7 @@ class Form extends React.Component  {
             </div>
         )
     }
+    timer = undefined;
     
     render() {
 
