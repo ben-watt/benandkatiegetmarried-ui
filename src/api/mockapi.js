@@ -4,9 +4,9 @@ const api = (function() {
     let obj = {};
 
     const api = axios.create({
-        baseURL: 'http://benandkatiegetmarried.azurewebsites.net/api',
+        baseURL: 'http://localhost:18399/api',
         timeout: 8000,
-        headers: {'X-Requested-With': 'XMLHttpRequest'}     
+        headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
 
     obj.guestLogin = async function (securityCode, password, rememberMe) {

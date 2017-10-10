@@ -17,10 +17,7 @@ import MapContainer from '../googleMaps/MapContainer';
 import Nav from '../nav/Nav';
 
 class MainPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    
+
     componentDidMount = () => {
         this.props.getPageData();
     }
