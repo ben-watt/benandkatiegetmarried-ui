@@ -54,7 +54,7 @@ let data = {
                 ]
             },
             {   
-                title: 'The BestMen',
+                title: 'The Best Men',
                 people: [
                     
                         {

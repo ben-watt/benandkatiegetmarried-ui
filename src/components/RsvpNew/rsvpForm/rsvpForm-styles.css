@@ -151,6 +151,9 @@
     margin: 0px 2px 0px 2px;
 }
 
+.radio {
+   background: red;
+}
 .name {
     grid-column: 4/6;
     text-align: center;

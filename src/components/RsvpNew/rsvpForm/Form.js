@@ -46,7 +46,7 @@ class Form extends React.Component  {
 
                 {meal ?
                 <select className={[!this.props.visibility && css.hideSelect, css.select, css.right].join(' ')}  name={val}  onChange={this.props.handleChange} >
-                    <option  hidden value='choose'>Meal</option>
+                    <option  hidden value='choose'>Meal Choice</option>
                     <option value="meat">Meat</option>
                     <option value="vegetarian">Vegetarian</option>
                 </select> 
