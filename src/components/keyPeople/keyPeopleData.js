@@ -34,7 +34,7 @@ let data = {
                 title: 'The Bridesmads',
                 people: [
                     {
-                        name: 'Sophie Vallance',
+                        name: 'Sophie Gillies',
                         col: css.one,
                         picClass: css.sopPic,
                         nameClass: css.sopRow

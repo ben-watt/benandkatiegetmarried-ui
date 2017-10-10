@@ -17,14 +17,14 @@
     opacity: 0;
     display:none;
 
-    
+
     transition: border-radius 0.3s ease-in-out, 
-                background-color 0.2s ease-in-out, 
-                bottom 0.2s ease-in-out, 
-                right 0.2s ease-in-out, 
+                background-color 0.3s ease-in-out, 
+                bottom 0.3s ease-in-out, 
+                right 0.3s ease-in-out, 
                 height 0.3s ease-in-out,
                 width 0.3s ease-in-out,
-                opacity 0.2s ease-in-out;
+                opacity 0.3s ease-in-out;
 }
 
 .arrow {
@@ -48,7 +48,8 @@
 .visible {
     width: 95%;
     height: 85%;
-    border-radius: 0px; 
+    border-radius: 15%;
+    ; 
     bottom: 50%;
     right: 50%;
     margin: 0 auto;
@@ -114,7 +115,7 @@
     font-style: italic;
     padding: 7px;
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     width: 150px;
     position: absolute;
@@ -246,9 +247,7 @@ grid-column: 1/4;
         font-size: 1.2em;
     }
     
-    .notVisible {
-        transition: all 0.3s ease-in-out;
-    } 
+
 
     .formElements > * {
         margin: 0px 50px 0px 50px;
