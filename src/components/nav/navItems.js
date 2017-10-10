@@ -26,15 +26,17 @@ const navItems = [{
     name: 'Gifts',
     icon: 'fa fa-gift',
     anchor: '#gifts',
-},{
-    name: 'Main',
-    icon: 'fa fa-question',
-    anchor: '#main',
-    // options: {
-    //     downOffset: '200',
-    //     upOffset: '200'
-    // }
-},{
+}
+//,{
+// name: 'Main',
+// icon: 'fa fa-question',
+// anchor: '#main',
+// options: {
+//     downOffset: '200',
+//     upOffset: '200'
+// }
+//}
+,{
     name: 'Map',
     icon: 'fa fa-map-marker',
     anchor: '#map',

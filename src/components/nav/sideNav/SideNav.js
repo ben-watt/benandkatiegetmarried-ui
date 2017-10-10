@@ -1,5 +1,6 @@
 import React from 'react';
-import css from './sideNavStyles.css'
+import css from './sideNavStyles.css';
+import templo from './images/Templo_de_Debod_in_Madrid_small.jpg';
 
 import { TimelineLite } from 'gsap';
 
@@ -70,7 +71,7 @@ class SideNav extends React.Component {
                     </svg>
                 </button>
             <nav className={this.getNavStyles()}>
-                <img className={css.image} alt='blah' src='https://upload.wikimedia.org/wikipedia/commons/a/a6/Templo_de_Debod_in_Madrid.jpg'/>
+                <img className={css.image} alt='blah' src={templo}/>
                 {this.getNavItems()}
             </nav>
             <div className={this.state.show && css.onShade} onClick={this.onClick}></div>
