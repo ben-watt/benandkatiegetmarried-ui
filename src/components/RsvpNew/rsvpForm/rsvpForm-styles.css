@@ -85,7 +85,7 @@
 }
 
 .subHeading {
-    grid-column: 1/8;
+    grid-column: 2/7;
     font-family: var(--mainFont);
     font-size: 1.2em;
     color: grey;
@@ -115,7 +115,7 @@
     font-style: italic;
     padding: 7px;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-transform: uppercase;
     width: 150px;
     position: absolute;

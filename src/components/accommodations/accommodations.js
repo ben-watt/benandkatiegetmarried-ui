@@ -16,7 +16,7 @@ class Accommodations extends React.Component  {
     populate = (val, i) => {
         return (
             <div key={i} className={[data.accommodations[i].class, css.accom].join(' ')}>
-                <LazyLoad  className={css.lazy}  offsetVertical={200}>
+                <LazyLoad  className={css.lazy}  offsetVertical={400}>
                     <div className={[data.accommodations[i].image, css.image].join(' ')}>
                        
                     </div>

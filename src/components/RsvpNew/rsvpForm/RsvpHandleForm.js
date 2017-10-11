@@ -7,6 +7,7 @@ class RsvpHandleForm extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
 
         this.state = {
             responseData: {
@@ -18,6 +19,7 @@ class RsvpHandleForm extends React.Component {
             isGoing: null,
             checkFields: true,
             arrow: false,
+            form: false,
         }
     }
 
@@ -32,11 +34,8 @@ class RsvpHandleForm extends React.Component {
                 ...prevState.responseData,
                 responses: responses
             },
+            form: true
         }))
-    }
-
-    componentWillUnmount = () => {
-        console.log('handle form unmounting');
     }
 
     scrollCalculate = (container, inner) => {
@@ -109,6 +108,8 @@ class RsvpHandleForm extends React.Component {
     timer = undefined;
 
     render() {  
+
+        if (this.state.form === true) {
         return (
             <Form 
                 visibility={this.props.visibility}
@@ -119,6 +120,13 @@ class RsvpHandleForm extends React.Component {
                 checkFields={this.state.checkFields}
             />
         )
+    }
+
+    else return (
+        <div>
+            ..loading
+            </div>
+    )
     }
 }
 
