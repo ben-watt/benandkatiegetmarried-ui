@@ -33,9 +33,9 @@ const api = (function() {
         return res;
     }
 
-    obj.sendRsvp = async function() {
+    obj.sendRsvp = async function(data) {
         const eventId = localStorage.getItem("eventId");
-        const res = await api.post('/guest/' + eventId);
+        const res = await api.post('/guest/' + eventId, data);
         return res;
     }
 

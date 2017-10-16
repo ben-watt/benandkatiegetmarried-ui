@@ -23,27 +23,20 @@ class Form extends React.Component  {
     }
 
     generateData = (val, i) => { 
-        let meal = false
-        let response = this.props.responseData.responses[i];
-        if(this.props.responseData.responses.length >= 1) {
-            if (this.props.responseData.responses[i].isGoing === 'no') {
-                meal = false;
-            }
 
-            else if (this.props.responseData.responses[i].isGoing === 'yes'){
-                meal = true;
-            }
+        if(responses.length >= 1) {
+            meal = responses[i].response;
         }
 
         return (
             <div key={i} className={[css.formElements].join(' ')} >
                 <h4 className={css.name}>{val.name}</h4>
                 <div className={[css.input, css.left].join(' ')}>
-                    <input  checked={response.isGoing === 'yes'} type="radio" name={val.name} value="yes"
+                    <input type="radio" name={val.name} value={true}  
                     onClick={this.props.handleChange}/>Yes
                 </div>
                 <div className={[css.input, css.middle].join(' ')}> 
-                    <input  checked={response.isGoing === 'no'} type="radio" name={val.name} value="no" 
+                    <input type="radio" name={val.name} value={false} 
                     onClick={this.props.handleChange} />No
                 </div>
 
@@ -54,7 +47,7 @@ class Form extends React.Component  {
                     <option value="vegetarian">Vegetarian</option>
                 </select> 
 
-                :  <select disabled className={[!this.props.visibility && css.hideSelect, css.select, css.right].join(' ')}  name={val}>
+                :  <select disabled className={[!this.props.visibility && css.hideSelect, css.select, css.right].join(' ')}  name={val.name}>
                 <option value='choose'>Meal Choice</option>
                 </select>
                 }
@@ -71,20 +64,20 @@ class Form extends React.Component  {
                     <p className={css.heading}> Will you attend? </p>
                     <p className={css.subHeading}>Kindly respond by December 1st 2017.</p>
                     <form className={css.formOutline} onSubmit={this.props.handleSubmit} >
-                        {this.props.responseData.responses.map(this.generateData)}
+                        {this.props.rsvp.responses.map(this.generateData)}
                         
                         {this.props.checkFields === false 
                         ?<p className={css.warning}>Please ensure all above fields are filled out</p> 
                         :null}
                         
-                        <textarea className={css.diet} rows="4" cols="35" name="dietary" onChange={this.props.handleChange}
+                        <textarea className={css.diet} rows="4" cols="35" name="dietaryRequirements" onChange={this.props.handleChange}
                             placeholder="If you have any dietary requirements or simply a message you would like to leave, please pop it in this box..." >
                         </textarea>
                         <p className={css.song}> 
                             What song will get you on the dance floor?
                         </p>
                         <p> 
-                            <input className={css.songAns} type="text" placeholder="optional" name="song" onChange={this.props.handleChange}/>
+                            <input className={css.songAns} type="text" placeholder="optional" name="songLink" onChange={this.props.handleChange}/>
                         </p>
                         <input ref={(node) => {this.input = node}}className={css.submit} type="submit" value="SIGN RSVP" />
                     </form>  

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import api from '../../../api/mockapi.js'
 import data from '../data/guest-data.js';
 import Form from './Form.js';
 
@@ -10,31 +10,49 @@ class RsvpHandleForm extends React.Component {
         this.handleChange = this.handleChange.bind(this);
 
         this.state = {
-            responseData: {
-                dietary : "",
-                song: "",
-                responses: []
+            "responseData": {
+                "rsvp" : {
+                    "dietaryRequirements" : null,
+                    "songLink" : null,
+                    "responses" : []
+                },
             },
-
-            isGoing: null,
             checkFields: true,
             arrow: false,
+            formReady: false
             form: false,
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
         const responses = [];
-        data.names.map(val => {
-            return responses.push({name:val, isGoing: false, mealChoice: false})
-        });
+
+        try {
+            let res = await api.getGuests();
+            
+            if(res.status === 200){
+                res.data.forEach(guest => {
+                    responses.push({
+                        guestId: guest.Id,
+                        name: `${guest.FirstName} ${guest.LastName}`, 
+                        response: false, 
+                        mealChoice: false
+                    });
+                });
+            }
+            
+        } catch(e) {
+            console.log(`Shit! error ${e}`);
+        }
 
         this.setState(prevState => ({
             responseData: {
-                ...prevState.responseData,
-                responses: responses
+                rsvp: {
+                    ...prevState.responseData.rsvp,
+                    responses: responses
+                }
             },
-            form: true
+            formReady: true
         }))
     }
 
@@ -49,14 +67,15 @@ class RsvpHandleForm extends React.Component {
         var type = event.target.type
         var name = event.target.name;
         var value = event.target.value;
-        var newObj = Object.assign({}, this.state.responseData)
+        var newObj = Object.assign({}, this.state.responseData.rsvp)
+
 
         switch (type) {
             case 'radio':
                 newObj.responses.map((val) => {
                     if (name === val.name) {
-                        val.isGoing = value
-                        if (value === 'no') {
+                        val.response = value;
+                        if (value === false) {
                             val.mealChoice = false;
                         }
                     }
@@ -78,55 +97,68 @@ class RsvpHandleForm extends React.Component {
                 newObj[name] = value;  
         }
         this.setState(prevState => ({
-            responseData: newObj,
+            responseData: {
+                rsvp: newObj,
+            }
         }))     
     }
 
-        handleSubmit = (event) => {
-            event.preventDefault();
-            var submit = 0;
-            this.state.responseData.responses.map(val => {
-                if (val.isGoing === false) {
-                    submit++;
-                }
-                if ((val.isGoing === 'yes') && (val.mealChoice === false)) {
-                    submit++;
-                }    
-                return true;   
-            })
+    handleSubmit = async (event) => {
+        event.preventDefault();
+        var submit = 0;
+        this.state.responseData.rsvp.responses.map(val => {
+            if (val.response === false) {
+                submit++;
+            }
+            if ((val.response === true) && (val.mealChoice === false)) {
+                submit++;
+            }    
+            return true;   
+        })
 
-            if (submit > 0) {
-                this.setState(prevState =>({
-                    checkFields: false,
-                }))
-            }
-            else {
-                this.props.submitForm(this.state.responseData)
-            }
+        if (submit > 0) {
+            this.setState(prevState =>({
+                checkFields: false,
+            }))
         }
-     
-    timer = undefined;
+        else {
+            try{
+                let req = api.sendRsvp(this.state.responseData);
+                this.props.submitForm(this.state.responseData.rsvp);
+                let res = await req;
+                if(res.status === 201){
+                    console.log(res);
+                }
 
-    render() {  
-
-        if (this.state.form === true) {
-        return (
-            <Form 
-                visibility={this.props.visibility}
-                responseData={this.state.responseData}
-                scrollCalculate={this.scrollCalculate}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-                checkFields={this.state.checkFields}
-            />
-        )
+            } catch(e){
+                console.log(`Shit! error ${e}`);
+            }
+            
+        }
     }
 
-    else return (
-        <div>
-            ..loading
-            </div>
-    )
+    render() {  
+        let formReady = this.state.formReady;
+
+        if(formReady){
+            return (
+                <Form 
+                    visibility={this.props.visibility}
+                    rsvp={this.state.responseData.rsvp}
+                    scrollCalculate={this.scrollCalculate}
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                    checkFields={this.state.checkFields}
+                />
+            )
+        }
+        else {
+            return(
+                <div>
+                    ...loading                        
+                </div>
+            )
+        }
     }
 }
 
