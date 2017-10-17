@@ -8,6 +8,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             loggedIn: false,
+            eventDetails : null,
+            guestDetails : null
         }
     }  
 
@@ -19,19 +21,25 @@ class App extends React.Component {
         try{
             const eventPromise = api.eventDetails();
             const guestPromise = api.getGuests();
-
             const res = await Promise.all([eventPromise, guestPromise]);
 
-            if(res[0].status === 200 || res[1].status === 200)
-                console.log(res);
-                this.login(true);
+            if(res[0].status === 200 && res[1].status === 200){
+                this.setState({ 
+                    loggedIn: true,
+                    eventDetails: res[0].data,
+                    guestDetails: res[1].data
+                });
+            }
+
         } catch(err) {
-            this.login(false);
+            console.log(err);
+            this.setState({loggedIn : false });
         }
     }
 
-    login = (state) => {
-        this.setState({ loggedIn: state});
+    shouldShowRsvpButton = () => {
+        const rsvpAlreadySent = this.state.guestDetails.every(x => x.HasSentRsvp === true);
+        return rsvpAlreadySent ? false : true;
     }
        
     handleClick() {
@@ -43,8 +51,8 @@ class App extends React.Component {
             <div>
                 {
                     (this.state.loggedIn === false) 
-                    ? <LoginPage login={() => this.login(true)} /> 
-                    : <MainPage getPageData={this.getPageData}/>
+                    ? <LoginPage login={() => this.setState({loggedIn: true})} /> 
+                    : <MainPage showRsvp={this.shouldShowRsvpButton()}/>
                 }
             </div>
         )

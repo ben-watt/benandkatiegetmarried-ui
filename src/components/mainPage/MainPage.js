@@ -3,7 +3,6 @@ import Header from '../header/Header';
 import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/keyPeople';
 import Itinerary from '../itinerary/Itinerary';
-// import Rsvp from '../rsvp/rsvpView/RsvpMainDisp';
 import Rsvp from '../RsvpNew/rsvpButton/RsvpButton';
 
 import CommentPage from '../commentPage/CommentPage';
@@ -17,16 +16,11 @@ import MapContainer from '../googleMaps/MapContainer';
 import Nav from '../nav/Nav';
 
 class MainPage extends React.Component {
-
-    componentDidMount = () => {
-        this.props.getPageData();
-    }
-
     render() {
         return  (
                 <div>
                 <Nav />
-                <Rsvp />
+                {this.props.showRsvp && <Rsvp/>}
                     <div className={css.container}>             
                         <Header/>
                         <WhenWhere />
