@@ -23,7 +23,7 @@ class App extends React.Component {
             const guestPromise = api.getGuests();
             const res = await Promise.all([eventPromise, guestPromise]);
 
-            if(res[0].status === 200 && res[1].status === 200){
+            if(res.every(x => x.status === 200)){
                 this.setState({ 
                     loggedIn: true,
                     eventDetails: res[0].data,
@@ -38,7 +38,7 @@ class App extends React.Component {
     }
 
     shouldShowRsvpButton = () => {
-        const rsvpAlreadySent = this.state.guestDetails.every(x => x.HasSentRsvp === true);
+        const rsvpAlreadySent = this.state.guestDetails.every(x => x.hasSentRsvp === true);
         return rsvpAlreadySent ? false : true;
     }
        
@@ -52,7 +52,7 @@ class App extends React.Component {
                 {
                     (this.state.loggedIn === false) 
                     ? <LoginPage login={() => this.setState({loggedIn: true})} /> 
-                    : <MainPage showRsvp={this.shouldShowRsvpButton()}/>
+                    : <MainPage  showRsvp={this.shouldShowRsvpButton()}/>
                 }
             </div>
         )

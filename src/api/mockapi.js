@@ -39,11 +39,19 @@ const api = (function() {
         return res;
     }
 
+    obj.getComments = async function(data){
+        const eventId = localStorage.getItem("eventId");
+        const messageBoard = await api.get('/guest/' + eventId + '/messageboard');
+        const res = await api.get('/guest/' + eventId + '/messageboard/' + messageBoard.data[0].id + '/messages', data);
+        return res;
+    }
+
     return {
         guestLogin: obj.guestLogin,
         eventDetails: obj.eventDetails,
         sendRsvp: obj.sendRsvp,
         getGuests: obj.getGuests,
+        getComments: obj.getComments,
     }
 
 })();

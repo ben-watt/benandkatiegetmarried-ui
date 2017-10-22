@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Time from '../../common/Time';
 import css from './commentList.css';
 
 const CommentIcon = styled.i`
@@ -27,12 +28,24 @@ const CommentArea = styled.div`
 `
 
 const CommentList = (props) => {
+    console.log(props);
+
+    this.getAttributions = (attributions) => {
+        var names = "";
+        attributions.forEach((g,i) => {
+            names += `${g.firstName + g.lastName} `
+            if(i !== attributions.length - 1)
+                names += '&';
+        });
+        return names;
+    }
+
     return ( 
         <div>  
             {props.comments.reverse().map((comment) => (
-                <CommentArea key={comment.Id} className={css.comment}>
+                <CommentArea key={comment.id} className={css.comment}>
                     <div className={css.attribution}>
-                        <p>Ben & Katie 	&#183; 14th Sept</p>
+                        <p>{this.getAttributions(comment.attributions)} &#183; <Time>{comment.date}</Time></p>
                         <DeleteIcon className='fa fa-times'/>
                         <EditIcon className='fa fa-pencil'/>
                     </div>

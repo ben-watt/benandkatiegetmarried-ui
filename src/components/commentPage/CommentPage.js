@@ -2,6 +2,7 @@ import React from 'react';
 
 import CommentList from './commentList/CommentList';
 import CommentInput from './commentInput/CommentInput';
+import api from '../../api/mockapi';
 
 import css from './commentPage-styles.css';
 import Comment from '../../domainObjects/comment.js'
@@ -14,16 +15,29 @@ class CommentPage extends React.Component {
         }
     }
 
+    componentDidMount = async () => {
+        try{
+            const res = await api.getComments();
+
+            if(res.status === 200){
+                this.setState({
+                    comments: res.data
+                });
+            }
+
+        } catch(err) {
+            console.log(err);
+        }
+    }
+    
     createComment = (text, attribution) => {
-        const newComment = [new Comment(text, attribution)];
+        const newComment = new Comment(text, attribution);
         this.setState(prev => ({
             comments : prev.comments.concat(newComment)
         }));
-    }
+    }                              
 
-    render(){
-        const activeInput = this.state.activeInput;                                            
-
+    render() {
         return (        
             <div className={css.container}>
                 <div className={css.innerContainer}>        
@@ -35,7 +49,6 @@ class CommentPage extends React.Component {
             </div>
         )
     }
-
 }
 
 export default CommentPage;
