@@ -47,9 +47,8 @@
 
 .visible {
     width: 95%;
-    height: 85%;
+    height: 75%;
     border-radius: 15%;
-    ; 
     bottom: 50%;
     right: 50%;
     margin: 0 auto;
@@ -113,7 +112,6 @@
     font-size: 0.7rem;
     font-size: 16px;
     font-style: italic;
-    padding: 7px;
     margin-top: 20px;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -230,6 +228,7 @@ grid-column: 1/4;
     font-size: 1.2em;
     font-size: 16px;
     padding-top: 20px;
+    padding: 20px 10px 0px 10px;
 }
 
 .disabled {
@@ -254,6 +253,10 @@ grid-column: 1/4;
 
     .formElements > * {
         margin: 0px 50px 0px 50px;
+    }
+
+    .submit {
+        padding: 7px;
     }
 } 
 

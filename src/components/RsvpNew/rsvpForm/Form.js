@@ -77,8 +77,8 @@ class Form extends React.Component  {
                         ?<p className={css.warning}>Please ensure all above fields are filled out</p> 
                         :null}
                         
-                        <textarea className={css.diet} rows="4" cols="25" name="dietary" onChange={this.props.handleChange}
-                            placeholder="Please notify us of any other dietary requirements..." >
+                        <textarea className={css.diet} rows="4" cols="35" name="dietary" onChange={this.props.handleChange}
+                            placeholder="If you have any dietary requirements or simply a message you would like to leave, please pop it in this box..." >
                         </textarea>
                         <p className={css.song}> 
                             What song will get you on the dance floor?

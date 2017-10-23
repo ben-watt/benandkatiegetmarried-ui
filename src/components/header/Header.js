@@ -11,10 +11,15 @@ class Header extends React.Component {
     }    
 
     componentDidMount(){
-        window.addEventListener('load', this.onLoad);
+        window.addEventListener('load', this.updateDimensions);
+        window.addEventListener("resize", this.updateDimensions);
     }
 
-    onLoad = () => {
+    componentWillUnmount = () => {
+        window.removeEventListener('resize', this.updateDimensions);
+        window.removeEventListener('load', this.updateDimensions);
+    }
+    updateDimensions = () => {
         backgroundHeight(this.backgroundHeight, 0);
     }
 

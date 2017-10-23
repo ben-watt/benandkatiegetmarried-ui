@@ -22,15 +22,11 @@
     color: black ; 
     opacity: 0.7;
 
-    margin: 90px 0px 10px 0px;
+    margin: 90px 0px 0px 0px;
     text-align: center;
 };
 
-@media (min-width: 768px) {
-    .title {
-        font-size: var(--headingSize);
-    }
-}
+
 
 .date {
     font-family: var(--mainFont);
@@ -40,11 +36,6 @@
     text-align: center;
 }
 
-@media (min-width: 768px) {
-    .date {
-        font-size: var(--textSize);
-    }
-}
 
 .enterDiv {
     font-family: var(--mainFont);
@@ -53,25 +44,44 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 10%;
+    bottom: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    font-style: lighter;
 }
 
 .enter:hover {
     cursor: pointer;
 }
 
+.enter {
+    margin-bottom: 1%;
+}
+
+@media (min-width: 500px) {
+    .enterDiv {
+        font-size: var(--textSizw);
+    }
+
+    .date {
+        font-size: var(--textSize);
+    }
+
+    .title {
+        margin: 30px 0px 0px 0px;
+    }
+}
+
 @media (min-width: 768px) {
     .enterDiv {
         font-size: var(--subSubHeadingSize);
     }
+
+    .date {
+        font-size: var(--subSubHeadingSize);
+    }
+
 }
 
-
-.enter {
-    margin-bottom: 1%;
-}
