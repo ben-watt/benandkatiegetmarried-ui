@@ -14,6 +14,9 @@ const DeleteIcon = styled.i`
     right: 20px;
     top: 10px;
     display: none;
+    &:hover {
+        color: red;
+    }
 `
 const EditIcon = styled.i`
     position: absolute;
@@ -26,6 +29,13 @@ const CommentArea = styled.div`
         display: initial
     }
 `
+const Likes = styled.section`
+    &:hover {
+        color: red;
+    }
+    color: ${props => props.likes > 0 ? 'red' : 'grey'};
+    display: inline;
+`
 
 const CommentList = (props) => {
     console.log(props);
@@ -33,9 +43,9 @@ const CommentList = (props) => {
     this.getAttributions = (attributions) => {
         var names = "";
         attributions.forEach((g,i) => {
-            names += `${g.firstName + g.lastName} `
+            names += `${g.firstName + ' ' + g.lastName} `
             if(i !== attributions.length - 1)
-                names += '&';
+                names += ' & ';
         });
         return names;
     }
@@ -46,14 +56,14 @@ const CommentList = (props) => {
                 <CommentArea key={comment.id} className={css.comment}>
                     <div className={css.attribution}>
                         <p>{this.getAttributions(comment.attributions)} &#183; <Time>{comment.date}</Time></p>
-                        <DeleteIcon className='fa fa-times'/>
+                        <DeleteIcon onClick={() => props.delete(comment.id)} className='fa fa-times'/>
                         <EditIcon className='fa fa-pencil'/>
                     </div>
                     <p>{comment.text}</p>
-                    <div className={css.likes}>
-                        <i className='fa fa-heart-o' />
-                        <p className={css.likeCount}> 10</p>
-                    </div>
+                    <Likes likes={comment.likes.length}>
+                        <i className={`fa ${comment.likes.length > 0 ? 'fa-heart' : 'fa-heart-o'}`}/>
+                        <p className={css.likeCount}> {comment.likes.length > 0 && comment.likes.length}</p>
+                    </Likes>
                     <CommentIcon className='fa fa-comment-o' />
                 </CommentArea>
             ))}

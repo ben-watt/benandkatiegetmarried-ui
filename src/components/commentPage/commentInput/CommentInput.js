@@ -8,6 +8,7 @@ class CommentInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {   
+            guests: [],
             activeInput: props.defaultState,
             text: props.text || '',
             attribution: [],
@@ -86,6 +87,9 @@ class CommentInput extends React.Component {
                     <div className={css.textarea}>
                         <p>Leave a note</p>
                         {input}
+                    </div>
+                    <div>                
+                        {this.state.guests.map(g => <span>{`${g.firstName} ${g.lastName}`}</span>)}
                     </div>
                     <Button className={css.post} 
                             onClick={this.post} 

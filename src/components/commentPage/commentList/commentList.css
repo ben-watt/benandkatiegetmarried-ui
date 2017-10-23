@@ -16,11 +16,6 @@
     color: var(--goldFont)
 }
 
-.likes {
-    color: grey;
-    display: inline;
-}
-
 .likeCount {
     display: inline-block; 
     margin: 0px;
