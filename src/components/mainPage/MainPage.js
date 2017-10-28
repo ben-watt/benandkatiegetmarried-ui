@@ -32,7 +32,7 @@ class MainPage extends React.Component {
                         <Itinerary /> 
                         <DressCode />
                         <Gifts />      
-                        <CommentPage />             
+                        <CommentPage appState={this.props.appState}/>             
                     </div>
                 </div>
         )

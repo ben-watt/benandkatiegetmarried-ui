@@ -1,17 +1,19 @@
-import React from 'react'
-import Picker from 'react-emojipicker'
+import React from 'react';
+import Picker from 'react-emojipicker';
+import { toast } from 'react-toastify';
 
 import Button from '../../common/Button';
 import css from './commentInput.css';
+import Tag from '../../common/Tag';
 
 class CommentInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {   
-            guests: [],
+            guests: this.props.appState.guestDetails || [],
             activeInput: props.defaultState,
             text: props.text || '',
-            attribution: [],
+            attribution: this.props.appState.guestDetails || [],
             showPicker: false
         }
     }
@@ -26,7 +28,8 @@ class CommentInput extends React.Component {
         if(val !== this.state.activeInput){
             this.setState(prev => ({
                 activeInput: val, 
-                showPicker: false
+                showPicker: false,
+                attribution: prev.guests
             }));
         }
     } 
@@ -62,14 +65,24 @@ class CommentInput extends React.Component {
         }));
     }
 
+    deleteGuest = (id) => {
+        if(this.state.attribution.length === 1){
+            toast.info("You must have at least one person against the comment to post");
+            return;
+        }
+        this.setState(prev => ({
+            attribution: prev.attribution.filter(g => g.id !== id)
+        }));
+    }
+
     post = () => {
-        this.setState({
+        this.props.post(this.state.text, this.state.attribution)
+        this.setState(prev => ({
             activeInput: false,
             text: [],
-            attribution: [],
+            attribution: prev.guests,
             pickerVisible: false
-        })
-        this.props.post(this.state.text, this.state.attribution)
+        }))
     }
 
     render() { 
@@ -79,7 +92,7 @@ class CommentInput extends React.Component {
                                                     ref={(i) => this.input = i}
                                                     onChange={this.inputChange}
                                                     onFocus={this.focus}
-                                                    value={this.state.text}></textarea>
+                                                    value={ this.state.text}></textarea>
         return (
             <div ref={i => this.container = i} >
                 <div className={inputClasses.join(' ')} 
@@ -88,13 +101,15 @@ class CommentInput extends React.Component {
                         <p>Leave a note</p>
                         {input}
                     </div>
-                    <div>                
-                        {this.state.guests.map(g => <span>{`${g.firstName} ${g.lastName}`}</span>)}
-                    </div>
-                    <Button className={css.post} 
-                            onClick={this.post} 
-                            text='Post'/>
-                    <i className={['fa fa-smile-o', css.emoji].join(' ')} onClick={this.togglePicker}/>
+                    <div className={css.options}>
+                        <i className={['fa fa-smile-o', css.emoji].join(' ')} onClick={this.togglePicker}/>
+                        <div>                
+                            {this.state.attribution.map(g => <Tag onClick={() => this.deleteGuest(g.id)}>{`${g.firstName} ${g.lastName}`}</Tag>)}
+                        </div>
+                        <Button className={css.post} 
+                                onClick={this.post} 
+                                text='Post'/> 
+                    </div>             
                 </div>
                 <div className={showPicker.join(' ')}>
                     <Picker onEmojiSelected={this.addEmoji}/>

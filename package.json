@@ -46,6 +46,7 @@
     "react-error-overlay": "^1.0.9",
     "react-lazy-load": "^3.0.12",
     "react-native-listener": "^1.0.2",
+    "react-toastify": "^2.1.5",
     "react-transition-group": "^2.2.0",
     "smoothscroll": "^0.3.0",
     "style-loader": "0.18.2",

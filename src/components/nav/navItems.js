@@ -26,6 +26,14 @@ const navItems = [{
     name: 'Gifts',
     icon: 'fa fa-gift',
     anchor: '#gifts',
+},{
+    name: 'Map',
+    icon: 'fa fa-map-marker',
+    anchor: '#map',
+},{
+    name: 'Guest Book',
+    icon: 'fa fa-book',
+    anchor: '#guestBook',
 }
 //,{
 // name: 'Main',
@@ -36,11 +44,6 @@ const navItems = [{
 //     upOffset: '200'
 // }
 //}
-,{
-    name: 'Map',
-    icon: 'fa fa-map-marker',
-    anchor: '#map',
-},
 ]
 
 export default navItems;

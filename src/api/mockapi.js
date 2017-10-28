@@ -39,7 +39,28 @@ const api = (function() {
         return res;
     }
 
+    obj.postComment = async function(data) {
+        const eventId = localStorage.getItem("eventId");
+        const messageBoard = await api.get('/guest/' + eventId + '/messageboard');
+        const res = await api.post('/guest/' + eventId + '/messageboard/' + messageBoard.data[0].id, data);
+        return res;
+    }
+
+    obj.deleteComment = async function(commentId) {
+        const eventId = localStorage.getItem("eventId");
+        const messageBoard = await api.get('/guest/' + eventId + '/messageboard');
+        const res = await api.delete('/guest/' + eventId + '/messageboard/' + messageBoard.data[0].id + '/messages/'+ commentId);
+        return res;
+    }
+
     obj.getComments = async function(data){
+        const eventId = localStorage.getItem("eventId");
+        const messageBoard = await api.get('/guest/' + eventId + '/messageboard');
+        const res = await api.get('/guest/' + eventId + '/messageboard/' + messageBoard.data[0].id + '/messages', data);
+        return res;
+    }
+
+    obj.likeComment = async function(data){
         const eventId = localStorage.getItem("eventId");
         const messageBoard = await api.get('/guest/' + eventId + '/messageboard');
         const res = await api.get('/guest/' + eventId + '/messageboard/' + messageBoard.data[0].id + '/messages', data);
@@ -52,6 +73,9 @@ const api = (function() {
         sendRsvp: obj.sendRsvp,
         getGuests: obj.getGuests,
         getComments: obj.getComments,
+        postComment: obj.postComment,
+        deleteComment: obj.deleteComment,
+        likeComment: obj.likeComment
     }
 
 })();

@@ -17,6 +17,7 @@
 .navItem {
    padding: 10px;
    cursor: pointer;
+   color: #5e5e5e;
 }
 
 .navItem:hover {
@@ -28,6 +29,7 @@
     padding-left: 10px;
     width: 20px;
     text-align: center;
+    color: lightslategray;
 }
 
 .image {

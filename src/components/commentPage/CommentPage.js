@@ -1,11 +1,11 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 import CommentList from './commentList/CommentList';
 import CommentInput from './commentInput/CommentInput';
 import api from '../../api/mockapi';
 
 import css from './commentPage-styles.css';
-import Comment from './comment';
 import CommentFactory from './commentFactory';
 
 class CommentPage extends React.Component {
@@ -19,7 +19,6 @@ class CommentPage extends React.Component {
     componentDidMount = async () => {
         try{
             const res = await api.getComments();
-
             if(res.status === 200){
                 this.setState({
                     comments: res.data,
@@ -41,27 +40,47 @@ class CommentPage extends React.Component {
         return `/${newNum}/`
     }
     
-    createComment = (text, attribution) => {
+    createComment = async (text, attribution) => {
         const newComment = this.commentFactory.createComment(text, attribution);
-        this.setState(prev => ({
-            comments : prev.comments.concat(newComment)
-        }));
+
+        try {
+            var res = await api.postComment(newComment);          
+            this.setState(prev => ({
+                comments : prev.comments.concat(newComment)
+            }));
+        } catch(err){
+            console.log(err);
+            toast.error("Sorry we couldn't create that comment right now");
+        }
     }                      
     
-    deleteComment = (commentId) => {
-        this.setState(prev => ({
-            comments : prev.comments.filter(x => x.Id !== commentId)
-        }));
+    deleteComment = async (commentId) => {
+        try {
+            var res = await api.deleteComment(commentId);
+            this.setState(prev => ({
+                comments : prev.comments.filter(x => x.id !== commentId)
+            }));
+        } catch(err){
+            console.log(err);
+            toast.error("Sorry we couldn't delete that comment right now");
+        }
+    }
+
+    likeComment = async (commentId) => {
+        try {
+            var res = await api.likeComment(commentId);
+        } catch(err){
+            console.log(err);
+        }
     }
 
     render() {
         return (        
-            <div className={css.container}>
+            <div id="guestBook" className={css.container}>
                 <div className={css.innerContainer}>        
                     <p className={css.header}>Guest Book</p>
-                    <CommentInput defaultState={false} 
-                        post={this.createComment}/>
-                    <CommentList delete={this.deleteComment} comments={this.state.comments} />
+                    <CommentInput appState={this.props.appState} defaultState={false} post={this.createComment}/>
+                    <CommentList  appState={this.props.appState} like={this.likeComment} delete={this.deleteComment} comments={this.state.comments} />
                 </div>
             </div>
         )

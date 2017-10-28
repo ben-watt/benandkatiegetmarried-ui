@@ -2,6 +2,8 @@ import React from 'react';
 import MainPage from './mainPage/MainPage';
 import LoginPage from './loginPage/LoginPage';
 import api from '../api/mockapi';
+import { ToastContainer } from 'react-toastify';
+import toast from 'react-toastify/dist/ReactToastify.min.css';
 
 class App extends React.Component {
     constructor(props){
@@ -52,8 +54,16 @@ class App extends React.Component {
                 {
                     (this.state.loggedIn === false) 
                     ? <LoginPage login={() => this.setState({loggedIn: true})} /> 
-                    : <MainPage  showRsvp={this.shouldShowRsvpButton()}/>
+                    : <MainPage appState={this.state} showRsvp={this.shouldShowRsvpButton()}/>
                 }
+                <ToastContainer 
+                    position="top-right"
+                    type="default"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    pauseOnHover/>
             </div>
         )
     }
