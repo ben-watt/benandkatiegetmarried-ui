@@ -31,7 +31,8 @@ class Header extends React.Component {
         return (
             <div ref={(node) => {this.backgroundHeight = node}} className={css.header}>
                 <p className={css.title}> Katie & Ben </p>
-                <p className={css.date}>24.02.2018</p>  
+                <p className={css.date}>24.02.2018</p>
+                <div className={css.bird}></div>  
                 <div className={css.enterDiv} onClick={this.enterSiteSmoothScroll}>
                     <h5 className={css.enter}>Enter Site</h5>
                     <i className={[css.enter, "fa fa-angle-double-down"].join(' ')} aria-hidden="true"></i>

@@ -17,7 +17,9 @@
 }
 
 .lazy {
-    height: 100px
+    height: 100px;
+    width: 100px;
+    margin: 0px;
 }
 
 .head {
@@ -43,6 +45,7 @@
 
 .two {
     grid-column: 3;
+
 }
 
 .three {
@@ -63,6 +66,7 @@
     border-radius: 50%;
     background-Size: cover;
     opacity: 1;
+    margin: 0 auto;
 
 }
 
@@ -71,6 +75,7 @@
     font-family: var(--mainFont);
     color: grey;
     font-size: var(--textSize);
+    text-align: center;
 }
 
 .davidPic {
@@ -121,7 +126,9 @@
     }
 
     .lazy {
-        height: 150px
+        height: 150px;
+        width: 150px;
+        margin: 0px;
     }
 
 }
