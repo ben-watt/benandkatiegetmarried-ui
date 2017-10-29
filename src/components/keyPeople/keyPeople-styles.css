@@ -74,7 +74,7 @@
     margin: 10px 5px 40px 5px;
     font-family: var(--mainFont);
     color: grey;
-    font-size: var(--textSize);
+    font-size: var(--mini);
     text-align: center;
 }
 
@@ -129,6 +129,10 @@
         height: 150px;
         width: 150px;
         margin: 0px;
+    }
+
+    .name {
+        font-size: var(--textSize);
     }
 
 }
