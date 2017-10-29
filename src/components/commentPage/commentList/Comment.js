@@ -11,7 +11,6 @@ const DeleteIcon = styled.i`
     top: 10px;
     color: grey;
     cursor: pointer;
-    display: ${p => console.log(p)};
     &:hover {
         color: red;
     }
@@ -65,7 +64,7 @@ const Comment = (props) => {
                 {this.isCommentOwner(comment.attributions) && <DeleteIcon onClick={() => props.delete(comment.id)} className='fa fa-times'/>}
             </div>
             <p>{comment.text}</p>
-            <Likes onClick={() => props.like(comment.id)} likes={comment.likes.length}>
+            <Likes onClick={() => props.like(comment)} likes={comment.likes.length}>
                 <i className={`fa ${comment.likes.length > 0 ? 'fa-heart' : 'fa-heart-o'}`}/>
                 <p className={css.likeCount}> {comment.likes.length > 0 && comment.likes.length}</p>
             </Likes>

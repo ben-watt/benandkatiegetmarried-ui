@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import _ from 'lodash';
 
 import CommentList from './commentList/CommentList';
 import CommentInput from './commentInput/CommentInput';
@@ -14,6 +15,7 @@ class CommentPage extends React.Component {
         this.state = {
             comments: []
         }
+        this.guests = this.props.appState.guestDetails;
     }
 
     componentDidMount = async () => {
@@ -66,9 +68,31 @@ class CommentPage extends React.Component {
         }
     }
 
-    likeComment = async (commentId) => {
+    guestsHaveAlreadyLiked = (comment) => {
+        var g = _.find(comment.likes, (g) => {
+            return _.find(this.guests, { 'id' : g.id });
+        });
+        return typeof g === "undefined" ? false : true;
+    }
+
+    likeComment = async (comment) => {
+        if(this.guestsHaveAlreadyLiked(comment)){
+            toast.info("You must really like this comment, you have already liked it.");
+            return
+        }
+
         try {
-            var res = await api.likeComment(commentId);
+            var res = await api.likeComment(comment.id, this.guests);
+            if(res.status === 204){
+                this.setState(prev => ({
+                    comments: prev.comments.map((c) => {
+                        if(c.id === comment.id){
+                            c.likes = c.likes.concat(this.guests)
+                        }
+                        return c;
+                    })
+                }));
+            }
         } catch(err){
             console.log(err);
         }

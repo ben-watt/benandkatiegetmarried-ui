@@ -60,10 +60,10 @@ const api = (function() {
         return res;
     }
 
-    obj.likeComment = async function(data){
+    obj.likeComment = async function(commentId, guestDetails){
         const eventId = localStorage.getItem("eventId");
         const messageBoard = await api.get('/guest/' + eventId + '/messageboard');
-        const res = await api.get('/guest/' + eventId + '/messageboard/' + messageBoard.data[0].id + '/messages', data);
+        const res = await api.post('/guest/' + eventId + '/messageboard/'+ messageBoard.data[0].id + '/messages/' + commentId, guestDetails);
         return res;
     }
 
