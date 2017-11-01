@@ -53,9 +53,8 @@ class CommentInput extends React.Component {
     }
     
     addEmoji = (emoji) => {
-        console.log(emoji);
         this.setState(prev => ({
-            text: prev.text.length > 1 ? prev.text.concat(emoji.unicode) : prev.text.concat(' ' + emoji.unicode),
+            text: prev.text.concat(emoji.unicode),
             showPicker: false,
         }));
     }
@@ -80,7 +79,7 @@ class CommentInput extends React.Component {
         this.props.post(this.state.text, this.state.attribution)
         this.setState(prev => ({
             activeInput: false,
-            text: [],
+            text: '',
             attribution: prev.guests,
             pickerVisible: false
         }))
