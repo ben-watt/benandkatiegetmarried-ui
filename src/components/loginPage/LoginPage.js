@@ -1,11 +1,11 @@
 import React from 'react';
 import Vivus from 'vivus';
+import { toast } from 'react-toastify';
 
 import api from '../../api/mockapi';
 import Button from '../common/Button';
 import css from './loginPage.css';
 import loadingImg from './images/loading.svg';
-import LoginError from './LoginError';
 
 import App from '../App';
 
@@ -18,8 +18,6 @@ class LoginPage extends React.Component {
             password : '',
             enterCodeMessage: 'Please enter your unique code:',
             showLoader: false,
-            errorMessage: '',
-            error: false,
             fadeOut: false,
         }
     }
@@ -76,8 +74,6 @@ class LoginPage extends React.Component {
         
         try {
 
-
-            
             const req = api.guestLogin(this.state.securityCode, this.state.password, 1);
 
             this.animation.play();
@@ -94,13 +90,10 @@ class LoginPage extends React.Component {
         }   
     }
 
-    handleError = (err) => {   
-        const message = (err.response && err.response.data && err.response.data.ErrorMessage) || err.message;  
-        this.setState({ 
-            error: true, 
-            errorMessage: `${err.name}: ${message}.
-             Contact us if your having problems.`,
-        });
+    handleError = (err) => { 
+        const message = (err.response && err.response.data && err.response.data.ErrorMessage) || err.message; 
+
+        toast.error(`${err.name}: ${message}.\nContact Ben or Katie if your having problems.`)
     }
 
     handleResponse = async (res) => {
@@ -131,7 +124,6 @@ class LoginPage extends React.Component {
                         <input id='password' className={css.password} onChange={this.inputChange} value={this.state.password} type='password'/>
                         <span></span>
                     </div>
-                    { this.state.error && <LoginError errorMessage={this.state.errorMessage}/>}
                     <Button id={css.loginBtn} onClick={this.login} text={'Login'}/>
                 </form>
                 <div className={catClasses.join(' ')}>
