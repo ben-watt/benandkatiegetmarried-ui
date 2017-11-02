@@ -49,6 +49,7 @@
     "react-toastify": "^2.1.5",
     "react-transition-group": "^2.2.0",
     "smoothscroll": "^0.3.0",
+    "store": "^2.0.12",
     "style-loader": "0.18.2",
     "styled-components": "^2.1.2",
     "sw-precache-webpack-plugin": "0.11.3",

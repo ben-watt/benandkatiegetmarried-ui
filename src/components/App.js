@@ -3,7 +3,6 @@ import MainPage from './mainPage/MainPage';
 import LoginPage from './loginPage/LoginPage';
 import api from '../api/mockapi';
 import { ToastContainer } from 'react-toastify';
-import toast from 'react-toastify/dist/ReactToastify.min.css';
 
 class App extends React.Component {
     constructor(props){
