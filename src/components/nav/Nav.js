@@ -25,8 +25,8 @@ class Nav extends React.Component {
     render() {        
         return (
             <div>
-                <SideNav sections={this.sections} scroll={this.scroll}/>
-                <NavBar sections={this.sections} scroll={this.scroll}/>
+                <SideNav logout={this.props.logout} sections={this.sections} scroll={this.scroll}/>
+                <NavBar logout={this.props.logout} sections={this.sections} scroll={this.scroll}/>
             </div>
         )
     }

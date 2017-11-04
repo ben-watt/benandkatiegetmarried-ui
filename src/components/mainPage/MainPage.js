@@ -19,7 +19,7 @@ class MainPage extends React.Component {
     render() {
         return  (
                 <div>
-                <Nav />
+                <Nav logout={this.props.logout}/>
                 {this.props.showRsvp && <Rsvp/>}
                     <div className={css.container}>             
                         <Header/>

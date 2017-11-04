@@ -112,7 +112,7 @@ class CommentInput extends React.Component {
                     </div>             
                 </div>
                 <div className={showPicker.join(' ')}>
-                    <Picker onEmojiSelected={this.addEmoji}/>
+                    <Picker modal={true} onEmojiSelected={this.addEmoji}/>
                 </div>
             </div>
         )

@@ -1,23 +1,25 @@
 const navItems = [{
-    name: 'When',
+    name: 'When & Where',
     icon: 'fa fa-calendar-o',
     anchor: '#when',
-},{
-    name: 'Where',
-    icon: 'fa fa-compass',
-    anchor: '#where'
-},{
+ },
+//{
+//     name: 'Where',
+//     icon: 'fa fa-compass',
+//     anchor: '#where'
+// },
+{
     name: 'Accommodation',
     icon: 'fa fa-bed',
     anchor: '#accommodations',
 },{
     name: 'People',
     icon: 'fa fa-users',
-    anchor: '#people'
+    anchor: '#people',
 },{
     name: 'Itinerary',
     icon: 'fa fa-list-ul',
-    anchor: '#itinerary'
+    anchor: '#itinerary',
 },{
     name: 'Dress Code',
     icon: 'fa fa-black-tie',
@@ -34,6 +36,10 @@ const navItems = [{
     name: 'Guest Book',
     icon: 'fa fa-book',
     anchor: '#guestBook',
+},{
+    name: 'Logout',
+    icon: 'fa fa-sign-out',
+//    anchor: '',
 }
 //,{
 // name: 'Main',

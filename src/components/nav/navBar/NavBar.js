@@ -7,8 +7,21 @@ class NavBar extends React.Component {
         super(props);
         this.state = {
             navClass: css.absolute,
-            navHeight: 50
+            navHeight: 50,
         }  
+        this.speed = 3;
+        this.runningCompleteScroll = false;
+        this.snapNav = setInterval(() => {
+            if(!this.navBarInEndState() 
+                && this.runningCompleteScroll === false
+                && this.lastCallToOnScroll < Date.now() - 200){
+                this.completeScroll();
+            }
+        }, 100);   
+    }
+
+    navBarInEndState() {
+        return this.state.navHeight >= 50 || this.state.navHeight <= 0 ? true : false;
     }
 
     componentDidMount(){
@@ -16,37 +29,55 @@ class NavBar extends React.Component {
         this.lastOffset = window.pageYOffset || 0;
     }
 
+    componentDidUpdate(){
+        if(this.navBarInEndState()){
+            clearInterval(this.snapScroll);
+            this.runningCompleteScroll = false;
+        }
+    }
+
     componentDidUnMount(){
         window.removeEventListener('scroll', this.onScroll);
     }
 
+    decrementScrollBar = () => {
+        this.setState((prev) => {
+            return { navHeight: prev.navHeight + 1}
+        });
+    }
+
+    completeScroll = () => {
+        this.runningCompleteScroll = true;
+        this.snapScroll = setInterval(this.decrementScrollBar, 8);
+    }
+
     onScroll = () => {
-            const pageOffset = window.pageYOffset;
-            const diff = this.lastOffset - pageOffset;
-            const speed = 3;
+        this.lastCallToOnScroll = Date.now();          
+        const pageOffset = window.pageYOffset;
+        const diff = this.lastOffset - pageOffset;
 
-            if(diff > 0 && pageOffset !== 0){
-                this.setState((prev) => ({ 
-                    navClass: css.fixed, 
-                    navHeight: prev.navHeight > 50 ? 50 : prev.navHeight + speed,
-                }));
-            } else {
-                if(pageOffset === 0){
-                    this.setState({ navClass: css.absolute, navHeight: 0 });
-                }
-                
-                this.setState((prev) => {
-                    let newHeight = prev.navHeight - speed
-                    if(prev.navHeight < 0)
-                        newHeight = 0;
-                    if(window.pageYOffset === 0)
-                        newHeight = 50;              
-
-                    return {navHeight: newHeight}
-                });            
+        if(diff > 0 && pageOffset !== 0){
+            this.setState((prev) => ({ 
+                navClass: css.fixed, 
+                navHeight: prev.navHeight > 50 ? 50 : prev.navHeight + this.speed,
+            }));
+        } else {
+            if(pageOffset === 0){
+                this.setState({ navClass: css.absolute, navHeight: 0 });
             }
-            this.lastOffset = pageOffset;
+            
+            this.setState((prev) => {
+                let newHeight = prev.navHeight - this.speed
+                if(prev.navHeight < 0)
+                    newHeight = 0;
+                if(window.pageYOffset === 0)
+                    newHeight = 50;              
+
+                return {navHeight: newHeight}
+            });            
         }
+        this.lastOffset = pageOffset;
+    }
 
 
     render(){
@@ -60,7 +91,7 @@ class NavBar extends React.Component {
                     {
                         this.props.sections.map((x, i) => 
                             <div className={css.navItem} 
-                                onClick={() => this.props.scroll(x.anchor, x.options)} 
+                                onClick={() => { x.name !== "Logout" ? this.props.scroll(x.anchor, x.options) : this.props.logout();}}
                                 key={i}>{x.name}</div>)
                     }
                 </div>    

@@ -3,6 +3,7 @@ import MainPage from './mainPage/MainPage';
 import LoginPage from './loginPage/LoginPage';
 import api from '../api/mockapi';
 import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 class App extends React.Component {
     constructor(props){
@@ -13,6 +14,18 @@ class App extends React.Component {
             guestDetails : null
         }
     }  
+
+    logout = () => {
+        try{
+            api.logout();
+            this.setState({
+                loggedIn: false
+            });
+        } catch(err){
+            console.log(err);
+            toast.error("Unable to logout at this time");
+        }
+    }
 
     componentDidMount = async () => {
         this.getPageData();
@@ -39,8 +52,8 @@ class App extends React.Component {
     }
 
     shouldShowRsvpButton = () => {
-        const rsvpAlreadySent = this.state.guestDetails.every(x => x.hasSentRsvp === true);
-        return rsvpAlreadySent ? false : true;
+        var guests = this.state.guestDetails;
+        return guests === null ? false : guests.every(x => x.hasSentRsvp === true);
     }
        
     handleClick() {
@@ -53,7 +66,9 @@ class App extends React.Component {
                 {
                     (this.state.loggedIn === false) 
                     ? <LoginPage login={() => this.setState({loggedIn: true})} /> 
-                    : <MainPage appState={this.state} showRsvp={this.shouldShowRsvpButton()}/>
+                    : <MainPage appState={this.state} 
+                                showRsvp={this.shouldShowRsvpButton()}
+                                logout={this.logout}/>
                 }
                 <ToastContainer 
                     position="top-right"

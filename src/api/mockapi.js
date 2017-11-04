@@ -5,6 +5,8 @@ const api = (function() {
     let obj = {};
 
     const api = axios.create({
+        // 'https://benandkatiegetmarried.azurewebsites.net/api'
+        // 'http://localhost:18399/api'
         baseURL: 'http://localhost:18399/api',
         timeout: 8000,
         headers: {'X-Requested-With': 'XMLHttpRequest'}
@@ -17,8 +19,12 @@ const api = (function() {
             RememberMe: rememberMe,
         });   
 
-        store.set("eventId", res.data.eventId);store.set("eventId", res.data.eventId);
+        store.set("eventId", res.data.eventId);
+        return res;
+    }
 
+    obj.logout = async function() {
+        const res = await api.post('/logout');
         return res;
     }
 
@@ -69,6 +75,7 @@ const api = (function() {
     }
 
     return {
+        logout: obj.logout,
         guestLogin: obj.guestLogin,
         eventDetails: obj.eventDetails,
         sendRsvp: obj.sendRsvp,
