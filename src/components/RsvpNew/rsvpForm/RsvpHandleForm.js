@@ -33,8 +33,8 @@ class RsvpHandleForm extends React.Component {
             if(res.status === 200){
                 res.data.forEach(guest => {
                     responses.push({
-                        guestId: guest.Id,
-                        name: `${guest.FirstName} ${guest.LastName}`, 
+                        guestId: guest.id,
+                        name: `${guest.firstName} ${guest.lastName}`, 
                         response: false, 
                         mealChoice: false
                     });

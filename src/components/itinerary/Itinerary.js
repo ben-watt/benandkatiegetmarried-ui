@@ -14,12 +14,14 @@ class Itinerary extends React.Component {
     }
 
     doThis = (val) => {
-        return (
-            <div key={val.time} className={css.inner}>
-                <p className={css.time}>{val.time}</p>
-                <p className={css.text}>{val.text}</p>
-            </div>
-        )
+        if(val.type.indexOf(this.props.inviteType) > -1 ){
+            return (
+                <div key={val.time} className={css.inner}>
+                    <p className={css.time}>{val.time}</p>
+                    <p className={css.text}>{val.text}</p>
+                </div>
+            )
+        }
     }
 
     render() {

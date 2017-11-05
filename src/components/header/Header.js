@@ -27,11 +27,18 @@ class Header extends React.Component {
 		scrollFunc(this.backgroundHeight);
     }
 
+    getEventDate() {
+        const date = new Date(this.props.eventDate);
+        const month = date.toLocaleDateString("en-GB", {month: "2-digit"});
+        const day = date.toLocaleDateString("en-GB", {day: "2-digit"});
+        return `${day}.${month}.${date.getFullYear()}`
+    }
+
     render() {
         return (
             <div ref={(node) => {this.backgroundHeight = node}} className={css.header}>
                 <p className={css.title}> Katie & Ben </p>
-                <p className={css.date}>24.02.2018</p>
+                <p className={css.date}>{this.getEventDate()}</p>  
                 <div className={css.bird}></div>  
                 <div className={css.enterDiv} onClick={this.enterSiteSmoothScroll}>
                     <h5 className={css.enter}>Enter Site</h5>

@@ -22,14 +22,14 @@ class MainPage extends React.Component {
                 <Nav logout={this.props.logout}/>
                 {this.props.showRsvp && <Rsvp/>}
                     <div className={css.container}>             
-                        <Header/>
-                        <WhenWhere />
+                        <Header eventDate={this.props.appState.eventDetails.startTime}/>
+                        <WhenWhere eventDate={this.props.appState.eventDetails.startTime} inviteType={this.props.appState.inviteType}/>
                         <Accommodations />
                         <div id='map' className={css.map}>
                             <MapContainer/>
                         </div>     
                         <KeyPeople />
-                        <Itinerary /> 
+                        <Itinerary inviteType={this.props.appState.inviteType}/> 
                         <DressCode />
                         <Gifts />      
                         <CommentPage appState={this.props.appState}/>             

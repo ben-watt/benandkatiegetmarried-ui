@@ -23,10 +23,11 @@ class CommentPage extends React.Component {
             const res = await api.getComments();
             if(res.status === 200){
                 this.setState({
-                    comments: res.data,
+                    comments: res.data.map(c => new Comment(c)),
                 });
-                this.commentFactory = CommentFactory(res.data[0].messageBoardId, this.getHierarchyId);
+                console.log("state:", this.state.comments);
             }
+            this.commentFactory = CommentFactory(res.data[0].messageBoardId, this.getHierarchyId);
 
         } catch(err) {
             console.log(err);
@@ -80,21 +81,32 @@ class CommentPage extends React.Component {
             toast.info("You must really like this comment, you have already liked it.");
             return
         }
+        
+        this.setState(prev => ({
+            comments: prev.comments.map((c) => {
+                if(c.id === comment.id){
+                    console.log(comment);
+                    comment.addLike(this.guests);
+                }
+                return c;
+            })
+        }));
 
         try {
             var res = await api.likeComment(comment.id, this.guests);
-            if(res.status === 204){
-                this.setState(prev => ({
-                    comments: prev.comments.map((c) => {
-                        if(c.id === comment.id){
-                            c.likes = c.likes.concat(this.guests)
-                        }
-                        return c;
-                    })
-                }));
+            if(res.status !== 204){
+                throw new Error("Incorrect status returned");
             }
         } catch(err){
-            console.log(err);
+            toast.error("Connection problem, unable to like message");
+            this.setState(prev => ({ 
+                comments: prev.comments.map((c) => {
+                    if(c.id === comment.id){
+                        comment.removeLike(this.guests);
+                    }
+                    return c;
+                })
+            }));
         }
     }
 

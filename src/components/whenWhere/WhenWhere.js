@@ -3,15 +3,32 @@ import css from './whenWhere-styles.css';
 import Button from '../common/Button.js';
 import selectCalendar from '../calendar/selectCalendar.js';
 import Calendar from '../calendar/Calendar.js';
+import api from '../../api/mockapi.js';
+import { toast } from 'react-toastify';
 
 class WhenWhere extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             calendarVisible: false,
+            venueDetails: null,
         };
         this.handleChange = this.handleChange.bind(this);
     }    
+
+    componentDidMount = async () => {
+        try {
+            const res = await api.venueDetails();
+            if(res.status === 200){
+                this.setState({
+                    venueDetails: res.data[0]
+                })
+            }
+        } catch(err) {
+            console.log(err);
+            toast.error("Oh no for some reason we couldn't get the event details");
+        }
+    }
 
     handleChange(event) {
         this.setState({
@@ -31,8 +48,20 @@ class WhenWhere extends React.Component {
         window.open("https://www.google.co.uk/maps/dir//''/@53.5183175,-2.4592602,12.59z/data=!4m8!4m7!1m0!1m5!1m1!1s0x0:0x63e9bf1416b0ca94!2m2!1d-2.390937!2d53.506292", '_blank');
     }
 
-    render() {
+    getVenueDetails() {
+        const venue = this.state.venueDetails;
+        return venue === null ? '' : `${venue.name}, ${venue.town} ${venue.postcode}`
+    }
 
+    getDate() {
+        const date = new Date(this.props.eventDate);
+        const day = date.toLocaleDateString("en-GB",{ day: "2-digit" });
+        const monthYear = date.toLocaleDateString("en-GB", {month: "long", year: "numeric"});
+        const time = date.toLocaleTimeString("en-GB",{ hour: "2-digit", minute: "2-digit" });
+        return `The ${day}th of ${monthYear}, at ${time} in the afternoon`
+    }
+
+    render() {
         return (
             <div className={css.setArea}>
                 <div className={css.container}>
@@ -46,7 +75,7 @@ class WhenWhere extends React.Component {
                     <p className={css.invite}>And we would love for you to celebrate with us...</p>
 
                     <h1 id='when' className={[css.headings, css.details, css.ipadWhen].join(' ')}><u>WHEN</u></h1>
-                    <p  className={[css.text, css.ipadWhenDeets].join(' ')}>The 24th of February 2018, at 2.30 in the afternoon.</p>
+                    <p  className={[css.text, css.ipadWhenDeets].join(' ')}>{this.getDate()}</p>
                     <Button text={'Add to Calendar'} onClick={() => this.showCalendarMenu()} id={css.buttonLeft} />
                     <Calendar handleChange={this.handleChange} visibility={this.state.calendarVisible}/> 
                         
@@ -54,7 +83,7 @@ class WhenWhere extends React.Component {
                     <hr className={css.hr}/>
 
                     <h1 id='where' className={[css.headings, css.details, css.ipadWhere].join(' ')}><u>WHERE</u></h1>
-                    <p className={[css.text, css.ipadWhereDeets].join(' ')}>The Worsley Park Marriott Hotel & Country Club, Manchester M28 2QT</p>
+                    <p className={[css.text, css.ipadWhereDeets].join(' ')}>{this.getVenueDetails()}</p>
                     <Button text={'Get Directions'} onClick={() => this.showDirections()} id={css.buttonRight} />
                 </div>
             </div>

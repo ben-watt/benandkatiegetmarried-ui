@@ -35,13 +35,15 @@ class App extends React.Component {
         try{
             const eventPromise = api.eventDetails();
             const guestPromise = api.getGuests();
-            const res = await Promise.all([eventPromise, guestPromise]);
+            const inviteType = api.getInviteType();
+            const res = await Promise.all([eventPromise, guestPromise, inviteType]);
 
             if(res.every(x => x.status === 200)){
                 this.setState({ 
                     loggedIn: true,
                     eventDetails: res[0].data,
-                    guestDetails: res[1].data
+                    guestDetails: res[1].data,
+                    inviteType: res[2].data
                 });
             }
 
@@ -52,8 +54,8 @@ class App extends React.Component {
     }
 
     shouldShowRsvpButton = () => {
-        var guests = this.state.guestDetails;
-        return guests === null ? false : guests.every(x => x.hasSentRsvp === true);
+        const guests = this.state.guestDetails;
+        return guests === null ? false : guests.some(x => !x.hasSentRsvp);
     }
        
     handleClick() {

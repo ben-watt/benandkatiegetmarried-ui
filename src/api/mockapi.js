@@ -40,6 +40,19 @@ const api = (function() {
         return res;
     }
 
+    obj.venueDetails = async function(){
+        const eventId = store.get("eventId");
+        const res = await api.get('/guest/' + eventId + '/venue-details')
+        return res;
+    }
+
+    obj.getInviteType = async function(){
+        const eventId = store.get("eventId");
+        const res = await api.get('/guest/' + eventId + '/invite-type')
+        return res;
+    }
+
+
     obj.sendRsvp = async function(data) {
         const eventId = store.get("eventId");
         const res = await api.post('/guest/' + eventId, data);
@@ -78,12 +91,14 @@ const api = (function() {
         logout: obj.logout,
         guestLogin: obj.guestLogin,
         eventDetails: obj.eventDetails,
+        venueDetails:  obj.venueDetails,
         sendRsvp: obj.sendRsvp,
         getGuests: obj.getGuests,
         getComments: obj.getComments,
         postComment: obj.postComment,
         deleteComment: obj.deleteComment,
-        likeComment: obj.likeComment
+        likeComment: obj.likeComment,
+        getInviteType: obj.getInviteType
     }
 
 })();
