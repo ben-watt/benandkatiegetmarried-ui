@@ -21,13 +21,16 @@ class CommentPage extends React.Component {
 
     componentDidMount = async () => {
         try{
-            const res = await api.getComments();
-            if(res.status === 200){
+            const messageBoards = await api.getMessageBoards();
+            const messages = await api.getComments(messageBoards.data[0].id);
+
+            this.commentFactory = CommentFactory(messageBoards.data[0].id, this.getHierarchyId);
+
+            if(messages.status === 200){
                 this.setState({
-                    comments: res.data.map(c => new Comment(c)),
+                    comments: messages.data.map(c => new Comment(c)),
                 });
             }
-            this.commentFactory = CommentFactory(res.data[0].messageBoardId, this.getHierarchyId);
 
         } catch(err) {
             console.log(err);
@@ -35,8 +38,11 @@ class CommentPage extends React.Component {
     }
 
     getHierarchyId = () => {
+        if(this.state.comments.length === 0){
+            return "/0/";
+        }
+
         this.state.comments.sort((a,b) => a.hierarchy.localeCompare(b.hierarchy));
-        
         const lastHierarchy = this.state.comments[this.state.comments.length - 1].hierarchy;
         const newNum = parseInt(lastHierarchy.split("/")[1]) + 1;
 

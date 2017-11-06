@@ -73,10 +73,15 @@ const api = (function() {
         return res;
     }
 
-    obj.getComments = async function(data){
+    obj.getMessageBoards = async function(){
         const eventId = store.get("eventId");
-        const messageBoard = await api.get('/guest/' + eventId + '/messageboard');
-        const res = await api.get('/guest/' + eventId + '/messageboard/' + messageBoard.data[0].id + '/messages', data);
+        const res = await api.get('/guest/' + eventId + '/messageboard');
+        return res;
+    }
+
+    obj.getComments = async function(messageBoardId){
+        const eventId = store.get("eventId");
+        const res = await api.get('/guest/' + eventId + '/messageboard/' + messageBoardId + '/messages');
         return res;
     }
 
@@ -95,6 +100,7 @@ const api = (function() {
         sendRsvp: obj.sendRsvp,
         getGuests: obj.getGuests,
         getComments: obj.getComments,
+        getMessageBoards: obj.getMessageBoards,
         postComment: obj.postComment,
         deleteComment: obj.deleteComment,
         likeComment: obj.likeComment,
