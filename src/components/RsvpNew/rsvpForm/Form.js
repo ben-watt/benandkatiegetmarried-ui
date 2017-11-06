@@ -22,11 +22,16 @@ class Form extends React.Component  {
         clearTimeout(this.timer);
     }
 
-    generateData = (val, i) => { 
+    generateData = (val, i) => {
+        let meal = false;
+        let responses = this.props.rsvp.responses; 
+        let response = responses[i];
 
         if(responses.length >= 1) {
-            meal = responses[i].response;
-        }
+            meal = response.response;
+            console.log(meal);
+            
+        }   
 
         return (
             <div key={i} className={[css.formElements].join(' ')} >
@@ -40,7 +45,7 @@ class Form extends React.Component  {
                     onClick={this.props.handleChange} />No
                 </div>
 
-                {meal ?
+                {meal === 'true' ?
                 <select value={response.mealChoice} className={[!this.props.visibility && css.hideSelect, css.select, css.right].join(' ')}  name={val.name}  onChange={this.props.handleChange} >
                     <option  disabled="disabled" hidden value='choose'>Meal Choice</option>
                     <option value="meat">Meat</option>
@@ -54,7 +59,6 @@ class Form extends React.Component  {
             </div>
         )
     }
-    timer = undefined;
     
     render() {
 

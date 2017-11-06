@@ -19,8 +19,7 @@ class RsvpHandleForm extends React.Component {
             },
             checkFields: true,
             arrow: false,
-            formReady: false
-            form: false,
+            formReady: false,
         }
     }
 
