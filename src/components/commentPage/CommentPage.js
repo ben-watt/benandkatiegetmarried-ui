@@ -2,6 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 
+import Comment from './comment.js';
 import CommentList from './commentList/CommentList';
 import CommentInput from './commentInput/CommentInput';
 import api from '../../api/mockapi';
@@ -25,7 +26,6 @@ class CommentPage extends React.Component {
                 this.setState({
                     comments: res.data.map(c => new Comment(c)),
                 });
-                console.log("state:", this.state.comments);
             }
             this.commentFactory = CommentFactory(res.data[0].messageBoardId, this.getHierarchyId);
 
