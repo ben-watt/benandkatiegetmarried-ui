@@ -18,6 +18,14 @@ export const ScriptCache = (function(global) {
       }
     }
 
+    Cache._onUnmount = function(key){
+      return function(){
+        const tag = scriptMap.get(key).tag;
+        tag.removeEventListener('load', tag.onload);
+        tag.removeEventListener('error', tag.onerror);
+      }
+    }
+
     Cache._scriptTag = (key, src) => {
       if (!scriptMap.has(key)) {
         let tag = document.createElement('script');
@@ -33,7 +41,8 @@ export const ScriptCache = (function(global) {
      
 
           let handleResult = (state) => {
-            return (evt) => {
+            return (evt) => {        
+              console.log("Handle Result:", state);
               let stored = scriptMap.get(key);
               if (state === 'loaded') {
                 stored.resolved = true;
@@ -68,7 +77,7 @@ export const ScriptCache = (function(global) {
             src = src.replace(/(callback=)[^&]+/, `$1${cbName}`);
             window[cbName] = tag.onload;
           } else {
-            tag.addEventListener('load', tag.onload)
+            tag.addEventListener('load', tag.onload);
           }
           tag.addEventListener('error', tag.onerror);
 
@@ -76,6 +85,7 @@ export const ScriptCache = (function(global) {
           body.appendChild(tag);
           return tag;
         });
+
         let initialState = {
           loaded: false,
           error: false,
@@ -91,7 +101,8 @@ export const ScriptCache = (function(global) {
       const script = scripts[key];
       Cache[key] = {
         tag:    Cache._scriptTag(key, script),
-        onLoad: Cache._onLoad(key)
+        onLoad: Cache._onLoad(key),
+        onUnmount: Cache._onUnmount(key)
       }
     })
 

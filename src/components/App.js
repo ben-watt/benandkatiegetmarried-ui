@@ -18,6 +18,7 @@ class App extends React.Component {
     logout = () => {
         try{
             api.logout();
+            document.body.classList.remove('lock');
             this.setState({
                 loggedIn: false
             });
@@ -28,7 +29,7 @@ class App extends React.Component {
     }
 
     componentDidMount = async () => {
-        this.getPageData();
+       this.getPageData();
     }
 
     getPageData = async () => {
@@ -67,7 +68,7 @@ class App extends React.Component {
             <div>
                 {
                     (this.state.loggedIn === false) 
-                    ? <LoginPage login={() => this.setState({loggedIn: true})} /> 
+                    ? <LoginPage login={() => this.getPageData()} /> 
                     : <MainPage appState={this.state} 
                                 showRsvp={this.shouldShowRsvpButton()}
                                 logout={this.logout}/>
@@ -86,3 +87,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+// this.setState({loggedIn: true}

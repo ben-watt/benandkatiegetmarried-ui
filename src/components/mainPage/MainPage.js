@@ -4,6 +4,7 @@ import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/keyPeople';
 import Itinerary from '../itinerary/Itinerary';
 import Rsvp from '../RsvpNew/rsvpButton/RsvpButton';
+import BenMap from '../BenMaps.js';
 
 import CommentPage from '../commentPage/CommentPage';
 import Accommodations from '../accommodations/accommodations.js';
@@ -17,16 +18,16 @@ import Nav from '../nav/Nav';
 
 class MainPage extends React.Component {
     render() {
+        let startTime = this.props.appState.eventDetails && this.props.appState.eventDetails.startTime;
         return  (
                 <div>
                 <Nav logout={this.props.logout}/>
                 {this.props.showRsvp && <Rsvp guestDetails={this.props.appState.guestDetails} />}
                     <div className={css.container}>             
-                        <Header eventDate={this.props.appState.eventDetails.startTime}/>
-                        <WhenWhere eventDate={this.props.appState.eventDetails.startTime} inviteType={this.props.appState.inviteType}/>
+                        <Header eventDate={startTime}/>
+                        <WhenWhere eventDate={startTime} inviteType={this.props.appState.inviteType}/>
                         <Accommodations />
                         <div id='map' className={css.map}>
-                            <MapContainer/>
                         </div>     
                         <KeyPeople />
                         <Itinerary inviteType={this.props.appState.inviteType}/> 

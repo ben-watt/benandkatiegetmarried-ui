@@ -23,24 +23,24 @@ export const wrapper = (options) => (WrappedComponent) => {
     componentDidMount() {
       const refs = this.refs;
       this.scriptCache.google.onLoad((err, tag) => {
-        const maps = window.google.maps;
-        
-        const mapRef = refs.map;
-
-        const node = ReactDOM.findDOMNode(mapRef);
-        let center = new maps.LatLng(this.props.lat, this.props.lng)
-
-        let mapConfig = Object.assign({}, defaultMapConfig, {
-          center, zoom: this.props.zoom
-        })
-
-        this.map = new maps.Map(node, mapConfig);
-
-        this.setState({
-          loaded: true,
-          map: this.map,
-          google: window.google
-        })
+          const maps = window.google.maps;
+          
+          const mapRef = refs.map;
+  
+          const node = ReactDOM.findDOMNode(mapRef);
+          let center = new maps.LatLng(this.props.lat, this.props.lng)
+  
+          let mapConfig = Object.assign({}, defaultMapConfig, {
+            center, zoom: this.props.zoom
+          })
+  
+          this.map =  new maps.Map(node, mapConfig);
+  
+          this.setState({
+            loaded: true,
+            map: this.map,
+            google: window.google
+          })
       });
     }
 
@@ -51,6 +51,11 @@ export const wrapper = (options) => (WrappedComponent) => {
           libraries: libraries
         })
       });
+    }
+
+    componentWillUnmount() {
+      console.log(this.scriptCache);
+      this.scriptCache.google.onUnmount();
     }
 
     render() {

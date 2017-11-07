@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
-class App extends Component {
+class BenMap extends Component {
   constructor(props){
     super(props);
     this.google = window.google;
@@ -38,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default BenMap;
