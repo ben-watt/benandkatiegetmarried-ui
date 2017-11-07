@@ -1,19 +1,13 @@
 import React from 'react';
 import css from './rsvpForm-styles.css';
-import guests from '../data/guest-data';
 
 class Form extends React.Component  {
-    constructor(props) {
-        super()
-    }
-
+    
     componentDidMount = () => {
         if (this.props.visibility === true) {
             this.timer = setTimeout(() => {
                 var container = this.cont;
-                var inner = this.
-                
-                inner;
+                var inner = this.inner;
                 this.props.scrollCalculate(container, inner); }, 2000);
          }
     }

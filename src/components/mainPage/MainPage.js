@@ -20,7 +20,7 @@ class MainPage extends React.Component {
         return  (
                 <div>
                 <Nav logout={this.props.logout}/>
-                {this.props.showRsvp && <Rsvp/>}
+                {this.props.showRsvp && <Rsvp guestDetails={this.props.appState.guestDetails} />}
                     <div className={css.container}>             
                         <Header eventDate={this.props.appState.eventDetails.startTime}/>
                         <WhenWhere eventDate={this.props.appState.eventDetails.startTime} inviteType={this.props.appState.inviteType}/>

@@ -1,6 +1,5 @@
 import React from 'react';
 import api from '../../../api/mockapi.js'
-import data from '../data/guest-data.js';
 import Form from './Form.js';
 
 class RsvpHandleForm extends React.Component {
@@ -26,23 +25,14 @@ class RsvpHandleForm extends React.Component {
     componentDidMount = async () => {
         const responses = [];
 
-        try {
-            let res = await api.getGuests();
-            
-            if(res.status === 200){
-                res.data.forEach(guest => {
-                    responses.push({
-                        guestId: guest.id,
-                        name: `${guest.firstName} ${guest.lastName}`, 
-                        response: false, 
-                        mealChoice: false
-                    });
-                });
-            }
-            
-        } catch(e) {
-            console.log(`Shit! error ${e}`);
-        }
+        this.props.guestDetails.forEach(guest => {
+            responses.push({
+                guestId: guest.id,
+                name: `${guest.firstName} ${guest.lastName}`, 
+                response: false, 
+                mealChoice: false
+            });
+        });
 
         this.setState(prevState => ({
             responseData: {

@@ -101,6 +101,7 @@ class RsvpButton extends React.Component {
                         </div> 
                         : null}
                         <RsvpHandleForm 
+                            guestDetails={this.props.guestDetails}
                             visibility={visibility}
                             submitForm={this.submitForm}
                             showScrollArrow={this.showScrollArrow}
