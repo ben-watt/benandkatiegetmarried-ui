@@ -12,7 +12,6 @@ export const wrapper = (options) => (WrappedComponent) => {
   class Wrapper extends React.Component {
     constructor(props, context) {
       super(props, context);
-
       this.state = {
         loaded: false,
         map: null,
@@ -21,24 +20,18 @@ export const wrapper = (options) => (WrappedComponent) => {
     }
 
     componentDidMount() {
-      const refs = this.refs;
       this.scriptCache.google.onLoad((err, tag) => {
           const maps = window.google.maps;
-          
-          const mapRef = refs.map;
-  
-          const node = ReactDOM.findDOMNode(mapRef);
-          let center = new maps.LatLng(this.props.lat, this.props.lng)
+          const mapRef = this.refs.map;
   
           let mapConfig = Object.assign({}, defaultMapConfig, {
-            center, zoom: this.props.zoom
+            center: new maps.LatLng(this.props.lat, this.props.lng), 
+            zoom: this.props.zoom
           })
-  
-          this.map =  new maps.Map(node, mapConfig);
   
           this.setState({
             loaded: true,
-            map: this.map,
+            map: new maps.Map(ReactDOM.findDOMNode(mapRef), mapConfig),
             google: window.google
           })
       });
@@ -53,11 +46,6 @@ export const wrapper = (options) => (WrappedComponent) => {
       });
     }
 
-    componentWillUnmount() {
-      console.log(this.scriptCache);
-      this.scriptCache.google.onUnmount();
-    }
-
     render() {
       const props = Object.assign({}, this.props, {
         loaded: this.state.loaded,
@@ -66,10 +54,10 @@ export const wrapper = (options) => (WrappedComponent) => {
         mapComponent: this.refs.map
       })
 
-       const style = {
-            width: '100%',
-            height: '100%',
-        }
+      const style = {
+          width: '100%',
+          height: '100%',
+      }
       return (
         <div style={style}>
           <WrappedComponent {...props} />

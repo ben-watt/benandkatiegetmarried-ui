@@ -24,10 +24,6 @@ class RsvpButton extends React.Component {
             offsets:{},
             complete: false,
         }
-    }    
-
-    componentWillUnmount = () => {
-        console.log('button unmounting');
     }
 
     handleButtonClick = () => {
@@ -55,8 +51,6 @@ class RsvpButton extends React.Component {
 
     scrollDown = () => {
         scroll(this.state.offsets.container, this.state.offsets.inner);
-
-        console.log('scrolling')
     }
 
     submitForm = (data) => {

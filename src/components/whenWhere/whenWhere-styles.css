@@ -191,5 +191,6 @@ hr {
         grid-column-start: 4;
         grid-row: 6/8;
         display: inline-block;
+        margin: 0;
     }
 } 

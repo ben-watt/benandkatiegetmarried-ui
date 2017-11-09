@@ -4,7 +4,7 @@ import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/keyPeople';
 import Itinerary from '../itinerary/Itinerary';
 import Rsvp from '../RsvpNew/rsvpButton/RsvpButton';
-import BenMap from '../BenMaps.js';
+//import BenMap from '../BenMaps.js';
 
 import CommentPage from '../commentPage/CommentPage';
 import Accommodations from '../accommodations/accommodations.js';
@@ -28,6 +28,7 @@ class MainPage extends React.Component {
                         <WhenWhere eventDate={startTime} inviteType={this.props.appState.inviteType}/>
                         <Accommodations />
                         <div id='map' className={css.map}>
+                            <MapContainer />
                         </div>     
                         <KeyPeople />
                         <Itinerary inviteType={this.props.appState.inviteType}/> 

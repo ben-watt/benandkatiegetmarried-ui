@@ -1,12 +1,14 @@
 let counter = 0;
-let scriptMap = new Map();
 
 export const ScriptCache = (function(global) {
   return function ScriptCache (scripts) {
+    let scriptMap = new Map();
+
     const Cache = {}
 
     Cache._onLoad = function (key) {
       return (cb) => {
+
         let stored = scriptMap.get(key);
         if (stored) {
           stored.promise.then(() => {
@@ -15,14 +17,6 @@ export const ScriptCache = (function(global) {
         } else {
           // TODO:
         }
-      }
-    }
-
-    Cache._onUnmount = function(key){
-      return function(){
-        const tag = scriptMap.get(key).tag;
-        tag.removeEventListener('load', tag.onload);
-        tag.removeEventListener('error', tag.onerror);
       }
     }
 
@@ -42,7 +36,6 @@ export const ScriptCache = (function(global) {
 
           let handleResult = (state) => {
             return (evt) => {        
-              console.log("Handle Result:", state);
               let stored = scriptMap.get(key);
               if (state === 'loaded') {
                 stored.resolved = true;
@@ -61,6 +54,7 @@ export const ScriptCache = (function(global) {
           }
 
           const cleanup = () => {
+        
             if (global[cbName] && typeof global[cbName] === 'function') {
               global[cbName] = null;
             }
@@ -77,9 +71,9 @@ export const ScriptCache = (function(global) {
             src = src.replace(/(callback=)[^&]+/, `$1${cbName}`);
             window[cbName] = tag.onload;
           } else {
-            tag.addEventListener('load', tag.onload);
+            //tag.addEventListener('load', tag.onload);
           }
-          tag.addEventListener('error', tag.onerror);
+          //tag.addEventListener('error', tag.onerror);
 
           tag.src = src;
           body.appendChild(tag);
@@ -101,8 +95,7 @@ export const ScriptCache = (function(global) {
       const script = scripts[key];
       Cache[key] = {
         tag:    Cache._scriptTag(key, script),
-        onLoad: Cache._onLoad(key),
-        onUnmount: Cache._onUnmount(key)
+        onLoad: Cache._onLoad(key)
       }
     })
 

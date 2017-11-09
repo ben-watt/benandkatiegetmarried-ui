@@ -4,17 +4,12 @@ import Map from './Map';
 
 import GoogleApiComponent from './GoogleApiComponent';
 
-export class Container extends React.Component {
-  render() {      
-    if (!this.props.loaded) {
-      return <div>Loading...</div>
-    }
-    return (
-     <div className={css.setArea} >
-        <Map google={this.props.google}/>
+export const Container = (props) => {
+    return ( 
+      <div className={css.setArea} >
+        <Map google={props.google}/>
       </div>
     )
-  }
 }
 
 export default GoogleApiComponent({
