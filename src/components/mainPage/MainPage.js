@@ -4,7 +4,6 @@ import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/keyPeople';
 import Itinerary from '../itinerary/Itinerary';
 import Rsvp from '../RsvpNew/rsvpButton/RsvpButton';
-//import BenMap from '../BenMaps.js';
 
 import CommentPage from '../commentPage/CommentPage';
 import Accommodations from '../accommodations/accommodations.js';
@@ -22,7 +21,10 @@ class MainPage extends React.Component {
         return  (
                 <div>
                 <Nav logout={this.props.logout}/>
-                {this.props.showRsvp && <Rsvp guestDetails={this.props.appState.guestDetails} />}
+                {this.props.showRsvp && <Rsvp 
+                    guestDetails={this.props.appState.guestDetails} 
+                    inviteType={this.props.appState.inviteType} 
+                />}
                     <div className={css.container}>             
                         <Header eventDate={startTime}/>
                         <WhenWhere eventDate={startTime} inviteType={this.props.appState.inviteType}/>

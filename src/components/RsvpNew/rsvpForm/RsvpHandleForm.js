@@ -96,10 +96,12 @@ class RsvpHandleForm extends React.Component {
         event.preventDefault();
         var submit = 0;
         this.state.responseData.rsvp.responses.map(val => {
+            console.log(val)
             if (val.response === false) {
                 submit++;
             }
-            if ((val.response === true) && (val.mealChoice === false)) {
+            if ((this.props.inviteType === 'day') && (val.response === 'true') && (val.mealChoice === false)) {
+                console.log('here')
                 submit++;
             }    
             return true;   
@@ -138,6 +140,8 @@ class RsvpHandleForm extends React.Component {
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
                     checkFields={this.state.checkFields}
+                    inviteType={this.props.inviteType} 
+
                 />
             )
         }

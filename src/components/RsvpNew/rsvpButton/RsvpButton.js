@@ -99,6 +99,8 @@ class RsvpButton extends React.Component {
                             visibility={visibility}
                             submitForm={this.submitForm}
                             showScrollArrow={this.showScrollArrow}
+                            inviteType={this.props.inviteType} 
+
                         />
                     </div>
             )

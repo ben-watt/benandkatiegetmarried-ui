@@ -20,6 +20,7 @@ class Form extends React.Component  {
         let meal = false;
         let responses = this.props.rsvp.responses; 
         let response = responses[i];
+        let inviteType = this.props.inviteType;
 
         if(responses.length >= 1) {
             meal = response.response;
@@ -30,31 +31,34 @@ class Form extends React.Component  {
         return (
             <div key={i} className={[css.formElements].join(' ')} >
                 <h4 className={css.name}>{val.name}</h4>
-                <div className={[css.input, css.left].join(' ')}>
-                    <input type="radio" name={val.name} value={true}  
-                    onClick={this.props.handleChange}/>Yes
+                <div className={css.inputs}>
+                    <div className={css.input}>
+                        <input type="radio" name={val.name} value={true}  
+                        onClick={this.props.handleChange}/>Yes
+                    </div>
+                    <div className={css.input}> 
+                        <input type="radio" name={val.name} value={false} 
+                        onClick={this.props.handleChange} />No
+                    </div>
+                    {inviteType === 'day' ?
+                        meal === 'true' ?
+                            <select value={response.mealChoice} className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}  onChange={this.props.handleChange} >
+                                <option  disabled="disabled" hidden value='choose'>Meal Choice</option>
+                                <option value="meat">Meat</option>
+                                <option value="vegetarian">Vegetarian</option>
+                            </select> 
+                        :  
+                            <select disabled className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}>
+                                <option value='choose'>Meal Choice</option>
+                            </select>
+                    : <span />}
                 </div>
-                <div className={[css.input, css.middle].join(' ')}> 
-                    <input type="radio" name={val.name} value={false} 
-                    onClick={this.props.handleChange} />No
-                </div>
-
-                {meal === 'true' ?
-                <select value={response.mealChoice} className={[!this.props.visibility && css.hideSelect, css.select, css.right].join(' ')}  name={val.name}  onChange={this.props.handleChange} >
-                    <option  disabled="disabled" hidden value='choose'>Meal Choice</option>
-                    <option value="meat">Meat</option>
-                    <option value="vegetarian">Vegetarian</option>
-                </select> 
-
-                :  <select disabled className={[!this.props.visibility && css.hideSelect, css.select, css.right].join(' ')}  name={val.name}>
-                <option value='choose'>Meal Choice</option>
-                </select>
-                }
             </div>
         )
     }
     
     render() {
+        console.log(this.props.inviteType)
 
         return(
             <div ref={(node) => {this.cont = node}} className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
@@ -64,9 +68,8 @@ class Form extends React.Component  {
                     <form className={css.formOutline} onSubmit={this.props.handleSubmit} >
                         {this.props.rsvp.responses.map(this.generateData)}
                         
-                        {this.props.checkFields === false 
-                        ?<p className={css.warning}>Please ensure all above fields are filled out</p> 
-                        :null}
+                        {this.props.checkFields === false ? <p className={css.warning}> Please ensure all above fields are filled out </p> : <span />}
+                     
                         
                         <textarea className={css.diet} rows="4" cols="35" name="dietaryRequirements" onChange={this.props.handleChange}
                             placeholder="If you have any dietary requirements or simply a message you would like to leave, please pop it in this box..." >
