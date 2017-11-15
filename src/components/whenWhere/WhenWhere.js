@@ -54,11 +54,25 @@ class WhenWhere extends React.Component {
     }
 
     getDate() {
+        console.log(this.props.eventDate)
         const date = new Date(this.props.eventDate);
         const day = date.toLocaleDateString("en-GB",{ day: "2-digit" });
         const monthYear = date.toLocaleDateString("en-GB", {month: "long", year: "numeric"});
-        const time = date.toLocaleTimeString("en-GB",{ hour: "2-digit", minute: "2-digit" });
-        return `The ${day}th of ${monthYear}, at ${time} in the afternoon`
+
+        let message = `The ${day}th of ${monthYear}, at`
+        if(this.props.inviteType === "day"){
+            return message += ` 14:30 in the afternoon`
+        }
+        return message += ` 19:00 in the evening`
+
+    }
+
+    getInviteMessage() {
+        let message = `And we would love for you to`
+        if(this.props.inviteType === "day"){
+            return message += ` celebrate with us...`
+        }
+        return message += ` join us at an evening reception...`
     }
 
     render() {
@@ -72,7 +86,7 @@ class WhenWhere extends React.Component {
                     <h1 className={[css.benHeading, css.headings].join(' ')}>Ben</h1>
 
                     <h2 className={css.statement}>Are getting married</h2>
-                    <p className={css.invite}>And we would love for you to celebrate with us...</p>
+                    <p className={css.invite}>{this.getInviteMessage()}</p>
 
                     <h1 id='when' className={[css.headings, css.details, css.ipadWhen].join(' ')}><u>WHEN</u></h1>
                     <p  className={[css.text, css.ipadWhenDeets].join(' ')}>{this.getDate()}</p>
