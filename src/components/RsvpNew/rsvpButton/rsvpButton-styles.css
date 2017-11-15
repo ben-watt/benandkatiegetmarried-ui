@@ -49,7 +49,7 @@
     right: 50%;
     margin: 0 auto;
     background-color: var(--offWhite);
-    z-index: 2;
+    z-index: 1;
     transform: translate(50%, 50%);
 }
 

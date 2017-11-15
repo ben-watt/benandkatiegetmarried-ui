@@ -33,7 +33,7 @@ class WhenWhere extends React.Component {
     handleChange(event) {
         this.setState({
             calendarVisible: !this.state.calendarVisible,
-        }, selectCalendar(event.currentTarget.value));
+        }, selectCalendar(event.currentTarget.value, this.props.inviteType));
        
         event.preventDefault();    
   }
@@ -54,7 +54,6 @@ class WhenWhere extends React.Component {
     }
 
     getDate() {
-        console.log(this.props.eventDate)
         const date = new Date(this.props.eventDate);
         const day = date.toLocaleDateString("en-GB",{ day: "2-digit" });
         const monthYear = date.toLocaleDateString("en-GB", {month: "long", year: "numeric"});
