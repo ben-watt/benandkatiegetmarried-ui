@@ -29,7 +29,7 @@ let data = {
         {
             name: 'Travelodge',
             distance:  '4.4 miles',
-            link: 'https://www.travelodge.co.uk/hotels/328/Manchester-Trafford-Park-hotel?checkIn=08%2F10%2F17&checkOut=09%2F10%2F17&rooms%5B0%5D%5Badults%5D=2&rooms%5B0%5D%5Bchildren%5D=0&rooms%5B0%5D%5BrateType%5D=flexible&rooms%5B0%5D%5Bextras%5D%5B0%5D=&utm_source=GHF&utm_medium=GHF&utm_campaign=GB0238GHF&WT.tsrc=GHF',
+            link: 'https://www.travelodge.co.uk/hotels/328/Manchester-Trafford-Park-hotel',
             class: css.accom3,
             image: css.image3,
             
