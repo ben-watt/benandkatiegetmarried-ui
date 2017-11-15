@@ -1,6 +1,7 @@
 import React from 'react';
 import api from '../../../api/mockapi.js'
 import Form from './Form.js';
+import { toast } from 'react-toastify';
 
 class RsvpHandleForm extends React.Component {
 
@@ -115,14 +116,14 @@ class RsvpHandleForm extends React.Component {
         else {
             try{
                 let req = api.sendRsvp(this.state.responseData);
-                this.props.submitForm(this.state.responseData.rsvp);
                 let res = await req;
                 if(res.status === 201){
-                    console.log(res);
+                    this.props.submitForm(this.state.responseData.rsvp);
                 }
 
             } catch(e){
-                console.log(`Shit! error ${e}`);
+                toast.error(`Oh no something went wrong: ${e.message}, 
+                             Please try again later or contact Ben and Katie.`)
             }
             
         }
