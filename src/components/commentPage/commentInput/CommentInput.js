@@ -59,9 +59,10 @@ class CommentInput extends React.Component {
         }));
     }
 
-    togglePicker = (val) => {
+    togglePicker = (val, e) => {
+        e.stopPropagation();
         this.setState(prev => ({
-            showPicker: val ? val : !prev.showPicker
+            showPicker: typeof(val) !== "undefined" ? val : !prev.showPicker
         }));
     }
 
@@ -96,13 +97,13 @@ class CommentInput extends React.Component {
         return (
             <div ref={i => this.container = i} >
                 <div className={inputClasses.join(' ')} 
-                    onClick={() => this.toggleInput(true)}>
+                    onClick={(e) => {this.toggleInput(true); this.togglePicker(false, e)}}>
                     <div className={css.textarea}>
                         <p>Leave a note</p>
                         {input}
                     </div>
                     <div className={css.options}>
-                        <i className={['fa fa-smile-o', css.emoji].join(' ')} onClick={this.togglePicker}/>
+                        <i className={['fa fa-smile-o', css.emoji].join(' ')} onClick={(e) => this.togglePicker(true, e)}/>
                         <div>                
                             {this.state.attribution.map(g => <Tag onClick={() => this.deleteGuest(g.id)}>{`${g.firstName} ${g.lastName}`}</Tag>)}
                         </div>

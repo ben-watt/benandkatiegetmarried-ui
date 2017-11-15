@@ -6,11 +6,6 @@ import ThankyouMessage from '../formCompletion/ThankyouMessage.js'
 import scroll from './scroll.js';
 import Material from '../formCompletion/Material.js';
 
-
-// import RsvpResp from '../rsvpRespData.js';
-
-// import api from '../../../api/mockapi.js';
-
 class RsvpButton extends React.Component {
 
     constructor(props){

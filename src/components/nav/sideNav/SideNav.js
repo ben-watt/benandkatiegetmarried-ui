@@ -33,10 +33,15 @@ class SideNav extends React.Component {
         return styles.join(' ');
     }
 
+    clickNavItem = (item) => {
+        item.name !== "Logout" ? this.props.scroll(item.anchor, item.options) : this.props.logout();
+        this.onClick();
+    }
+
     getNavItems = () => {
         const items = this.props.sections.map((x, i) => 
         <a key={i} 
-        onClick={() => { x.name !== "Logout" ? this.props.scroll(x.anchor, x.options) : this.props.logout();}}>
+        onClick={() => { this.clickNavItem(x); }}>
             <div className={css.navItem}>
                 <i className={[x.icon, css.icon].join(' ')}></i>
                 <span>{x.name}</span>
@@ -49,7 +54,7 @@ class SideNav extends React.Component {
     onClick = () => { 
         this.state.show ? this.tl.reverse(0) : this.tl.play();
 
-        this.setState(prevState => {        
+        this.setState(prevState => {       
             const show = !prevState.show;
             if(show){
                 document.body.classList.add('lock');
