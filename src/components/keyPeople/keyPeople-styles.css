@@ -79,13 +79,13 @@
 }
 
 .davidPic {
-    background-image:  url('./images/david3.png');
+    background-image:  url('./images/david3.jpeg');
     background-position: 0% 25%;
 }
 
 
 .janinePic {
-    background-image:  url('./images/janine.png');
+    background-image:  url('./images/janine.jpeg');
     background-position: 0% 25%;
 }
 
@@ -109,7 +109,7 @@
 }
 
 .samPic {
-    background-image:  url('./images/sam4.png');
+    background-image:  url('./images/sam4.jpeg');
     background-position: -10% -10%;
     
     
