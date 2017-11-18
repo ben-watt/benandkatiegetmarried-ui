@@ -91,7 +91,6 @@ class CommentPage extends React.Component {
         this.setState(prev => ({
             comments: prev.comments.map((c) => {
                 if(c.id === comment.id){
-                    console.log(comment);
                     comment.addLike(this.guests);
                 }
                 return c;

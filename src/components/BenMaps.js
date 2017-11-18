@@ -25,7 +25,6 @@ class BenMap extends Component {
   }
 
   componentDidMount(){
-    console.log(this.node);
     //this.google = window.google;
     this.initMap();
   }

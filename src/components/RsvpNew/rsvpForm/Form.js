@@ -24,8 +24,6 @@ class Form extends React.Component  {
 
         if(responses.length >= 1) {
             meal = response.response;
-            console.log(meal);
-            
         }   
 
         return (
@@ -58,8 +56,6 @@ class Form extends React.Component  {
     }
     
     render() {
-        console.log(this.props.inviteType)
-
         return(
             <div ref={(node) => {this.cont = node}} className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
                 <div ref={(node) => {this.inner = node}} className={css.inner}>

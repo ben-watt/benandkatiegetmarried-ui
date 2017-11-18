@@ -3,7 +3,7 @@
 .attribution  p {
     margin: 0px;
     text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.9);
-    color: var(--goldFont)
+    color: var(--goldFont);
 }
 
 .likeCount {

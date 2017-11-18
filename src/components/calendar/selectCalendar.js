@@ -1,8 +1,6 @@
 
 let selectCalendar = (val, invite) => {
     var url;
-
-    console.log(invite)
     if (invite === 'day') {
         switch(val) {
             case 'ical':

@@ -49,7 +49,6 @@ class RsvpButton extends React.Component {
     }
 
     submitForm = (data) => {
-        console.log(data);
         this.setState(prevState=>({
             rsvpFormVisible: false,
             thankyouMessage: true,

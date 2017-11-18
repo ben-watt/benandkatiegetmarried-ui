@@ -7,6 +7,7 @@ const Container = styled.span`
     border-radius: 10px;
     padding: 1px 5px 1px 5px;
     cursor: pointer;    
+    margin-right: 3px;
 `
 const Btn = styled.span`
     color: white;
