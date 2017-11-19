@@ -14,19 +14,19 @@ let data = {
                             nameClass: css.ericRow,
                         },
                         {
-                            name: 'David Watt',
+                            name: 'Janine Watt',
                             title: 'The Parents',
                             
                             col: css.two,
-                            picClass: css.davidPic,
-                            nameClass: css.davidRow,
-                        },
-                        {
-                            name: 'Janine Watt',
-                            title: 'The Parents',            
-                            col: css.three,
                             picClass: css.janinePic,
                             nameClass: css.janineRow,
+                        },
+                        {
+                            name: 'David Watt',
+                            title: 'The Parents',            
+                            col: css.three,
+                            picClass: css.davidPic,
+                            nameClass: css.davidRow,
                         },
                 ]
             },

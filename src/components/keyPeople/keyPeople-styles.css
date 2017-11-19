@@ -85,8 +85,8 @@
 
 
 .janinePic {
-    background-image:  url('./images/janine.jpeg');
-    background-position: 0% 25%;
+    background-image:  url('./images/janine1.jpg');
+    /* background-position:  0% -10%; */
 }
 
 .ericPic {
@@ -95,7 +95,7 @@
 }
 
 .sopPic {
-    background-image:  url('./images/soph5.png');
+    background-image:  url('./images/sophie1.jpg');
     background-position: 0% 15%;
 }
 
@@ -105,18 +105,15 @@
 }
 
 .catrionaPic {
-    background-image:  url('./images/catriona.png');        
+    background-image:  url('./images/catriona2.jpg');        
 }
 
 .samPic {
     background-image:  url('./images/sam4.jpeg');
-    background-position: -10% -10%;
-    
-    
 }
 
 .scottPic {
-    background-image:  url('./images/scott.png');
+    background-image:  url('./images/scott.jpg');
 }
 
 @media (min-width: 768px) {

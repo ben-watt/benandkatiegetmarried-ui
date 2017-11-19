@@ -84,7 +84,7 @@ class CircularFab extends React.Component {
         <Button fab color="primary" className={buttonClass} >
           {success ? <CheckIcon /> :  <i  className={['fa fa-envelope-o', css.icon].join(' ')} aria-hidden='true'/>}
         </Button>
-        {loading && <CircularProgress size={60} className={classes.progress} />}
+        {loading && <CircularProgress size={70} className={classes.progress} />}
       </div>
     );
   }

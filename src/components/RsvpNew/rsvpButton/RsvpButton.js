@@ -5,6 +5,7 @@ import RsvpHandleForm from '../rsvpForm/RsvpHandleForm.js';
 import ThankyouMessage from '../formCompletion/ThankyouMessage.js'
 import scroll from './scroll.js';
 import Material from '../formCompletion/Material.js';
+import { toast } from 'react-toastify';
 
 class RsvpButton extends React.Component {
 
@@ -18,6 +19,7 @@ class RsvpButton extends React.Component {
             scrollArrow: false,
             offsets:{},
             complete: false,
+            rsvpIncomplete: this.props.showRsvp,
         }
     }
 
@@ -61,6 +63,7 @@ class RsvpButton extends React.Component {
                 buttonClicked: false,
                 thankyouMessage: false,
                 complete: true,
+                rsvpIncomplete: false,
             }))
          },2000)
         return <ThankyouMessage />
@@ -105,22 +108,45 @@ class RsvpButton extends React.Component {
                     <i className='fa fa-envelope-o' aria-hidden='true'/>
                 </div>
             )
+
+      
         }
     }
 
+    fixedButtonDisplay = () => {
+        console.log('here')
+        return (
+             <div className={[css.iconCenter, css.test].join(' ')}> 
+                    <i className='fa fa-check' aria-hidden='true'/>
+                </div>
+        )
+    }
+
+
+
     render () {
+        console.log(this.props.showRsvp)
         const buttonClicked = this.state.buttonClicked;
         const thankyou = this.state.thankyouMessage;
         const formComplete = this.state.complete;
+        const rsvpIncomplete = this.state.rsvpIncomplete;
 
         this.state.buttonClicked === true 
         ? document.getElementById('root').classList.add('lock')
         : document.getElementById('root').classList.remove('lock')
+        
         return (
             <div>
             <div className={this.state.buttonClicked && css.onShade}></div>
-                {formComplete ? 
-                <Material /> :
+                {!rsvpIncomplete ? 
+                <div>
+                    <div className={[css.button, css.fixedGreen].join(' ')} onClick={()=> toast.warning(`We have already received your RSVP. 
+                        If you wish to alter your response, please contact Ben and Katie directly. `)}>
+                        {this.fixedButtonDisplay()}  
+                    </div>
+                </div>  
+                
+                :
                 
                 <div 
                     className={[this.state.buttonClicked && css.formOpen,  css.button].join(' ')}  

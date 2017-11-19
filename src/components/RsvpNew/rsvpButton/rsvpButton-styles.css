@@ -143,6 +143,15 @@
     opacity: 1;
 }
 
+.fixedGreen {
+    background-color: green;
+}
+
+.test {
+    font-weight: lighter;
+}
+
+
 
 
 @media (min-width: 568px) {

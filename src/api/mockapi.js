@@ -5,7 +5,7 @@ const api = (function() {
     let obj = {};
 
     const api = axios.create({
-        baseURL: window.location.href + '/api',
+        baseURL: window.location.origin + '/api',
         timeout: 8000,
         headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
