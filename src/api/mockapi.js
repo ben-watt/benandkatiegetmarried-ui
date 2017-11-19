@@ -5,9 +5,7 @@ const api = (function() {
     let obj = {};
 
     const api = axios.create({
-        // 'https://benandkatiegetmarried.azurewebsites.net/api'
-        // 'http://localhost:18399/api'
-        baseURL: 'http://benandkatiegetmarried.co.uk',
+        baseURL: window.location.href + '/api',
         timeout: 8000,
         headers: {'X-Requested-With': 'XMLHttpRequest'}
     })

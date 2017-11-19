@@ -60,9 +60,9 @@ class WhenWhere extends React.Component {
 
         let message = `The ${day}th of ${monthYear}, at`
         if(this.props.inviteType === "day"){
-            return message += ` 14:30 in the afternoon`
+            return message += ` 2:30 in the afternoon`
         }
-        return message += ` 19:00 in the evening`
+        return message += ` 7:00 in the evening`
 
     }
 
