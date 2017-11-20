@@ -27,7 +27,7 @@ const WedPics = () => {
                     <div className={[css.logo, css.instagram].join(' ')}></div>
                     <ul className={css.list}>
                         <li>1.  Upload photos as usual</li>
-                        <li>2.  Use the hashtag <b>#BK2018</b></li>
+                        <li>2.  Use the hashtag <b>#wattwedding?</b></li>
                     </ul>
                 </div>
             </div>

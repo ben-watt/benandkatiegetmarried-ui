@@ -59,7 +59,7 @@ class RsvpButton extends React.Component {
 
     completeForm = () => {
         setTimeout(() =>{
-            this.setState(prevStatw=>({
+            this.setState(prevState=>({
                 buttonClicked: false,
                 thankyouMessage: false,
                 complete: true,
