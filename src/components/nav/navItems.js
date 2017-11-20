@@ -33,6 +33,11 @@ const navItems = [{
     icon: 'fa fa-map-marker',
     anchor: '#map',
 },{
+    name: 'Get Involved',
+    icon: 'fa fa-camera',
+    anchor: '#getInvolved',
+},
+{
     name: 'Guest Book',
     icon: 'fa fa-book',
     anchor: '#guestBook',

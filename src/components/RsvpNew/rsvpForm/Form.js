@@ -60,7 +60,7 @@ class Form extends React.Component  {
             <div ref={(node) => {this.cont = node}} className={[this.props.visibility && css.visible, css.notVisible].join(' ')}>
                 <div ref={(node) => {this.inner = node}} className={css.inner}>
                     <p className={css.heading}> Will you attend? </p>
-                    <p className={css.subHeading}>Kindly respond by December 1st 2017.</p>
+                    <p className={css.subHeading}>Kindly respond by <b>January 13th 2018.</b></p>
                     <form className={css.formOutline} onSubmit={this.props.handleSubmit} >
                         {this.props.rsvp.responses.map(this.generateData)}
                         

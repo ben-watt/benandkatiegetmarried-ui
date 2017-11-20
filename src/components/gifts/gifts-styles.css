@@ -4,19 +4,25 @@
     grid-column: 1/13;
     text-align: center;
     justify-items: center;
+    background-color: var(--lightGold)
 }
-
-.rule {
-    color: grey;
-    border-top: solid grey 1px;
-    border-radius: none;
-    margin: 5%;
+.bow {
+    grid-column: 1/13;
+    margin: 0 auto;
+    background-image: url('./images/bow.png');
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .heading {
     font-family: var(--handwritingFont);
     font-size: var(--headingSize);
     font-weight: lighter;
     color: black;
+    margin-bottom: 0px;
 }
 
 .text {

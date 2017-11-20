@@ -60,7 +60,6 @@
     grid-column: 1/6;
     grid-row: 4;
     margin-top: 30px;
-    margin-bottom: 20px;
 }
 
 .socialMedia {
@@ -71,7 +70,7 @@
 .blurb {
     font-family: var(--mainFont);
     font-size: var(--textSize);
-    margin: 0;
+    margin-top: 20px;
 }
 
 .logo {
