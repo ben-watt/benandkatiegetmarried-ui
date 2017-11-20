@@ -1,0 +1,137 @@
+@import '../../config.css'; 
+
+.container {
+    grid-column: 1/13;
+    height: auto;
+    background-color: var(--offWhite);
+}
+.inner {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    font-family: var(--mainFont);
+    height: auto;
+}
+
+.header {
+    grid-column: 1/6;
+    font-family: var(--handwritingFont);
+    font-size: var(--headingSize);
+    font-weight: lighter;
+    margin: 10px;
+}
+
+.subHead {
+    grid-column: 1/6;
+    font-size: var(--textSize);
+    margin-bottom: 20px;
+}
+
+.pic {
+    grid-column: 3;
+    height: 100px;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    grid-row: 3;
+    margin: 0 auto;
+    box-shadow: 0px 3px 4px #888888;
+    
+}
+
+.pol1 {
+    background-image:  url('./images/polaroid1.png');
+    transform:  translate(50%, 10%) rotate(20deg) ;
+}
+
+.pol2 {
+    background-image:  url('./images/polaroid2.png');
+    transform:  translate(0%, 10%) rotate(5deg) ;
+}
+
+.pol3 {
+    background-image:  url('./images/polaroid3.png');
+    transform: translate(-50%, 10%) rotate(-10deg) ;
+}
+
+.wedPics {
+    grid-column: 1/6;
+    grid-row: 4;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.socialMedia {
+    grid-column: 1/6;
+    grid-row: 5;
+}
+
+.blurb {
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
+    margin: 0;
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 5px;
+    grid-row: 4;
+    display: inline-block;
+}
+.wedPicsLogo {
+  background-image: url('./images/wedpics.png');
+  background-position-x: 50%;
+}
+
+.facebook {
+    background-image: url('./images/facebook.png');
+}
+.instagram {
+    background-image: url('./images/instagram.png');
+}
+
+.list {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: var(--textSize);
+    margin-top: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.href {
+    color: blue;
+}
+
+
+@media (min-width: 768px) {
+    .pic {
+        width: 200px;
+        height: 200px;
+    }
+
+    .subHead {
+        grid-column: 2/5;
+        font-family: var(--mainFont);
+        font-size: var(--subSubHeadingSize);
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .blurb {
+        font-size: var(--subSubHeadingSize)
+    }
+
+    .list {
+        font-size: var(--textSize)
+    }
+
+}

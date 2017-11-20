@@ -4,6 +4,7 @@ import WhenWhere from '../whenWhere/WhenWhere';
 import KeyPeople from '../keyPeople/keyPeople';
 import Itinerary from '../itinerary/Itinerary';
 import Rsvp from '../RsvpNew/rsvpButton/RsvpButton';
+import WedPics from '../wedPics/WedPics'
 
 import CommentPage from '../commentPage/CommentPage';
 import Accommodations from '../accommodations/accommodations.js';
@@ -36,7 +37,8 @@ class MainPage extends React.Component {
                         <KeyPeople />
                         <Itinerary inviteType={this.props.appState.inviteType}/> 
                         <DressCode />
-                        <Gifts />      
+                        <Gifts />  
+                        <WedPics />   
                         <CommentPage appState={this.props.appState}/>             
                     </div>
                 </div>
