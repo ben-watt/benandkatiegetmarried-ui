@@ -13,6 +13,10 @@ const navItems = [{
     icon: 'fa fa-bed',
     anchor: '#accommodations',
 },{
+    name: 'Map',
+    icon: 'fa fa-map-marker',
+    anchor: '#map',
+},{
     name: 'People',
     icon: 'fa fa-users',
     anchor: '#people',
@@ -28,10 +32,6 @@ const navItems = [{
     name: 'Gifts',
     icon: 'fa fa-gift',
     anchor: '#gifts',
-},{
-    name: 'Map',
-    icon: 'fa fa-map-marker',
-    anchor: '#map',
 },{
     name: 'Get Involved',
     icon: 'fa fa-camera',
