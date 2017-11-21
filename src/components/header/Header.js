@@ -10,16 +10,16 @@ class Header extends React.Component {
         this.enterSiteSmoothScroll = this.enterSiteSmoothScroll.bind(this);   
     }    
 
-    componentDidMount(){
-        window.addEventListener('load', this.updateDimensions);
-    }
+    // componentDidMount(){
+    //     window.addEventListener('load', this.updateDimensions);
+    // }
 
     componentWillUnmount = () => {
         window.removeEventListener('load', this.updateDimensions);
     }
-    updateDimensions = () => {
-        backgroundHeight(this.backgroundHeight, 0);
-    }
+    // updateDimensions = () => {
+    //     backgroundHeight(this.backgroundHeight, 0);
+    // }
 
     enterSiteSmoothScroll() {
 		scrollFunc(this.backgroundHeight);

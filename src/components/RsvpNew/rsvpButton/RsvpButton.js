@@ -105,7 +105,7 @@ class RsvpButton extends React.Component {
         else {
             return (
                 <div className={[css.iconCenter].join(' ')}> 
-                    <i className='fa fa-envelope-o' aria-hidden='true'/>
+                   RSVP
                 </div>
             )
 
