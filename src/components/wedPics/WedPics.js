@@ -16,7 +16,8 @@ const WedPics = () => {
                     <h1 className={css.blurb}>WedPics</h1>
                     <div className={[css.logo, css.wedPicsLogo].join(' ')}></div>
                     <ul className={css.list}>
-                        <li>1.  Follow this <a className={css.href} href=" https://GM2DMNRVGYZA.wedpics.com/join/e03233a7" target="_blank">link</a> to download the app</li>
+                        <li>1.  Download the WedPics app</li>
+                        <li>2.  Press 'Join an Existing wedding'</li>
                         <li>2.  Enter the event ID <b>KatieBen224</b></li>
                         <li>3.  Upload your photos </li>
                     </ul>
