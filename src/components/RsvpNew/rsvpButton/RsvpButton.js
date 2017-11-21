@@ -32,6 +32,11 @@ class RsvpButton extends React.Component {
     }
 
     handleCloseClick = () => {
+        toast("It looks like you aren't ready to send your reply.  Please make sure you send it by 13th January 2018.", {
+            className: css.purpleToast,
+            progressClassName: css.purpleToastProg,
+            autoClose: 8000
+        })
             this.setState(prevState=>({
                 buttonClicked: false, 
                 rsvpFormVisible: false,
@@ -125,7 +130,6 @@ class RsvpButton extends React.Component {
 
 
     render () {
-        console.log(this.props.showRsvp)
         const buttonClicked = this.state.buttonClicked;
         const thankyou = this.state.thankyouMessage;
         const formComplete = this.state.complete;
@@ -141,7 +145,7 @@ class RsvpButton extends React.Component {
                 {!rsvpIncomplete ? 
                 <div>
                     <div className={[css.button, css.fixedGreen].join(' ')} onClick={()=> toast.warning(`We have already received your RSVP. 
-                        If you wish to alter your response, please contact Ben and Katie directly. `)}>
+                        If you wish to alter your response, please contact Ben and Katie directly. `, {autoClose: 10000})}>
                         {this.fixedButtonDisplay()}  
                     </div>
                 </div>  

@@ -5,6 +5,8 @@ import api from '../api/mockapi';
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 
+import css from './app-styles.css';
+
 class App extends React.Component {
     constructor(props){
         super(props);
@@ -46,6 +48,12 @@ class App extends React.Component {
                     guestDetails: res[1].data,
                     inviteType: res[2].data
                 });
+                if(this.shouldShowRsvpButton()) {
+                    toast("Don't forget to RSVP.  Click the RSVP button at the bottom of the page.", {
+                        className: css.purpleToast,
+                        progressClassName: css.purpleToastProg
+                    })
+                }
             }
 
         } catch(err) {
