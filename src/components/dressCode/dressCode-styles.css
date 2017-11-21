@@ -2,6 +2,7 @@
 
 .container {
     grid-column: 1/13;
+    background-color: var(--lightGold);
 }
 
 .innerContainer {
@@ -12,6 +13,13 @@
     font-family: var(--mainFont);
     color: grey;
     justify-items: center;
+}
+
+.line {
+    grid-column: 1/6;
+    border-top: solid grey 1px;
+    border-radius: none;
+    width: 70%;
 }
 
 .head {

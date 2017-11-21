@@ -16,7 +16,7 @@ const DressCode = () => {
                 <h1 className={[css.subHead, css.men].join(' ')}>The Gentlemen </h1>
                 <p className={[css.text, css.men].join(' ')}>A smart suit and tie, color can be dark or light.</p>
               
-           
+                <div className={css.line}></div>
             </div>
         </div>
     )
