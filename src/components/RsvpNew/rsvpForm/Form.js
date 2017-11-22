@@ -67,7 +67,7 @@ class Form extends React.Component  {
                         {this.props.checkFields === false ? <p className={css.warning}> Please ensure all above fields are filled out </p> : <span />}
                      
                         
-                        <textarea className={css.diet} rows="4" cols="35" name="dietaryRequirements" onChange={this.props.handleChange}
+                        <textarea className={css.diet} rows="4" cols="30" name="dietaryRequirements" onChange={this.props.handleChange}
                             placeholder="If you have any dietary requirements or simply a message you would like to leave, please pop it in this box..." >
                         </textarea>
                         <p className={css.song}> 
