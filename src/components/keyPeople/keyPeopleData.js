@@ -31,7 +31,7 @@ let data = {
                 ]
             },
             {
-                title: 'The Bridesmads',
+                title: 'The Bridesmaids',
                 people: [
                     {
                         name: 'Sophie Gillies',

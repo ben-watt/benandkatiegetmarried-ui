@@ -17,7 +17,7 @@ const WedPics = () => {
                     <div className={[css.logo, css.wedPicsLogo].join(' ')}></div>
                     <ul className={css.list}>
                         <li>1.  Download the WedPics app</li>
-                        <li>2.  Press 'Join an Existing wedding'</li>
+                        <li>2.  Press 'Join an existing wedding'</li>
                         <li>2.  Enter the event ID <b>KatieBen224</b></li>
                         <li>3.  Upload your photos </li>
                     </ul>
