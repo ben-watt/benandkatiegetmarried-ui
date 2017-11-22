@@ -16,7 +16,7 @@ class LoginPage extends React.Component {
         this.state = {
             securityCode : '',
             password : '',
-            enterCodeMessage: 'Please enter your unique code:',
+            enterCodeMessage: 'Please enter your unique code below:',
             showLoader: false,
             fadeOut: false,
         }
@@ -117,12 +117,10 @@ class LoginPage extends React.Component {
                     <h2 className={css.prompt}>{this.state.enterCodeMessage}</h2>
                     <div className={css.input} >
                         <input id='securityCode' className={css.securityCode} onChange={this.inputChange} value={this.state.securityCode} type='password'/>
-                        <span></span>
                     </div>
                     <h2 className={css.dash}>-</h2> 
                     <div className={css.input}>
                         <input id='password' className={css.password} onChange={this.inputChange} value={this.state.password} type='password'/>
-                        <span></span>
                     </div>
                     <Button id={css.loginBtn} onClick={this.login} text={'Login'}/>
                 </form>

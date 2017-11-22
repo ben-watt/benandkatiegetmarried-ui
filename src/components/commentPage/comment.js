@@ -11,7 +11,6 @@ const Comment = function (comment) {
 }
 
 Comment.prototype.addLike = function (guests) {
-    console.log("add like:", this);
     guests.forEach(guest => {
         this.likes.push(guest);
     });

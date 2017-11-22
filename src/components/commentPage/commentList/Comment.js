@@ -40,8 +40,10 @@ const LikeHover = styled.div`
     position: absolute;
     z-index: 1;
 
-    ${Likes}:hover + & {
-        display: ${props => props.likeCount > 0 ? "initial": "none" };
+    @media (min-width: 891px) {
+        ${Likes}:hover + & {
+            display: ${props => props.likeCount > 0 ? "initial": "none" };
+        }
     }
 `
 
