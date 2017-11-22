@@ -33,16 +33,16 @@ module.exports = {
         },
         {
             time: '9.15pm',
-            text:  'Evening buffet served',
+            text:  'Evening snacks served',
             type: ['day', 'evening']
         },
         {
-            time: '12.30pm',
+            time: '12.30am',
             text:  'Bar closes',
             type: ['day', 'evening']
         },
         {
-            time: '1.00pm',
+            time: '1.00am',
             text:  'Residents bar remains open until we’ve had enough',
             type: ['day', 'evening']
         },
