@@ -79,6 +79,8 @@ class SideNav extends React.Component {
             <nav className={this.getNavStyles()}>
                 <img className={css.image} alt='blah' src={templo}/>
                 {this.getNavItems()}
+                <br/>
+                <br/>
             </nav>
             <div className={this.state.show && css.onShade} onClick={this.onClick}></div>
         </div>
