@@ -93,7 +93,9 @@ class LoginPage extends React.Component {
     handleError = (err) => { 
         const message = (err.response && err.response.data && err.response.data.ErrorMessage) || err.message; 
 
-        toast.error(`${err.name}: ${message}.\nContact Ben or Katie if your having problems.`)
+        toast.error(`Ooops, cannot find invite.\n 
+        Please ensure code is entered exactly as received by email.\n 
+        If you are still having problems, contact Ben and Katie.`)
     }
 
     handleResponse = async (res) => {
