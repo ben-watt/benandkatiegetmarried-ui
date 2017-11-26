@@ -119,7 +119,6 @@ class RsvpButton extends React.Component {
     }
 
     fixedButtonDisplay = () => {
-        console.log('here')
         return (
              <div className={[css.iconCenter, css.test].join(' ')}> 
                     <i className='fa fa-check' aria-hidden='true'/>

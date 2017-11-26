@@ -25,7 +25,7 @@ class RsvpHandleForm extends React.Component {
     }
 
     componentDidMount = async () => {
-        const responses = [];
+        let responses = [];
 
         this.props.guestDetails.forEach(guest => {
             responses.push({
@@ -34,8 +34,9 @@ class RsvpHandleForm extends React.Component {
                 response: false, 
                 mealChoice: false,
                 isFeatured: guest.isFeatured,
-            });
-        });
+            })
+        });  
+        responses=_.orderBy(responses, ['isFeatured', 'name'], ['desc', 'asc'])
 
         this.setState(prevState => ({
             responseData: {
@@ -63,7 +64,9 @@ class RsvpHandleForm extends React.Component {
                 this.setState( prev => ({
                         responseData: {
                             rsvp: {
-                                responses: prev.responseData.rsvp.responses.map(x => Object.assign(x, { 'response' : (x.name === target.name) ? target.value : x.response }))
+                                ...prev.responseData.rsvp,
+                                    responses: prev.responseData.rsvp.responses.map(x => Object.assign(x, { 'response' : (x.name === target.name) ? target.value : x.response }))
+                                
                             }
                         }
                     }));
@@ -71,8 +74,10 @@ class RsvpHandleForm extends React.Component {
             case 'select-one': 
             this.setState( prev => ({
                  responseData: {
-                        rsvp: {
-                            responses: prev.responseData.rsvp.responses.map(x =>  Object.assign(x, { 'mealChoice' : (x.name === target.name) ? target.value : x.mealChoice }))
+                     rsvp: {
+                        ...prev.responseData.rsvp, 
+                                responses: prev.responseData.rsvp.responses.map(x =>  Object.assign(x, { 'mealChoice' : (x.name === target.name) ? target.value : x.mealChoice }))
+                            
                         }
                     }
                 }));
@@ -80,7 +85,9 @@ class RsvpHandleForm extends React.Component {
             default: this.setState( prev => ({
                 responseData: {
                     rsvp: {
-                        [target.name]: target.value
+                        ...prev.responseData.rsvp, 
+                            [target.name]: target.value
+                        
                     }
                 }
             }));;

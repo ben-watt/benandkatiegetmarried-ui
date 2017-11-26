@@ -33,15 +33,15 @@ class Form extends React.Component  {
                     { this.props.inviteType === 'day' ?
                          val.response === "true" ?
                             <select value={val.mealChoice} className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}  onChange={this.props.handleChange} >
-                                <option disabled value="">Meal Choice</option>
+                                <option disabled='disabled' hidden value="choose">Meal Choice</option>
                                 <option value="meat">Meat</option>
                                 <option value="vegetarian">Vegetarian</option>
                             </select> 
                         :  
-                            <select disabled value="" className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}>
-                                <option disabled value="">Meal Choice</option>
-                            </select>
-                        : <span/>
+                        <select disabled  className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}>
+                            <option value="choose">Meal Choice</option>
+                        </select>
+                    : <span/>
                     }
                 </div>
             </div>
@@ -55,8 +55,7 @@ class Form extends React.Component  {
                     <p className={css.heading}> Will you attend? </p>
                     <p className={css.subHeading}>Kindly respond by <b>January 13th 2018.</b></p>
                     <form className={css.formOutline} onSubmit={this.props.handleSubmit} >
-                        {_.orderBy(this.props.rsvp.responses, ['isFeatured', 'name'], ['desc', 'asc']).map(this.generateData)}
-                        
+                        {this.props.rsvp.responses.map(this.generateData)}
                         {this.props.checkFields === false ? <p className={css.warning}> Please ensure all above fields are filled out </p> : <span />}                   
                         
                         <textarea className={css.diet} rows="4" cols="30" name="dietaryRequirements" onChange={this.props.handleChange}
