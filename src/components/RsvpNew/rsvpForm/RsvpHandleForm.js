@@ -65,8 +65,8 @@ class RsvpHandleForm extends React.Component {
                         responseData: {
                             rsvp: {
                                 ...prev.responseData.rsvp,
-                                    responses: prev.responseData.rsvp.responses.map(x => Object.assign(x, { 'response' : (x.name === target.name) ? target.value : x.response }))
-                                
+                                    responses: prev.responseData.rsvp.responses.map(x => ({...x, response: x.name === target.name ? target.value : x.response})) 
+                                    
                             }
                         }
                     }));
@@ -76,8 +76,8 @@ class RsvpHandleForm extends React.Component {
                  responseData: {
                      rsvp: {
                         ...prev.responseData.rsvp, 
-                                responses: prev.responseData.rsvp.responses.map(x =>  Object.assign(x, { 'mealChoice' : (x.name === target.name) ? target.value : x.mealChoice }))
-                            
+                                responses: prev.responseData.rsvp.responses.map(x =>  ({...x,  mealChoice: x.name === target.name ? target.value : x.mealChoice}))
+                                
                         }
                     }
                 }));
