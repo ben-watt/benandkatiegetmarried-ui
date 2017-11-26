@@ -2,6 +2,7 @@ import React from 'react';
 import api from '../../../api/mockapi.js'
 import Form from './Form.js';
 import { toast } from 'react-toastify';
+import _ from 'lodash';
 
 class RsvpHandleForm extends React.Component {
 
@@ -31,7 +32,8 @@ class RsvpHandleForm extends React.Component {
                 guestId: guest.id,
                 name: `${guest.firstName} ${guest.lastName}`, 
                 response: false, 
-                mealChoice: false
+                mealChoice: false,
+                isFeatured: guest.isFeatured,
             });
         });
 
@@ -55,42 +57,34 @@ class RsvpHandleForm extends React.Component {
 
     handleChange = (event) => {
         var type = event.target.type
-        var name = event.target.name;
-        var value = event.target.value;
-        var newObj = Object.assign({}, this.state.responseData.rsvp)
-
-
-        switch (type) {
+        var target = event.target;
+        switch (type) { 
             case 'radio':
-                newObj.responses.map((val) => {
-                    if (name === val.name) {
-                        val.response = value;
-                        if (value === false) {
-                            val.mealChoice = false;
+                this.setState( prev => ({
+                        responseData: {
+                            rsvp: {
+                                responses: prev.responseData.rsvp.responses.map(x => Object.assign(x, { 'response' : (x.name === target.name) ? target.value : x.response }))
+                            }
+                        }
+                    }));
+                break;
+            case 'select-one': 
+            this.setState( prev => ({
+                 responseData: {
+                        rsvp: {
+                            responses: prev.responseData.rsvp.responses.map(x =>  Object.assign(x, { 'mealChoice' : (x.name === target.name) ? target.value : x.mealChoice }))
                         }
                     }
-                    return true;
-                })
+                }));
                 break;
-
-            case 'select-one':
-        
-                newObj.responses.map((val) => {
-                    if (name === val.name) {
-                        val.mealChoice = value
+            default: this.setState( prev => ({
+                responseData: {
+                    rsvp: {
+                        [target.name]: target.value
                     }
-                    return true;
-                })
-                break;
-            
-            default:
-                newObj[name] = value;  
-        }
-        this.setState(prevState => ({
-            responseData: {
-                rsvp: newObj,
-            }
-        }))     
+                }
+            }));;
+        }  
     }
 
     handleSubmit = async (event) => {
@@ -139,9 +133,7 @@ class RsvpHandleForm extends React.Component {
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
                     checkFields={this.state.checkFields}
-                    inviteType={this.props.inviteType} 
-
-                />
+                    inviteType={this.props.inviteType} />
             )
         }
         else {

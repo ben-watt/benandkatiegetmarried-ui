@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './rsvpForm-styles.css';
+import _ from 'lodash';
 
 class Form extends React.Component  {
     
@@ -17,15 +18,6 @@ class Form extends React.Component  {
     }
 
     generateData = (val, i) => {
-        let meal = false;
-        let responses = this.props.rsvp.responses; 
-        let response = responses[i];
-        let inviteType = this.props.inviteType;
-
-        if(responses.length >= 1) {
-            meal = response.response;
-        }   
-
         return (
             <div key={i} className={[css.formElements].join(' ')} >
                 <h4 className={css.name}>{val.name}</h4>
@@ -38,18 +30,19 @@ class Form extends React.Component  {
                         <input type="radio" name={val.name} value={false} 
                         onClick={this.props.handleChange} />No
                     </div>
-                    {inviteType === 'day' ?
-                        meal === 'true' ?
-                            <select value={response.mealChoice} className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}  onChange={this.props.handleChange} >
-                                <option  disabled="disabled" hidden value='choose'>Meal Choice</option>
+                    { this.props.inviteType === 'day' ?
+                         val.response === "true" ?
+                            <select value={val.mealChoice} className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}  onChange={this.props.handleChange} >
+                                <option disabled value="">Meal Choice</option>
                                 <option value="meat">Meat</option>
                                 <option value="vegetarian">Vegetarian</option>
                             </select> 
                         :  
-                            <select disabled className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}>
-                                <option value='choose'>Meal Choice</option>
+                            <select disabled value="" className={[!this.props.visibility && css.hideSelect, css.select].join(' ')}  name={val.name}>
+                                <option disabled value="">Meal Choice</option>
                             </select>
-                    : <span />}
+                        : <span/>
+                    }
                 </div>
             </div>
         )
@@ -62,10 +55,9 @@ class Form extends React.Component  {
                     <p className={css.heading}> Will you attend? </p>
                     <p className={css.subHeading}>Kindly respond by <b>January 13th 2018.</b></p>
                     <form className={css.formOutline} onSubmit={this.props.handleSubmit} >
-                        {this.props.rsvp.responses.map(this.generateData)}
+                        {_.orderBy(this.props.rsvp.responses, ['isFeatured', 'name'], ['desc', 'asc']).map(this.generateData)}
                         
-                        {this.props.checkFields === false ? <p className={css.warning}> Please ensure all above fields are filled out </p> : <span />}
-                     
+                        {this.props.checkFields === false ? <p className={css.warning}> Please ensure all above fields are filled out </p> : <span />}                   
                         
                         <textarea className={css.diet} rows="4" cols="30" name="dietaryRequirements" onChange={this.props.handleChange}
                             placeholder="If you have any dietary requirements or simply a message you would like to leave, please pop it in this box..." >
