@@ -84,7 +84,6 @@ class WhenWhere extends React.Component {
 
 
     render() {
-        console.log(this.props.guestDetails)
         return (
             <div className={css.setArea}>
                 <div className={css.container}>
