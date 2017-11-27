@@ -29,7 +29,7 @@ class MainPage extends React.Component {
                 />
                     <div className={css.container}>             
                         <Header eventDate={startTime}/>
-                        <WhenWhere eventDate={startTime} inviteType={this.props.appState.inviteType}/>
+                        <WhenWhere eventDate={startTime} inviteType={this.props.appState.inviteType}  guestDetails={this.props.appState.guestDetails} />
                         <Accommodations />
                         <div id='map' className={css.map}>
                             <MapContainer />

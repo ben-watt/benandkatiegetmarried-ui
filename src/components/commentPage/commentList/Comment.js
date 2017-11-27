@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import Time from '../../common/Time';
 import css from './commentList.css';
+import textFun from '../../common/textFun';
 
 const DeleteIcon = styled.i`
     position:absolute;
@@ -73,17 +74,7 @@ const Comment = (props) => {
     const comment = props.comment;
 
     this.getAttributions = (attributions) => {
-        var names = "";
-        attributions.forEach((g,i) => {
-            names += `${g.firstName + ' ' + g.lastName} `
-
-            if(i === attributions.length - 2) {
-                names += ' & ';
-            } else if(i % 2 === 0 && attributions.length - 1 !== i) {
-                names += ', ';
-            }   
-        });
-        return names;
+        return textFun(attributions);
     }
 
     this.isCommentOwner = (attributions) => {

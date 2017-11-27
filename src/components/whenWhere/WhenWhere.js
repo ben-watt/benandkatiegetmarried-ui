@@ -5,6 +5,8 @@ import selectCalendar from '../calendar/selectCalendar.js';
 import Calendar from '../calendar/Calendar.js';
 import api from '../../api/mockapi.js';
 import { toast } from 'react-toastify';
+import textFun from '../common/textFun';
+import _ from 'lodash';
 
 class WhenWhere extends React.Component {
     constructor(props){
@@ -74,10 +76,19 @@ class WhenWhere extends React.Component {
         return message += ` join us at an evening reception...`
     }
 
+    getAttributions = (attributions) => {
+        attributions=_.orderBy(attributions, ['isFeatured', 'name'], ['desc', 'asc'])
+        
+        return textFun(attributions);
+    }
+
+
     render() {
+        console.log(this.props.guestDetails)
         return (
             <div className={css.setArea}>
                 <div className={css.container}>
+                    <p className={css.names}>Dear {this.getAttributions(this.props.guestDetails)}</p>
                     <div className={[css.katiePic, css.pic].join(' ')}> </div>
                     <p className={[css.ampersand].join(' ')}>& </p>
                     <div className={[css.benPic, css.pic].join(' ')}></div> 
