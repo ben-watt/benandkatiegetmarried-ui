@@ -57,7 +57,7 @@
     background-color: hsla(70, 1, 1, 0.5);
 }  
 
-@media(min-width: 891px){
+@media(min-width: 1025px){
     .btn {
         display: none;
     }
