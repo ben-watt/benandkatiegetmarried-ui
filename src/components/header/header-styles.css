@@ -19,10 +19,9 @@
 .title {
     font-family: var(--handwritingFont);
     font-size: var(--headingSize);
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: black ; 
     opacity: 0.7;
-
     margin: 90px 0px 0px 0px;
     text-align: center;
 };
