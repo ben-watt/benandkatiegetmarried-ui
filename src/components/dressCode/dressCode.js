@@ -11,7 +11,7 @@ const DressCode = () => {
               
                    
                 <h1 className={[css.subHead, css.ladies].join(' ')}>The Ladies </h1>
-                <p className={[css.text, css.ladies].join(' ')}>A cocktail dress or a dressy skirt and top.</p>
+                <p className={[css.text, css.ladies].join(' ')}>A party dress or a dressy skirt and top.</p>
                 
                 <h1 className={[css.subHead, css.men].join(' ')}>The Gentlemen </h1>
                 <p className={[css.text, css.men].join(' ')}>A smart suit and tie.</p>

@@ -26,7 +26,7 @@ class App extends React.Component {
             });
         } catch(err){
             console.log(err);
-            toast.error("Unable to logout at this time");
+            toast.error("Unable to logout at this time", {className: css.toast});
         }
     }
 
@@ -49,10 +49,15 @@ class App extends React.Component {
                     inviteType: res[2].data
                 });
                 if(this.shouldShowRsvpButton()) {
-                    toast("Don't forget to RSVP.  Click the RSVP button at the bottom of the page.", {
-                        className: css.purpleToast,
-                        progressClassName: css.purpleToastProg
-                    })
+                    setTimeout(() =>{
+                        toast("Don't forget to RSVP.  Click the RSVP button at the bottom of the page.", {
+                            className: css.purpleToast,
+                            progressClassName: css.purpleToastProg,
+                            autoClose: 60000
+                        })
+                     },30000)
+
+        
                 }
             }
 

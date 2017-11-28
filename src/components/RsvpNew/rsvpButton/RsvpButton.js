@@ -144,7 +144,7 @@ class RsvpButton extends React.Component {
                 {!rsvpIncomplete ? 
                 <div>
                     <div className={[css.button, css.fixedGreen].join(' ')} onClick={()=> toast.warning(`We have already received your RSVP. 
-                        If you wish to alter your response, please contact Ben and Katie directly. `, {autoClose: 10000})}>
+                        If you wish to alter your response, please contact Ben and Katie directly. `, {className: css.purpleToast, autoClose: 10000})}>
                         {this.fixedButtonDisplay()}  
                     </div>
                 </div>  

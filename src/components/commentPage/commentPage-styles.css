@@ -21,3 +21,8 @@
     max-width: 600px;
     margin: 30px auto 80px auto;
 }
+
+.toast {
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
+}

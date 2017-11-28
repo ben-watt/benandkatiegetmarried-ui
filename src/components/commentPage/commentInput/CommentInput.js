@@ -68,7 +68,7 @@ class CommentInput extends React.Component {
 
     deleteGuest = (id) => {
         if(this.state.attribution.length === 1){
-            toast.info("You must have at least one person against the comment to post");
+            toast.info("You must have at least one person against the comment to post", {className: css.toast});
             return;
         }
         this.setState(prev => ({

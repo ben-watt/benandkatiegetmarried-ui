@@ -130,6 +130,11 @@ hr {
     display: none;
 }
 
+.toast {
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
+}
+
 @media (min-width: 768px) {
     .container {
        grid-template-columns: repeat(7, 1fr); 
@@ -214,3 +219,22 @@ hr {
         margin: 0;
     }
 } 
+
+@media (min-width: 1400px) {
+    .katiePic {
+        grid-column: 3;
+    }
+
+    .benPic {
+        grid-column: 5;
+    }
+
+    .katieHeading {
+        grid-column:3;
+        }
+    
+        .benHeading {
+            grid-column: 5;
+        }
+    
+}

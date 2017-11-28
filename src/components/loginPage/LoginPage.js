@@ -95,7 +95,7 @@ class LoginPage extends React.Component {
 
         toast.error(`Ooops, cannot find invite.\n 
         Please ensure code is entered exactly as received by email.\n 
-        If you are still having problems, contact Ben and Katie.`)
+        If you are still having problems, contact Ben and Katie.`, {className: css.toast})
     }
 
     handleResponse = async (res) => {

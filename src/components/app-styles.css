@@ -1,8 +1,18 @@
+@import '../config.css';
+
+
 .purpleToast {
     background: #3F51B5;
     color: white;
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
 }
 
 .purpleToastProg {
     background: rgba(145, 158, 221, 0.884)
+}
+
+.toast {
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
 }

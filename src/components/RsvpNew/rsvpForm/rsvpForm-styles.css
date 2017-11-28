@@ -214,6 +214,10 @@
 .songAns:focus::-moz-placeholder   {color:transparent;}
 .songAns-moz-placeholder   {color:transparent;}
 
+.toast {
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
+}
 
 @media (min-width: 768px) {
     .visible {

@@ -118,6 +118,11 @@
     font-size: 0.8em;
 }
 
+.toast {
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
+}
+
  @media(min-width: 800px){
     .input > input {
         width: 200px;

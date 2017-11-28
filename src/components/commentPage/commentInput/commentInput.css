@@ -79,3 +79,8 @@
    top: -300px;
    left: -25px;
 }
+
+.toast {
+    font-family: var(--mainFont);
+    font-size: var(--textSize);
+}

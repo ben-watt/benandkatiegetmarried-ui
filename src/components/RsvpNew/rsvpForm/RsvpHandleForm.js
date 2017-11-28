@@ -3,6 +3,7 @@ import api from '../../../api/mockapi.js'
 import Form from './Form.js';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
+import css from './rsvpForm-styles.css';
 
 class RsvpHandleForm extends React.Component {
 
@@ -122,7 +123,7 @@ class RsvpHandleForm extends React.Component {
 
             } catch(e){
                 toast.error(`Oh no something went wrong: ${e.message}, 
-                             Please try again later or contact Ben and Katie.`)
+                             Please try again later or contact Ben and Katie.`,{className: css.toast,})
             }
             
         }

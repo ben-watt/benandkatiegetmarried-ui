@@ -59,7 +59,7 @@ class CommentPage extends React.Component {
             }));
         } catch(err){
             console.log(err);
-            toast.error("Sorry we couldn't create that comment right now");
+            toast.error("Sorry we couldn't create that comment right now", {className:css.toast});
         }
     }                      
     
@@ -71,7 +71,7 @@ class CommentPage extends React.Component {
             }));
         } catch(err){
             console.log(err);
-            toast.error("Sorry we couldn't delete that comment right now");
+            toast.error("Sorry we couldn't delete that comment right now", {className: css.toast});
         }
     }
 
@@ -84,7 +84,7 @@ class CommentPage extends React.Component {
 
     likeComment = async (comment) => {
         if(this.guestsHaveAlreadyLiked(comment)){
-            toast.info("You must really like this comment, you have already liked it.");
+            toast.info("You must really like this comment, you have already liked it.", {className: css.toast});
             return
         }
         
@@ -103,7 +103,7 @@ class CommentPage extends React.Component {
                 throw new Error("Incorrect status returned");
             }
         } catch(err){
-            toast.error("Connection problem, unable to like message");
+            toast.error("Connection problem, unable to like message", {className:css.toast});
             this.setState(prev => ({ 
                 comments: prev.comments.map((c) => {
                     if(c.id === comment.id){

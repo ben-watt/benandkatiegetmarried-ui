@@ -28,7 +28,7 @@ class WhenWhere extends React.Component {
             }
         } catch(err) {
             console.log(err);
-            toast.error("Oh no for some reason we couldn't get the event details");
+            toast.error("Oh no for some reason we couldn't get the event details", {className: css.toast});
         }
     }
 
