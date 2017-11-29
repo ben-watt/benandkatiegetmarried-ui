@@ -7,6 +7,7 @@ import api from '../../api/mockapi.js';
 import { toast } from 'react-toastify';
 import textFun from '../common/textFun';
 import _ from 'lodash';
+import moment from 'moment';
 
 class WhenWhere extends React.Component {
     constructor(props){
@@ -57,10 +58,11 @@ class WhenWhere extends React.Component {
 
     getDate() {
         const date = new Date(this.props.eventDate);
-        const day = date.toLocaleDateString("en-GB",{ day: "2-digit" });
-        const monthYear = date.toLocaleDateString("en-GB", {month: "long", year: "numeric"});
+        const day = moment(date).format("DD")
+        const month = moment(date).format("MMMM");
+        const year = moment(date).format("YYYY");
 
-        let message = `The ${day}th of ${monthYear}, at`
+        let message = `The ${day}th of ${month} ${year}, at`
         if(this.props.inviteType === "day"){
             return message += ` 2:30 in the afternoon`
         }

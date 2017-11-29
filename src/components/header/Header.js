@@ -2,7 +2,7 @@ import React from 'react';
 import css from './header-styles.css';
 import scrollFunc from './scrollFunc';
 import backgroundHeight from '../common/backgroundHeight.js'
-
+import moment from 'moment';
 
 class Header extends React.Component {
     constructor(props){
@@ -27,9 +27,7 @@ class Header extends React.Component {
 
     getEventDate() {
         const date = new Date(this.props.eventDate);
-        const month = date.toLocaleDateString("en-GB", {month: "2-digit"});
-        const day = date.toLocaleDateString("en-GB", {day: "2-digit"});
-        return `${day}.${month}.${date.getFullYear()}`
+        return moment(date).format("DD.MM.YYYY");
     }
 
     render() {
